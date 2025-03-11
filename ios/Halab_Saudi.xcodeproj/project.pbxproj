@@ -7,11 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		048E6E424B3F47C395817572 /* SF-Pro-Rounded-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = A4A16EDD0C5543B78EBD6900 /* SF-Pro-Rounded-Heavy.otf */; };
+		094DCBFCA9D14F278E728909 /* SF-Pro-Rounded-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F5FED17BE90C40B082EB6FEC /* SF-Pro-Rounded-Regular.otf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-Halab_Saudi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-Halab_Saudi.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		24B6CE9139514ED8B7BB2BB4 /* SF-Pro-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = FBE11A006F4243B09E4BA616 /* SF-Pro-Rounded-Medium.otf */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		876D63AE0BB846B3951E64B6 /* SF-Pro-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A8C474C832104825BD4B78EA /* SF-Pro-Rounded-Semibold.otf */; };
+		92838CCCCC664F6D8554B3BA /* SF-Pro-Rounded-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E104619858C4297BFE2042D /* SF-Pro-Rounded-Thin.otf */; };
 		A0E63EE4858E27FF625331C5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
+		AB1396D54F1F49D0A881992F /* SF-Pro-Rounded-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6100AF2CC386492D8E5A72F4 /* SF-Pro-Rounded-Bold.otf */; };
+		B41E62DCDD6A4F9C9ABD87CB /* SF-Pro-Rounded-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15BD20488C9547A48B62DD76 /* SF-Pro-Rounded-Black.otf */; };
+		C72FFF2077E048F694DFFF13 /* SF-Pro-Rounded-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F53311F05D8461286D4428C /* SF-Pro-Rounded-Ultralight.otf */; };
+		EE408B20FAF44FE38DCDED3E /* SF-Pro-Rounded-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = F4A3A8A58E874F5280B459B7 /* SF-Pro-Rounded-Light.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,12 +28,21 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Halab_Saudi/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Halab_Saudi/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = Halab_Saudi/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		15BD20488C9547A48B62DD76 /* SF-Pro-Rounded-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Black.otf"; path = "../src/Assests/Fonts/SF-Pro-Rounded-Black.otf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-Halab_Saudi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Halab_Saudi.debug.xcconfig"; path = "Target Support Files/Pods-Halab_Saudi/Pods-Halab_Saudi.debug.xcconfig"; sourceTree = "<group>"; };
+		4F53311F05D8461286D4428C /* SF-Pro-Rounded-Ultralight.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Ultralight.otf"; path = "../src/Assests/Fonts/SF-Pro-Rounded-Ultralight.otf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-Halab_Saudi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Halab_Saudi.release.xcconfig"; path = "Target Support Files/Pods-Halab_Saudi/Pods-Halab_Saudi.release.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-Halab_Saudi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Halab_Saudi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6100AF2CC386492D8E5A72F4 /* SF-Pro-Rounded-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Bold.otf"; path = "../src/Assests/Fonts/SF-Pro-Rounded-Bold.otf"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Halab_Saudi/AppDelegate.swift; sourceTree = "<group>"; };
+		7E104619858C4297BFE2042D /* SF-Pro-Rounded-Thin.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Thin.otf"; path = "../src/Assests/Fonts/SF-Pro-Rounded-Thin.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Halab_Saudi/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A4A16EDD0C5543B78EBD6900 /* SF-Pro-Rounded-Heavy.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Heavy.otf"; path = "../src/Assests/Fonts/SF-Pro-Rounded-Heavy.otf"; sourceTree = "<group>"; };
+		A8C474C832104825BD4B78EA /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Semibold.otf"; path = "../src/Assests/Fonts/SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F4A3A8A58E874F5280B459B7 /* SF-Pro-Rounded-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Light.otf"; path = "../src/Assests/Fonts/SF-Pro-Rounded-Light.otf"; sourceTree = "<group>"; };
+		F5FED17BE90C40B082EB6FEC /* SF-Pro-Rounded-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Regular.otf"; path = "../src/Assests/Fonts/SF-Pro-Rounded-Regular.otf"; sourceTree = "<group>"; };
+		FBE11A006F4243B09E4BA616 /* SF-Pro-Rounded-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Medium.otf"; path = "../src/Assests/Fonts/SF-Pro-Rounded-Medium.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +69,23 @@
 			name = Halab_Saudi;
 			sourceTree = "<group>";
 		};
+		1AEF1719E71D47CF89D1A53E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				15BD20488C9547A48B62DD76 /* SF-Pro-Rounded-Black.otf */,
+				6100AF2CC386492D8E5A72F4 /* SF-Pro-Rounded-Bold.otf */,
+				A4A16EDD0C5543B78EBD6900 /* SF-Pro-Rounded-Heavy.otf */,
+				F4A3A8A58E874F5280B459B7 /* SF-Pro-Rounded-Light.otf */,
+				FBE11A006F4243B09E4BA616 /* SF-Pro-Rounded-Medium.otf */,
+				F5FED17BE90C40B082EB6FEC /* SF-Pro-Rounded-Regular.otf */,
+				A8C474C832104825BD4B78EA /* SF-Pro-Rounded-Semibold.otf */,
+				7E104619858C4297BFE2042D /* SF-Pro-Rounded-Thin.otf */,
+				4F53311F05D8461286D4428C /* SF-Pro-Rounded-Ultralight.otf */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +110,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				1AEF1719E71D47CF89D1A53E /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -161,6 +197,15 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				A0E63EE4858E27FF625331C5 /* PrivacyInfo.xcprivacy in Resources */,
+				B41E62DCDD6A4F9C9ABD87CB /* SF-Pro-Rounded-Black.otf in Resources */,
+				AB1396D54F1F49D0A881992F /* SF-Pro-Rounded-Bold.otf in Resources */,
+				048E6E424B3F47C395817572 /* SF-Pro-Rounded-Heavy.otf in Resources */,
+				EE408B20FAF44FE38DCDED3E /* SF-Pro-Rounded-Light.otf in Resources */,
+				24B6CE9139514ED8B7BB2BB4 /* SF-Pro-Rounded-Medium.otf in Resources */,
+				094DCBFCA9D14F278E728909 /* SF-Pro-Rounded-Regular.otf in Resources */,
+				876D63AE0BB846B3951E64B6 /* SF-Pro-Rounded-Semibold.otf in Resources */,
+				92838CCCCC664F6D8554B3BA /* SF-Pro-Rounded-Thin.otf in Resources */,
+				C72FFF2077E048F694DFFF13 /* SF-Pro-Rounded-Ultralight.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +305,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BL7628DU9X;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Halab_Saudi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
@@ -273,7 +319,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.westwalk.halabsaudi;
 				PRODUCT_NAME = Halab_Saudi;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -288,6 +334,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BL7628DU9X;
 				INFOPLIST_FILE = Halab_Saudi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -300,7 +347,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.westwalk.halabsaudi;
 				PRODUCT_NAME = Halab_Saudi;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
