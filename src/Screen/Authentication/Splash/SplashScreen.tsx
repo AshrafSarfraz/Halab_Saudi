@@ -1,68 +1,51 @@
-import { View, Text, StyleSheet, Image,Button, TouchableOpacity } from 'react-native'
-import React from 'react'
-import { Colors } from '../../../Themes/Colors'
-import {  Logo4 } from '../../../Themes/Images'
-import { Fonts } from '../../../Themes/Fonts'
+import React, { useEffect } from 'react';
+import { View, Text, StyleSheet, Image } from 'react-native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { Colors } from '../../../Themes/Colors';
+import { Fonts } from '../../../Themes/Fonts';
 
+type SplashScreenProps = {
+  navigation: NativeStackNavigationProp<any>;
+};
 
-const Splash_Screen=({navigation}) => {
-  
-setTimeout(() => {
-   navigation.navigate('onBoarding')
-}, 3000);
+const Splash_Screen: React.FC<SplashScreenProps> = ({ navigation }) => {
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      navigation.navigate('Onboarding');
+    }, 3000);
+    return () => clearTimeout(timeout);
+  }, [navigation]);
 
   return (
-    <View style={styles.Main_Container} >
-      <View  style={styles.Body} >
-      <Image source={Logo4} style={styles.Logo_Img} />
+    <View style={styles.Main_Container}>
+      <View style={styles.Body}>
+        <Image source={require('../../../Assests/Images/logo4.png')} style={styles.Logo_Img} />
       </View>
-      <View  style={styles.Footer} >
-      {/* <Image source={Gif}    style={styles.Gif_Img} /> */}
-      <Text  style={styles.Gift} >In a world with limitless opportunities</Text>
-      </View>
-      
+
     </View>
-  )
-}
+  );
+};
 
-export default Splash_Screen
+export default Splash_Screen;
 
-    const styles=StyleSheet.create({
-    Main_Container:{
-        flex:1,
-        backgroundColor:Colors.Green,
-        alignItems:'center',
-        justifyContent:'center'
-    },
-      Body:{
-        flex:0.85,
-        alignItems:'center',
-        justifyContent:"center",
-        width:'100%'
-      },
-    Logo_Img:{
-      width:'70%',
-      height:'90%',
-      resizeMode:'contain'
-    },
-    Footer:{
-     flex:0.1,
-     justifyContent:'flex-end',
-     alignItems:'center',
-     width:"85%"
+const styles = StyleSheet.create({
+  Main_Container: {
+    flex: 1,
+    backgroundColor: Colors.Green,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  Body: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+  },
+  Logo_Img: {
+    width: '70%',
+    height: '90%',
+    resizeMode: 'contain',
+  },
 
-    },
-    Gif_Img:{
-      width:50,height:60,
-    },
-    Gift:{
-      fontSize:14,
-      lineHeight:20,
-      textAlign:'center',
-      color:Colors.White,
-      width:"100%",
-      fontFamily:Fonts.SF_Medium,
-      fontWeight:"600"
-    }
-    }
-    )
+  
+});

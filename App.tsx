@@ -1,43 +1,14 @@
-import * as React from 'react';
-import {Text, View} from 'react-native';
-import {createStaticNavigation, useNavigation} from '@react-navigation/native';
-import {Button} from '@react-navigation/elements';
-import {createStackNavigator} from '@react-navigation/stack';
+import React from 'react'
+import StackNavigation from './src/Navigation/StackNav.tsx/StackNavigation'
+
+const App = () => {
 
 
-
-function HomeScreen() {
-  const navigation = useNavigation();
 
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text style={{fontSize:20,}} >Home Screen</Text>
-      <Button onPress={() => navigation.navigate('Profile')}>
-        Go to Profile
-      </Button>
-    </View>
-  );
+      <StackNavigation />
+  )
 }
 
-function ProfileScreen() {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text
-       style={{}}
-      >Profile Screen</Text>
-    </View>
-  );
-}
+export default App
 
-const MyStack = createStackNavigator({
-  screens: {
-    Home: HomeScreen,
-    Profile: ProfileScreen,
-  },
-});
-
-const Navigation = createStaticNavigation(MyStack);
-
-export default function App() {
-  return <Navigation />;
-}
