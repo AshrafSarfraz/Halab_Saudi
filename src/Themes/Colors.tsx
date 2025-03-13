@@ -1,6 +1,6 @@
 export const Colors={
      Bg:'#FBF5F4',
-    Green:'#038F54',
+    Green:'#005029',
     LightGreen:'#7CC4A6',
     Red:'#FF0000',
     White:'#FFFFFF',

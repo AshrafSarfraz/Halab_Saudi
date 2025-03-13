@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Colors } from '../../../Themes/Colors';
-import { Fonts } from '../../../Themes/Fonts';
+import { Full_logo_w } from '../../../Themes/Images';
+
 
 type SplashScreenProps = {
   navigation: NativeStackNavigationProp<any>;
@@ -19,7 +20,7 @@ const Splash_Screen: React.FC<SplashScreenProps> = ({ navigation }) => {
   return (
     <View style={styles.Main_Container}>
       <View style={styles.Body}>
-        <Image source={require('../../../Assests/Images/logo4.png')} style={styles.Logo_Img} />
+        <Image source={Full_logo_w} style={styles.Logo_Img} />
       </View>
 
     </View>

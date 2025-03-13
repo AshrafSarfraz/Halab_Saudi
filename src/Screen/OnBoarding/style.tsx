@@ -11,7 +11,8 @@ export const styles = StyleSheet.create({
   Back_Icon: {
     width: 20,
     height: 20,
-    resizeMode:"contain"
+    resizeMode:"contain",
+    tintColor:Colors.Green
   },
   slide: {
     flex: 1,
@@ -22,7 +23,7 @@ export const styles = StyleSheet.create({
     width: '70%',
     height: '45%',
     borderRadius: 20,
-    marginTop: '15%',
+    marginTop: '5%',
   },
   Title:{
     fontSize: 22,
@@ -30,6 +31,7 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.SF_Bold,
     color: Colors.Black,
     lineHeight: 28,
+    marginTop:'3%',
     marginBottom:'2%'
   },
   description: {
@@ -46,7 +48,7 @@ export const styles = StyleSheet.create({
     height: 50,
     width: '100%',
     justifyContent: 'flex-end',
-    marginTop: '10%',
+    marginTop: '15%',
   },
   prevButton: {
     position: 'absolute',
