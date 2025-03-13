@@ -55,8 +55,8 @@ const Login: React.FC<LoginScreenProps> = ({navigation}) => {
           isChecked={isChecked}
           onPress={() => setIsChecked(!isChecked)}
           linkText="Privacy Policy"
-           linkTerm="Term"
-          onLinkPress={() => Linking.openURL('https://www.google.com/')}
+          linkTerm="Term"
+          onLinkPress ={() => Linking.openURL('https://www.google.com/')}
           onLinkPress1={() => Linking.openURL('https://www.google.com/')}
         />
 
@@ -65,7 +65,7 @@ const Login: React.FC<LoginScreenProps> = ({navigation}) => {
             <CustomButton
               title="Sign In"
               onPress={() => {
-                navigation.navigate('Home');
+                navigation.navigate('BottomTab');
               }}
             />
           </View>

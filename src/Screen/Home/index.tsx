@@ -1,24 +1,51 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import CountryDropdown from '../../Component/Dropdown/SelectCountry';
+import { SafeAreaView,View, Text, StyleSheet,Image, TouchableOpacity, ScrollView } from 'react-native';
+import { Full_logo_B, language, Scope,  } from '../../Themes/Images';
+import ImageSlider from './FlatOffer';
+import { styles } from './style';
+import Categories from './Categories';
+import BestSeller from './BestSellers';
+import RecentlyAdded from './RecentlyAdded';
 
 
 const Home: React.FC = () => {
-    const [countryCode, setCountryCode] = useState('+966'); // Default
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.label}>Selected Country Code: {countryCode}</Text>
-
-            {/* Use the CountryDropdown and get selected value */}
-            <CountryDropdown onSelectCountry={(code) => setCountryCode(code)} />
+       <SafeAreaView style={styles.Container} >
+        <ScrollView   >
+        <View style={styles.header} >
+         <Image source={Full_logo_B} style={styles.logo} />
+         <View style={styles.language_Cont} >
+            <TouchableOpacity onPress={()=>{}}>
+            <Image source={language} style={styles.language_Icon} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={()=>{}}>
+            <Image source={Scope} style={styles.Scope_Icon} />
+            </TouchableOpacity>
+         </View>
         </View>
+        <View style={{}} >
+         <ImageSlider/>
+         </View>
+         <View style={styles.Categories_Cont} >
+            <Text style={styles.Categories_Txt} >Categories</Text>
+         <Categories/>
+         </View>
+         <View style={styles.BestSeller_Cont} >
+            <Text style={styles.BestSeller_Txt} >Best Sellers</Text>
+         <BestSeller/>
+         </View>
+
+         <View style={styles.BestSeller_Cont} >
+            <Text style={styles.BestSeller_Txt} >Recently Added</Text>
+         <RecentlyAdded/>
+         </View>
+
+         
+         </ScrollView>
+       </SafeAreaView>
     );
 };
 
-const styles = StyleSheet.create({
-    container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-    label: { fontSize: 20, marginBottom: 20 },
-});
 
 export default Home;
