@@ -20,13 +20,19 @@ export const styles = StyleSheet.create({
      width:130,height:60,resizeMode:'contain'
     },
     language_Cont:{
-       width:60,
+       width:82,
        flexDirection:"row",
-       justifyContent:"space-between",
        alignItems:"center",
+       justifyContent:"space-between",
+    },
+    Btn:{
+       width:40,height:40,
+       justifyContent:"center",
+       alignItems:"center",
+       
     },
     language_Icon:{
-        width:23,height:23,resizeMode:'contain',
+        width:25,height:25,resizeMode:'contain',
         tintColor:'#000'
     },
  

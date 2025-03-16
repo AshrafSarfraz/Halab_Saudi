@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
      paddingHorizontal:"1%",
     },
     BackIcon:{
-     width:30,height:30,
+     width:25,height:25,
      tintColor:Colors.Green
     },
     Logo: {

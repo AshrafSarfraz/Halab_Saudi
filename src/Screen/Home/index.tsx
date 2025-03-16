@@ -28,10 +28,10 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
         <View style={styles.header} >
          <Image source={Full_logo_B} style={styles.logo} />
          <View style={styles.language_Cont} >
-            <TouchableOpacity onPress={()=>{showAlert()}}>
+            <TouchableOpacity style={styles.Btn} onPress={()=>{showAlert()}}>
             <Image source={language} style={styles.language_Icon} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={()=>{}}>
+            <TouchableOpacity style={styles.Btn} onPress={()=>{navigation.navigate('SearchScreen')}}>
             <Image source={Scope} style={styles.Scope_Icon} />
             </TouchableOpacity>
          </View>
