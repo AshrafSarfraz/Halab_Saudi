@@ -4,9 +4,9 @@ import styles from './style';
 const { width } = Dimensions.get('screen');
 
 const images = [
-  { id: '1', text: 'Piccolo', desc:'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée', source: require('../../../Assests/Images/resturnant.png') },
-  { id: '2', text: 'Piccolo',desc:'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée', source: require('../../../Assests/Images/candle.png') },
-  { id: '3', text: 'Piccolo', desc:'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée', source: require('../../../Assests/Images/food.png') },
+  { id: '1', text: 'Piccolo', desc:'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée', discount:'10%', pin:1234, source: require('../../../Assests/Images/resturnant.png') },
+  { id: '2', text: 'Piccolo',desc:'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée',discount:'12%', pin:1234,  source: require('../../../Assests/Images/candle.png') },
+  { id: '3', text: 'Piccolo', desc:'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée',discount:'15%', pin:1234,  source: require('../../../Assests/Images/food.png') },
 
 ];
 

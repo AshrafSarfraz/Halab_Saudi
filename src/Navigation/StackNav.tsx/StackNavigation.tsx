@@ -9,6 +9,7 @@ import Login from '../../Screen/Authentication/Login';
 import Bottom from '../BottomNav/Bottom_Navigation';
 import Otp from '../../Screen/Authentication/EnterOtp';
 import SearchScreen from '../../Screen/SearchScreen';
+import DetailScreen from '../../Screen/detail_Screen';
 
 
 type RootStackParamList = {
@@ -20,6 +21,7 @@ type RootStackParamList = {
   BottomTab:undefined;
   Otp:undefined;
   SearchScreen:undefined;
+  DetailScreen:undefined
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -36,6 +38,7 @@ const StackNavigation: React.FC = () => {
         <Stack.Screen name='BottomTab' component={Bottom} />
         <Stack.Screen name='Home' component={Home} />
         <Stack.Screen name='SearchScreen' component={SearchScreen} />
+        <Stack.Screen name='DetailScreen' component={DetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

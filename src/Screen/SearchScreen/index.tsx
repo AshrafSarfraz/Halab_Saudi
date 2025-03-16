@@ -12,8 +12,9 @@ import { useNavigation } from '@react-navigation/native';
 import { styles } from './style';
 import { Back_Icon, Search } from '../../Themes/Images';
 import { mockData } from './dummyData';
+import CustomHeader from '../../Component/CustomHeader/CustomHeader';
 
-const SearchScreen = () => {
+const SearchScreen:React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const navigation = useNavigation();
 
@@ -24,13 +25,9 @@ const SearchScreen = () => {
   return (
     <View style={styles.container}>
       <SafeAreaView style={{ flex: 1 }}>  
-        <View style={styles.header}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Image source={Back_Icon} style={styles.backIcon} />
-          </TouchableOpacity>
-          <Text style={styles.headerText}>Search</Text>
-        </View>
-
+       
+       <CustomHeader title='Search' onBackPress={()=>{navigation.goBack()}} />
+         <View style={{marginTop:'7%'}} />
         <View style={styles.searchContainer}>
           <Image source={Search} style={styles.searchIcon} />
           <TextInput
