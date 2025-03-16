@@ -6,17 +6,29 @@ import { styles } from './style';
 import Categories from './Categories';
 import BestSeller from './BestSellers';
 import RecentlyAdded from './RecentlyAdded';
+import LanguageModal from '../../Component/CustomAlert/Lan_Modal';
 
+type HomeProps={
+   navigation: any
+}
 
-const Home: React.FC = () => {
+const Home: React.FC<HomeProps> = ({navigation}) => {
+   const [alertVisible, setAlertVisible] = useState<boolean>(false);
 
+   const showAlert = () => {
+     setAlertVisible(true);
+   };
+ 
+   const hideAlert = () => {
+     setAlertVisible(false);
+   };
     return (
        <SafeAreaView style={styles.Container} >
         <ScrollView   >
         <View style={styles.header} >
          <Image source={Full_logo_B} style={styles.logo} />
          <View style={styles.language_Cont} >
-            <TouchableOpacity onPress={()=>{}}>
+            <TouchableOpacity onPress={()=>{showAlert()}}>
             <Image source={language} style={styles.language_Icon} />
             </TouchableOpacity>
             <TouchableOpacity onPress={()=>{}}>
@@ -43,6 +55,11 @@ const Home: React.FC = () => {
 
          
          </ScrollView>
+         <LanguageModal
+        visible={alertVisible}
+        onClose={() => { hideAlert() }}
+      //   onClose={() => { hideAlert(), navigation.navigate('RentedItem', { updateButtonState: 1 }) }}
+      />
        </SafeAreaView>
     );
 };

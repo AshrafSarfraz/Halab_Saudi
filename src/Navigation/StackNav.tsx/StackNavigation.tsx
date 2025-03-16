@@ -7,6 +7,7 @@ import OnBoarding from '../../Screen/OnBoarding';
 import Home from '../../Screen/Home';
 import Login from '../../Screen/Authentication/Login';
 import Bottom from '../BottomNav/Bottom_Navigation';
+import Otp from '../../Screen/Authentication/EnterOtp';
 
 
 type RootStackParamList = {
@@ -15,7 +16,8 @@ type RootStackParamList = {
   Onboarding:undefined;
   Login: undefined;
   Home: undefined;
-  BottomTab:undefined
+  BottomTab:undefined;
+  Otp:undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -23,11 +25,12 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const StackNavigation: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator  initialRouteName='SplashBlank'  screenOptions={{headerShown:false}}  >
+      <Stack.Navigator  initialRouteName='BottomTab'  screenOptions={{headerShown:false}}  >
         <Stack.Screen name='SplashBlank' component={Splash_Blank} />
         <Stack.Screen name='Splash' component={Splash_Screen} />
         <Stack.Screen name='Onboarding' component={OnBoarding} />
         <Stack.Screen name='Login' component={Login} />
+        <Stack.Screen name='Otp' component={Otp} />
         <Stack.Screen name='BottomTab' component={Bottom} />
         <Stack.Screen name='Home' component={Home} />
       </Stack.Navigator>
