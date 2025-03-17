@@ -10,6 +10,7 @@ import Bottom from '../BottomNav/Bottom_Navigation';
 import Otp from '../../Screen/Authentication/EnterOtp';
 import SearchScreen from '../../Screen/SearchScreen';
 import DetailScreen from '../../Screen/detail_Screen';
+import Reedem_His from '../../Screen/Reedem_Histroy';
 
 
 type RootStackParamList = {
@@ -21,7 +22,8 @@ type RootStackParamList = {
   BottomTab:undefined;
   Otp:undefined;
   SearchScreen:undefined;
-  DetailScreen:undefined
+  DetailScreen:undefined;
+  ReedemHistroy:undefined
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -29,7 +31,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const StackNavigation: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator  initialRouteName='BottomTab'  screenOptions={{headerShown:false}}  >
+      <Stack.Navigator  initialRouteName='SplashBlank'  screenOptions={{headerShown:false}}  >
         <Stack.Screen name='SplashBlank' component={Splash_Blank} />
         <Stack.Screen name='Splash' component={Splash_Screen} />
         <Stack.Screen name='Onboarding' component={OnBoarding} />
@@ -39,6 +41,7 @@ const StackNavigation: React.FC = () => {
         <Stack.Screen name='Home' component={Home} />
         <Stack.Screen name='SearchScreen' component={SearchScreen} />
         <Stack.Screen name='DetailScreen' component={DetailScreen} />
+        <Stack.Screen name='ReedemHistroy' component={Reedem_His} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, FlatList, Image, Dimensions, TouchableOpacity, } from 'react-native';
 import styles from './style';
+import { useNavigation } from '@react-navigation/native';
 const { width } = Dimensions.get('screen');
 
 const images = [
@@ -10,7 +11,12 @@ const images = [
 
 ];
 
-const BestSeller = () => {
+type BestSellerProps={
+  navigation:any
+}
+
+const BestSeller:React.FC<BestSellerProps> = () => {
+  const navigation=useNavigation()
   const [currentIndex, setCurrentIndex] = useState(0);
 
 
@@ -24,7 +30,7 @@ const BestSeller = () => {
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
-          <TouchableOpacity style={styles.Flatlist_Cont}>
+          <TouchableOpacity style={styles.Flatlist_Cont} onPress={() => navigation.navigate('DetailScreen', { item })} >
             <Image source={item.source} style={styles.image} />
            <View style={styles.bestSeller_Detail} >
             <Text style={styles.title_txt} >{item.text}</Text>

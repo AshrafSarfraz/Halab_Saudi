@@ -12,12 +12,22 @@ import {useNavigation} from '@react-navigation/native';
 import {Fonts} from '../../Themes/Fonts';
 import CustomButton from '../../Component/CustomButton/CustomButton';
 import {Dark_Heart, Light_Heart} from '../../Themes/Images';
-import { Colors } from '../../Themes/Colors';
+import {Colors} from '../../Themes/Colors';
+import Pin_Modal from '../../Component/CustomAlert/Pin_Modal';
 
 const DetailScreen: React.FC = ({route}) => {
   const [wishlist, setWishlist] = useState<boolean>(false);
   const {item} = route.params; // Home se data le rahe hain
   const navigation = useNavigation();
+  const [alertVisible, setAlertVisible] = useState<boolean>(false);
+
+  const showAlert = () => {
+    setAlertVisible(true);
+  };
+
+  const hideAlert = () => {
+    setAlertVisible(false);
+  };
 
   return (
     <SafeAreaView>
@@ -31,9 +41,9 @@ const DetailScreen: React.FC = ({route}) => {
           />
           <TouchableOpacity onPress={() => setWishlist(!wishlist)}>
             {wishlist ? (
-              <Image source={Light_Heart} style={styles.HeartStyle} />
-            ) : (
               <Image source={Dark_Heart} style={styles.HeartStyle} />
+            ) : (
+              <Image source={Light_Heart} style={styles.HeartStyle} />
             )}
           </TouchableOpacity>
         </View>
@@ -45,10 +55,15 @@ const DetailScreen: React.FC = ({route}) => {
           {/* <Text style={styles.pin}>Pin: {item.pin}</Text> */}
         </View>
 
-        <CustomButton title="Redeem" onPress={() => {}} />
-          <View style={{marginBottom:'5%'}} />
+        <CustomButton title="Redeem" onPress={() => {showAlert()}} />
+        <View style={{marginBottom: '5%'}} />
         <CustomButton title="Open Map" onPress={() => {}} />
       </View>
+      <Pin_Modal
+        visible={alertVisible}
+        onClose={() => { hideAlert() }}
+      //   onClose={() => { hideAlert(), navigation.navigate('RentedItem', { updateButtonState: 1 }) }}
+      />
     </SafeAreaView>
   );
 };
@@ -62,17 +77,15 @@ const styles = StyleSheet.create({
   HeaderCont: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems:"center",
+    alignItems: 'center',
     width: '100%',
-    marginBottom:"3%"
-
-
+    marginBottom: '3%',
   },
   HeartStyle: {
     width: 35,
     height: 35,
-    resizeMode:"contain",
-    tintColor:Colors.Green
+    resizeMode: 'contain',
+    tintColor: Colors.Green,
   },
   Body_Cont: {
     alignItems: 'center',

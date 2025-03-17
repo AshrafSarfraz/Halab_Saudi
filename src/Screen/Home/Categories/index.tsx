@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, FlatList, Image, Dimensions, TouchableOpacity, } from 'react-native';
 import styles from './style';
+import { useNavigation } from '@react-navigation/native';
 const { width } = Dimensions.get('screen');
 
 const images = [
@@ -12,7 +13,12 @@ const images = [
   { id: '6', text: 'Hotel', source: require('../../../Assests/Images/food.png') },
 ];
 
-const Categories = () => {
+type CategoriesProps={
+  navigation: any
+}
+
+const Categories:React.FC<CategoriesProps> = () => {
+  const navigation=useNavigation()
   const [currentIndex, setCurrentIndex] = useState(0);
 
 
@@ -26,7 +32,7 @@ const Categories = () => {
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
-          <TouchableOpacity style={styles.Flatlist_Cont}>
+          <TouchableOpacity style={styles.Flatlist_Cont} onPress={() => navigation.navigate('DetailScreen', { item })} >
             <Image source={item.source} style={styles.image} />
             <Text style={styles.cate_txt} >{item.text}</Text>
           </TouchableOpacity>

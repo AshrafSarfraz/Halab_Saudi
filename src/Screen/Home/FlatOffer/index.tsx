@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, Image, Dimensions, } from 'react-native';
+import { View, Text, FlatList, Image, Dimensions, TouchableOpacity, } from 'react-native';
 import styles from './style';
+import { useNavigation } from '@react-navigation/native';
 const { width } = Dimensions.get('screen');
 
 const images = [
@@ -9,7 +10,13 @@ const images = [
   { id: '3', text: 'Third Image', discount:'33%', pin:1234,  source: require('../../../Assests/Images/bgImg.jpeg') },
 ];
 
-const ImageSlider = () => {
+type SliderProps={
+  navigation: any
+}
+
+
+const ImageSlider:React.FC = () => {
+  const navigation=useNavigation()
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleScroll = (event: any) => {
@@ -28,12 +35,12 @@ const ImageSlider = () => {
         showsHorizontalScrollIndicator={false}
         onScroll={handleScroll}
         renderItem={({ item }) => (
-          <View style={styles.imageContainer}>
+          <TouchableOpacity style={styles.imageContainer} onPress={() => navigation.navigate('DetailScreen', { item })} >
             <Image source={item.source} style={styles.image} />
             <View style={styles.overlay}>
               <Text style={styles.imageText}>{item.text}</Text>
             </View>
-          </View>
+          </TouchableOpacity>
         )}
       />
 

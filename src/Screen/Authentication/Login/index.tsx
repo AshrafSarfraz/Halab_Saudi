@@ -40,6 +40,7 @@ const Login: React.FC<LoginScreenProps> = ({ navigation }) => {
         <Text style={styles.Welcome_Txt}>Welcome Back!</Text>
         <Text style={styles.SignUp_Txt}>Sign in with your account</Text>
         <View style={styles.InputContainer}>
+         
           <CountryDropdown onSelectCountry={(code) => setCountryCode(code)} />
           <View
             style={[
@@ -63,9 +64,9 @@ const Login: React.FC<LoginScreenProps> = ({ navigation }) => {
             isChecked={isChecked}
             onPress={() => setIsChecked(!isChecked)}
             linkText="Privacy Policy"
-            linkTerm="Term"
-            onLinkPress={() => Linking.openURL('https://www.google.com/')}
-            onLinkPress1={() => Linking.openURL('https://www.google.com/')}
+            linkTerm="Term of Use"
+            onLinkPress={() => Linking.openURL('https://halabsaudi.com/privacy-policy-2/')}
+            onLinkPress1={() => Linking.openURL('https://halabsaudi.com/terms-of-use/')}
           />
 
           <View style={styles.SignUp_Btn}>
