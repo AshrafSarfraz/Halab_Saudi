@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { Colors } from '../../Themes/Colors';
 import { Fonts } from '../../Themes/Fonts';
 
@@ -6,7 +6,8 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.White4,
-    paddingHorizontal: "5%",
+    paddingHorizontal: "4%",
+    marginVertical:Platform.OS==='ios'?'0%':'8%'
   },
   header: {
     flexDirection: 'row',
@@ -30,13 +31,13 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Colors.White,
     height: 55,
-    paddingHorizontal: 10,
+    paddingHorizontal: 12,
     borderRadius: 14,
   },
   searchIcon: {
     width: 18,
     height: 18,
-    marginRight: 10,
+    marginRight: 8,
     resizeMode: "contain",
     tintColor: Colors.Green,
   },
@@ -65,7 +66,8 @@ export const styles = StyleSheet.create({
     padding: 12,
     marginBottom: 10,
     borderRadius: 8,
-    elevation: 3, // Android shadow
+    borderWidth:1,
+    borderColor: '#E0E0E0',
     shadowColor: '#000', // iOS shadow
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,

@@ -25,8 +25,9 @@ export default StyleSheet.create({
     resizeMode: 'contain',
   },
   cate_txt: {
-    marginTop: 5,
+    marginTop: 7,
     fontSize: 12,
-    fontFamily:Fonts.SF_Heavy
+    fontFamily:Fonts.SF_Bold,
+    
   },
 });

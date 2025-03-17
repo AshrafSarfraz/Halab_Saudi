@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   TextInput,
   Alert,
+  StatusBar,
+  Platform,
 } from 'react-native';
 import { Back_Icon, Logo_W } from '../../../Themes/Images';
 import CustomButton from '../../../Component/CustomButton/CustomButton';
@@ -48,7 +50,14 @@ const Otp: React.FC<OtpProps> = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.Bg }}>
+    {/* StatusBar fix for iOS */}
+    <StatusBar
+      barStyle={Platform.OS === 'ios' ? 'dark-content' : 'dark-content'} 
+      translucent={Platform.OS === 'android'} 
+      backgroundColor={Platform.OS === 'android' ? Colors.Bg : 'transparent'}
+    />
+    
       <ScrollView contentContainerStyle={styles.MainCont}>
         <View>
           <TouchableOpacity
@@ -68,7 +77,7 @@ const Otp: React.FC<OtpProps> = ({ navigation }) => {
             <TextInput
               key={index}
               ref={ref => (inputRef.current[index] = ref)}
-              style={[styles.Otp, { borderColor: pin ? Colors.Green : '#959595' }]}
+              style={[styles.Otp, { borderColor: pin ? Colors.Green : '#E0E0E0' }]}
               value={pin}
               onChangeText={value => handleOtpChange(value, index)}
               onKeyPress={event => handleOtpKeyPress(event, index)}
@@ -92,7 +101,7 @@ const Otp: React.FC<OtpProps> = ({ navigation }) => {
           </TouchableOpacity>
         </View>
 
-        <CustomButton title={'Verify OTP'} onPress={() => {}} />
+        <CustomButton title={'Verify OTP'} onPress={() => {navigation.navigate('BottomTab')}} />
       </ScrollView>
     </SafeAreaView>
   );

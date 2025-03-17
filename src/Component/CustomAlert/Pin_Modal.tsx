@@ -61,10 +61,10 @@ const styles = StyleSheet.create({
     marginBottom: 25,
   },
    InputField:{
-    borderWidth:1,
-    borderColor:'#000',
+    borderWidth:2,
+    borderColor:Colors.Grey4,
     width:"85%",
-    height:45,
+    height:55,
     borderRadius: 8,
     marginBottom:4,
     paddingHorizontal:"3%",

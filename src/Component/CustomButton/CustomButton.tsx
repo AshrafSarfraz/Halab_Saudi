@@ -19,9 +19,9 @@ const CustomButton:React.FC<buttonProps>= ({ title, onPress, }) => {
 const styles = StyleSheet.create({
   button: {
     backgroundColor: Colors.Green, // Example color
-    width:'90%',
+    width:'100%',
     alignSelf:"center",
-    height:50,
+    height:55,
     justifyContent:"center",
     borderRadius: 5,
   },

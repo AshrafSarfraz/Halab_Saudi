@@ -1,4 +1,4 @@
-import {StyleSheet, Dimensions} from 'react-native';
+import {StyleSheet, Dimensions, Platform} from 'react-native';
 import {Fonts} from '../../Themes/Fonts';
 import {Colors} from '../../Themes/Colors';
 
@@ -8,6 +8,9 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
+    backgroundColor: Colors.Bg,
+    marginTop:Platform.OS==='ios'?'0%':'5%'
+    
   },
   Header_Txt: {
     marginHorizontal: '5%',
@@ -27,9 +30,9 @@ export default StyleSheet.create({
     margin: 6,
     borderRadius: 10,
     backgroundColor: Colors.White,
-    elevation:3,
-    shadowColor:"000",
-    height: 240,
+    height: Platform.OS==='ios'? 240:250,
+    borderWidth:0.5,
+    borderColor:'#E0E0E0',
     overflow:'hidden'
 
   },
@@ -48,24 +51,24 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '90%',
+    width: '85%',
   },
   Loc_Cont: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   LocationIcon: {
-    width: 15,
-    height: 15,
+    width: 14,
+    height: 14,
     resizeMode: 'contain',
     tintColor: Colors.Green,
   },
   location_txt: {
-    fontSize: 11,
+    fontSize: 10,
     color: 'green',
     fontFamily: Fonts.SF_Medium,
     lineHeight: 14,
-    marginLeft: 5,
+    marginLeft: 2,
   },
   Status_Txt: {
     fontSize: 11,

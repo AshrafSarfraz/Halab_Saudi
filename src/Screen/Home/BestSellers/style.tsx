@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet } from "react-native";
+import { Dimensions, Platform, StyleSheet } from "react-native";
 import { Fonts } from "../../../Themes/Fonts";
 import { Colors } from "../../../Themes/Colors";
 
@@ -6,20 +6,19 @@ const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
     container: {
       alignItems: 'center',
-      marginHorizontal:"3%",
+      marginHorizontal:Platform.OS==='ios'?"3%":'1%'   ,
       marginTop:10
     },
     Flatlist_Cont:{
       width:240,
       height:100,
-      backgroundColor:'#fff',
+      backgroundColor:Colors.White,
       marginRight:10,
-      elevation:10,
-      shadowColor:'#000',
       borderRadius:10,
       flexDirection:"row",
       alignItems:'center',
-      paddingHorizontal:'3%'
+      paddingHorizontal:'3%',
+      paddingVertical:"1%"
      
     },
     image:{

@@ -4,6 +4,7 @@ import { createBottomTabNavigator, BottomTabNavigationOptions } from '@react-nav
 import Home from '../../Screen/Home';
 import Wishlist from '../../Screen/Wishlist';
 import Profile from '../../Screen/Profile';
+import { Colors } from '../../Themes/Colors';
 
 const Tab = createBottomTabNavigator();
 
@@ -38,9 +39,9 @@ const MyTabs: React.FC = () => {
           height: 75,
           borderTopLeftRadius: 30,
           borderTopRightRadius: 30,
-          elevation: 10,
           paddingTop:7,
-          backgroundColor: 'white',
+          borderWidth:1,
+          backgroundColor:Colors.White
         },
         headerShown: false,
       })}

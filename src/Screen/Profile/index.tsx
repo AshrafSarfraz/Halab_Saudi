@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { Colors } from '../../Themes/Colors';
-import { Fonts } from '../../Themes/Fonts';
+import { Platform, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
+
 import CustomButton2 from '../../Component/CustomButton/CustomButton2';
 import CustomButton from '../../Component/CustomButton/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import LanguageModal from '../../Component/CustomAlert/Lan_Modal';
+import { styles } from './style';
+import { Colors } from '../../Themes/Colors';
 
 type ProfileProps={
     navigation:any
@@ -23,7 +24,14 @@ const Profile:React.FC<ProfileProps> = () => {
          setAlertVisible(false);
        };
     return (
-       <SafeAreaView style={{flex:1}}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: Colors.Bg }}>
+      {/* StatusBar fix for iOS */}
+      <StatusBar
+        barStyle={Platform.OS === 'ios' ? 'dark-content' : 'dark-content'} 
+        translucent={Platform.OS === 'android'} 
+        backgroundColor={Platform.OS === 'android' ? Colors.Bg : 'transparent'}
+      />
+
        <View style={styles.Container} >
             <Text style={styles.Header_Txt} >Profile</Text>
             <View style={styles.Button_Cont} >
@@ -44,30 +52,5 @@ const Profile:React.FC<ProfileProps> = () => {
     );
 }
 
-const styles = StyleSheet.create({
-    Container:{
-        flex:1,
-        marginVertical:"3%",
-        backgroundColor:Colors.White4,
-
-    },
-    Header_Txt:{
-        marginHorizontal: '5%',
-            marginBottom: '10%',
-            fontSize: 22,
-            fontFamily: Fonts.SF_Bold,
-            color: Colors.Green,
-            textAlign: 'center',
-    },
-    Button_Cont:{
-      flex:0.9,
-    },
-    Logout_cont:{
-        flex:0.1,
-     justifyContent:"center",
-
-    }
-
-})
 
 export default Profile;

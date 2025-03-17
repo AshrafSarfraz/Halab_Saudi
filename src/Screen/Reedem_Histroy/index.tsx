@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View,SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View,SafeAreaView, Platform } from 'react-native';
 import CustomHeader from '../../Component/CustomHeader/CustomHeader';
 import { useNavigation } from '@react-navigation/native';
 import { Colors } from '../../Themes/Colors';
@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
     Container:{
         flex:1,
         backgroundColor:Colors.White4,
-        margin:"3%",
+        marginVertical:Platform.OS==='ios'?'2%':'8%',
+        marginHorizontal:'3%'
     },
     Header:{
         fontSize:18,

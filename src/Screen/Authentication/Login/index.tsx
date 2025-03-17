@@ -7,6 +7,8 @@ import {
   Image,
   TouchableOpacity,
   Linking,
+  StatusBar,
+  Platform,
 } from 'react-native';
 import { styles } from './style';
 import { Logo_W } from '../../../Themes/Images';
@@ -34,7 +36,13 @@ const Login: React.FC<LoginScreenProps> = ({ navigation }) => {
 
 
   return (
+    
     <ScrollView contentContainerStyle={styles.MainContainer}>
+      <StatusBar
+        barStyle={Platform.OS === 'ios' ? 'dark-content' : 'dark-content'} 
+        translucent={Platform.OS === 'android'} 
+        backgroundColor={Platform.OS === 'android' ? Colors.Bg : 'transparent'}
+      />
       <View>
         <Image source={Logo_W} style={styles.H_Logo} resizeMode="contain" />
         <Text style={styles.Welcome_Txt}>Welcome Back!</Text>
@@ -73,7 +81,7 @@ const Login: React.FC<LoginScreenProps> = ({ navigation }) => {
             <CustomButton
               title="Sign In"
               onPress={() => {
-                navigation.navigate('BottomTab');
+                navigation.navigate('Otp');
               }}
             />
           </View>

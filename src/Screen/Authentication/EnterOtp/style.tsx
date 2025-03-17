@@ -54,7 +54,6 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
       textAlign: 'center',
       borderRadius: 10,
-      elevation: 1,
       borderWidth: 2,
       fontSize: 16,
       color: Colors.Black2,

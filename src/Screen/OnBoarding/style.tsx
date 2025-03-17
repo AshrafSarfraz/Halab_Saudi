@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
   },
   buttonContainer: {
     height: 50,
-    width: '100%',
+    width: '90%',
     justifyContent: 'flex-end',
     marginTop: '15%',
   },
