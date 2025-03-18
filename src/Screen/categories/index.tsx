@@ -11,10 +11,11 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { styles } from './style';
 import { Back_Icon, Search } from '../../Themes/Images';
-import { mockData } from './dummyData';
-import CustomHeader from '../../Component/CustomHeader/CustomHeader';
 
-const SearchScreen:React.FC = ({route}) => {
+import CustomHeader from '../../Component/CustomHeader/CustomHeader';
+import { mockData } from '../SearchScreen/dummyData';
+
+const CategoriesScreen:React.FC = ({route}) => {
   const {item} = route.params;
   const [searchQuery, setSearchQuery] = useState('');
   const navigation = useNavigation();
@@ -26,7 +27,7 @@ const SearchScreen:React.FC = ({route}) => {
   return (
     <View style={styles.container}>
       <SafeAreaView style={{ flex: 1 }}>  
-       <CustomHeader title='Search' onBackPress={()=>{navigation.goBack()}} />
+       <CustomHeader title={item.text} onBackPress={()=>{navigation.goBack()}} />
          <View style={{marginTop:'7%'}} />
         <View style={styles.searchContainer}>
           <Image source={Search} style={styles.searchIcon} />
@@ -62,4 +63,4 @@ const SearchScreen:React.FC = ({route}) => {
   );
 };
 
-export default SearchScreen;
+export default CategoriesScreen;

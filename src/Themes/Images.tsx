@@ -9,6 +9,7 @@ export const Food=require(ImgPath+'food.png')
 export const Food2=require(ImgPath+'food2.png')
 export const Resturnant=require(ImgPath+'resturnant.png')
 export const Seller=require(ImgPath+'seller1.png')
+export const Giftpack=require(ImgPath+'giftpack.png')
 
 
 
@@ -23,3 +24,4 @@ export const language=require(IconPath+'language.png')
 export const Scope=require(IconPath+'scope.png')
 export const Search=require(IconPath+'search.png')
 export const Location=require(IconPath+'Location.png')
+export const Remove=require(IconPath+'remove.png')

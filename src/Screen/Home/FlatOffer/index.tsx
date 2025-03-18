@@ -5,9 +5,12 @@ import { useNavigation } from '@react-navigation/native';
 const { width } = Dimensions.get('screen');
 
 const images = [
-  { id: '1', text: 'First Image', discount:'40%', pin:1234, source: require('../../../Assests/Images/bgImg.jpeg') },
-  { id: '2', text: 'Second Image',discount:'50%', pin:1234,  source: require('../../../Assests/Images/bgImg.jpeg') },
-  { id: '3', text: 'Third Image', discount:'33%', pin:1234,  source: require('../../../Assests/Images/bgImg.jpeg') },
+  { id: '1', text: 'First Image',   description:'A fine dining restaurant with a great ambiance and delicious meals.A fine dining restaurant with a great ambiance and delicious meals. A fine dining restaurant with a great ambiance and delicious meals.A fine dining restaurant with a great ambiance and delicious meals.' 
+    ,discount:'10%', pin:1234, source: require('../../../Assests/Images/bgImg.jpeg') },
+  { id: '2', text: 'Second Image',  description:'A fine dining restaurant with a great ambiance and delicious meals.A fine dining restaurant with a great ambiance and delicious meals. A fine dining restaurant with a great ambiance and delicious meals.A fine dining restaurant with a great ambiance and delicious meals.' 
+    , discount:'10%', pin:1234,  source: require('../../../Assests/Images/bgImg.jpeg') },
+  { id: '3', text: 'Third Image',   description:'A fine dining restaurant with a great ambiance and delicious meals.A fine dining restaurant with a great ambiance and delicious meals. A fine dining restaurant with a great ambiance and delicious meals.A fine dining restaurant with a great ambiance and delicious meals.' 
+    , discount:'10%', pin:1234, source: require('../../../Assests/Images/bgImg.jpeg') },
 ];
 
 type SliderProps={

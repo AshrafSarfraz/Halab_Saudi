@@ -5,12 +5,12 @@ import { useNavigation } from '@react-navigation/native';
 const { width } = Dimensions.get('screen');
 
 const images = [
-  { id: '1', text: 'Restaurants', source: require('../../../Assests/Images/resturnant.png') },
-  { id: '2', text: 'Spa', source: require('../../../Assests/Images/candle.png') },
-  { id: '3', text: 'Hotel', source: require('../../../Assests/Images/food.png') },
-  { id: '4', text: 'Restaurants', source: require('../../../Assests/Images/resturnant.png') },
-  { id: '5', text: 'Spa', source: require('../../../Assests/Images/candle.png') },
-  { id: '6', text: 'Hotel', source: require('../../../Assests/Images/food.png') },
+  { id: '1', text: 'Food & Drinks',   source: require('../../../Assests/Images/resturnant.png') },
+  { id: '2', text: 'Beauty & Spa', source: require('../../../Assests/Images/candle.png') },
+  { id: '3', text: 'Health & Fitness',   source: require('../../../Assests/Images/food.png') },
+  { id: '4', text: 'Fun & Leisure',   source: require('../../../Assests/Images/resturnant.png') },
+  { id: '5', text: 'Room Night',   source: require('../../../Assests/Images/candle.png') },
+  { id: '6', text: 'Services & Retail',   source: require('../../../Assests/Images/food.png') },
 ];
 
 type CategoriesProps={
@@ -32,7 +32,7 @@ const Categories:React.FC<CategoriesProps> = () => {
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
-          <TouchableOpacity style={styles.Flatlist_Cont} onPress={() => navigation.navigate('DetailScreen', { item })} >
+          <TouchableOpacity style={styles.Flatlist_Cont} onPress={() => navigation.navigate('CategoriesScreen', { item })} >
             <Image source={item.source} style={styles.image} />
             <Text style={styles.cate_txt} >{item.text}</Text>
           </TouchableOpacity>

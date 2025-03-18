@@ -11,6 +11,7 @@ import Otp from '../../Screen/Authentication/EnterOtp';
 import SearchScreen from '../../Screen/SearchScreen';
 import DetailScreen from '../../Screen/detail_Screen';
 import Reedem_His from '../../Screen/Reedem_Histroy';
+import CategoriesScreen from '../../Screen/categories';
 
 
 type RootStackParamList = {
@@ -23,7 +24,8 @@ type RootStackParamList = {
   Otp:undefined;
   SearchScreen:undefined;
   DetailScreen:undefined;
-  ReedemHistroy:undefined
+  ReedemHistroy:undefined;
+  CategoriesScreen:undefined
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -42,6 +44,7 @@ const StackNavigation: React.FC = () => {
         <Stack.Screen name='SearchScreen' component={SearchScreen} />
         <Stack.Screen name='DetailScreen' component={DetailScreen} />
         <Stack.Screen name='ReedemHistroy' component={Reedem_His} />
+        <Stack.Screen name='CategoriesScreen' component={CategoriesScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

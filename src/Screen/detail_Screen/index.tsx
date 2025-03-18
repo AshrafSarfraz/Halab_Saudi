@@ -13,12 +13,15 @@ import CustomButton from '../../Component/CustomButton/CustomButton';
 import {Dark_Heart, Light_Heart} from '../../Themes/Images';
 import Pin_Modal from '../../Component/CustomAlert/Pin_Modal';
 import {styles} from './style';
+import Discount_Redeem from '../../Component/CustomAlert/DiscountRedeem';
 
 const DetailScreen: React.FC = ({route}) => {
   const [wishlist, setWishlist] = useState<boolean>(false);
   const {item} = route.params; // Home se data le rahe hain
+  
   const navigation = useNavigation();
   const [alertVisible, setAlertVisible] = useState<boolean>(false);
+  const [discountAlert, setdiscountAlert] = useState<boolean>(false);
 
   const showAlert = () => {
     setAlertVisible(true);
@@ -27,7 +30,13 @@ const DetailScreen: React.FC = ({route}) => {
   const hideAlert = () => {
     setAlertVisible(false);
   };
+  const showDiscount_Alert = () => {
+    setdiscountAlert(true);
+  };
 
+  const hideDiscount_Alert = () => {
+    setdiscountAlert(false);
+  };
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -66,9 +75,15 @@ const DetailScreen: React.FC = ({route}) => {
       <Pin_Modal
         visible={alertVisible}
         onClose={() => {
+          showDiscount_Alert(),
           hideAlert();
         }}
-        //   onClose={() => { hideAlert(), navigation.navigate('RentedItem', { updateButtonState: 1 }) }}
+      />
+      <Discount_Redeem
+        visible={discountAlert}
+        onClose={() => {
+          hideDiscount_Alert();
+        }}
       />
     </SafeAreaView>
   );
