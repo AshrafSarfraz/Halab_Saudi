@@ -9,12 +9,14 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import { styles } from './style';
 import { images } from './DummyData';
+import { useTranslation } from 'react-i18next';
 
 type VenuesProps={
   navigation:any
 }
 
 const Venues:React.FC<VenuesProps> = () => {
+  const {t}=useTranslation()
   const navigation = useNavigation();
   const [showAll, setShowAll] = useState(false);
 

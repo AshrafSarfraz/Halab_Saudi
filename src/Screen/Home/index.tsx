@@ -55,28 +55,29 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
           <ImageSlider />
 
           <View style={styles.Categories_Cont}>
-            <Text style={styles.Categories_Txt}>Categories</Text>
+            <Text style={styles.Categories_Txt}>{t('categories')}</Text>
   
             <Categories navigation={navigation} />
           </View>
           <View style={styles.Categories_Cont}>
-            <Text style={styles.Categories_Txt}>Venues Collection</Text>
+            <Text style={styles.Categories_Txt}>{t("venues_collection")}</Text>
   
             <Venues navigation={navigation} />
           </View>
 
           <View style={styles.BestSeller_Cont}>
-            <Text style={styles.BestSeller_Txt}>Best Sellers</Text>
+            <Text style={styles.BestSeller_Txt}>{t("best_sellers")}</Text>
             <BestSeller navigation={navigation} />
           </View>
 
           <View style={styles.BestSeller_Cont}>
-            <Text style={styles.BestSeller_Txt}>Recently Added</Text>
+            <Text style={styles.BestSeller_Txt}>{t("recently_added")}</Text>
             <RecentlyAdded />
           </View>
         </ScrollView>
 
         <LanguageModal visible={alertVisible} onClose={hideAlert} />
+       
       </SafeAreaView>
     </View>
   );

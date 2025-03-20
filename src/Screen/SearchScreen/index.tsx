@@ -47,7 +47,7 @@ const SearchScreen:React.FC = () => {
             showsVerticalScrollIndicator={false}
             renderItem={({ item }) => (
               <TouchableOpacity style={styles.itemContainer}>
-                <Image source={item.image} style={styles.itemImage} />
+                <Image source={item.source} style={styles.itemImage} />
                 <View style={styles.itemInfo}>
                   <Text style={styles.itemTitle}>{item.name}</Text>
                   <Text style={styles.itemLocation}>{item.location}</Text>

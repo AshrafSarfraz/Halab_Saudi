@@ -20,7 +20,7 @@ import CustomCheckbox from '../../../Component/checkbox/checkbox';
 import { useTranslation } from 'react-i18next';
 
 const API_URL = "https://dev.halabsaudi.top/public/api";
-const ApiToken = "6838131996ef135b352d16caacb6cfe5962a897cc69ad208430d52e7f0c818af";
+
 
 type LoginScreenProps = NativeStackScreenProps<any>;
 
@@ -45,8 +45,8 @@ const Login: React.FC<LoginScreenProps> = ({ navigation }) => {
       />
       <View>
         <Image source={Logo_W} style={styles.H_Logo} resizeMode="contain" />
-        <Text style={styles.Welcome_Txt}>Welcome Back!</Text>
-        <Text style={styles.SignUp_Txt}>Sign in with your account</Text>
+        <Text style={styles.Welcome_Txt}>{t('welcome_back')}</Text>
+        <Text style={styles.SignUp_Txt}>{t('sign_in_message')}</Text>
         <View style={styles.InputContainer}>
          
           <CountryDropdown onSelectCountry={(code) => setCountryCode(code)} />
@@ -57,7 +57,7 @@ const Login: React.FC<LoginScreenProps> = ({ navigation }) => {
             ]}
           >
             <TextInput
-              placeholder="Phone Number"
+              placeholder={t('phone_number')}
               value={PhoneNumber}
               keyboardType="number-pad"
               maxLength={8}
@@ -68,18 +68,18 @@ const Login: React.FC<LoginScreenProps> = ({ navigation }) => {
           </View>
 
           <CustomCheckbox
-            label="I agree to the"
+            label={t('agree_to')}
             isChecked={isChecked}
             onPress={() => setIsChecked(!isChecked)}
-            linkText="Privacy Policy"
-            linkTerm="Term of Use"
+            linkText={t('privacy_policy')}
+            linkTerm={t('terms_of_use')}
             onLinkPress={() => Linking.openURL('https://halabsaudi.com/privacy-policy-2/')}
             onLinkPress1={() => Linking.openURL('https://halabsaudi.com/terms-of-use/')}
           />
 
           <View style={styles.SignUp_Btn}>
             <CustomButton
-              title="Sign In"
+              title={t('login')}
               onPress={() => {
                 navigation.navigate('Otp');
               }}

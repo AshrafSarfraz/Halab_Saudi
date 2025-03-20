@@ -6,8 +6,9 @@ export const styles = StyleSheet.create({
   Container: {
     flex:1,
     backgroundColor: Colors.Bg,
-    paddingHorizontal: Platform.OS === 'ios' ? '3%' : '2%',
-    marginVertical: Platform.OS === 'ios' ? 0 : '6%',
+    paddingHorizontal: Platform.OS === 'ios' ? '3%' : '0%',
+    marginTop: Platform.OS === 'ios' ? 0 : '8%',
+    marginBottom: Platform.OS === 'ios' ? 0 : '2%',
   },
   header: {
     paddingHorizontal: '4%',

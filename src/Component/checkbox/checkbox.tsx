@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { Colors } from '../../Themes/Colors';
 import { Tick } from '../../Themes/Images';
+import { useTranslation } from 'react-i18next';
 
  // ✅ Dummy tick icon
 
@@ -16,6 +17,7 @@ type CheckboxProps = {
 };
 
 const CustomCheckbox: React.FC<CheckboxProps> = ({ label, onPress, isChecked, linkText, onLinkPress,linkTerm, onLinkPress1 }) => {
+  const {t} =useTranslation()
   return (
     <View style={styles.container}>
       {/* Checkbox */}
@@ -30,7 +32,7 @@ const CustomCheckbox: React.FC<CheckboxProps> = ({ label, onPress, isChecked, li
           {linkText} 
         </Text>
         <Text style={styles.label} onPress={onLinkPress}>
-        {' and '}
+        {t('and')}
         </Text>
         <Text style={styles.linkText} onPress={onLinkPress1}>
           {linkTerm} 

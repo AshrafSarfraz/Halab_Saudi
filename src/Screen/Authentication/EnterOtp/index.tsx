@@ -16,10 +16,12 @@ import { Colors } from '../../../Themes/Colors';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './style';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useTranslation } from 'react-i18next';
 
 interface OtpProps extends NativeStackScreenProps<any> {}
 
 const Otp: React.FC<OtpProps> = ({ navigation }) => {
+  const {t}=useTranslation()
   const [otp, setOtp] = useState<string[]>(['', '', '', '', '', '']);
   const inputRef = useRef<Array<TextInput | null>>([]);
   const [showError, setShowError] = useState<boolean>(false);
@@ -70,7 +72,7 @@ const Otp: React.FC<OtpProps> = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <Image source={Logo_W} style={styles.Logo} />
-        <Text style={styles.digit_Txt}>Enter the 6-digit OTP sent to you at</Text>
+        <Text style={styles.digit_Txt}>{t('enter_otp')}</Text>
 
         <View style={styles.inputContainer}>
           {otp.map((pin, index) => (
@@ -90,18 +92,18 @@ const Otp: React.FC<OtpProps> = ({ navigation }) => {
 
         {showError && (
           <Text style={styles.Error}>
-            The OTP passcode you’ve entered is incorrect
+           {t('incorrect_otp')}
           </Text>
         )}
 
         <View style={styles.Resend_Cont}>
-          <Text style={styles.Already}>I haven’t received a code</Text>
+          <Text style={styles.Already}>{t('no_code_received')}</Text>
           <TouchableOpacity onPress={() => Alert.alert('API Working here')}>
-            <Text style={styles.Resend_Txt}> RESEND</Text>
+            <Text style={styles.Resend_Txt}> {t('resend')}</Text>
           </TouchableOpacity>
         </View>
 
-        <CustomButton title={'Verify OTP'} onPress={() => {navigation.navigate('BottomTab')}} />
+        <CustomButton title={t('verify_otp')} onPress={() => {navigation.navigate('BottomTab')}} />
       </ScrollView>
     </SafeAreaView>
   );

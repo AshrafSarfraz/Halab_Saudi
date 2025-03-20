@@ -5,7 +5,8 @@ import { Fonts } from "../../Themes/Fonts";
 export const styles = StyleSheet.create({
     container: {
       paddingHorizontal: 20,
-      marginVertical:Platform.OS==='ios'?'1%':'8%',
+      marginTop:Platform.OS==='ios'?'1%':'11%',
+      marginBottom:Platform.OS==='ios'?'1%':'6%',
     },
     HeaderCont: {
       flexDirection: 'row',

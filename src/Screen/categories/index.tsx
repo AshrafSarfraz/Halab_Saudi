@@ -47,8 +47,8 @@ const CategoriesScreen:React.FC = ({route}) => {
             contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
             showsVerticalScrollIndicator={false}
             renderItem={({ item }) => (
-              <TouchableOpacity style={styles.itemContainer}>
-                <Image source={item.image} style={styles.itemImage} />
+              <TouchableOpacity style={styles.itemContainer} onPress={() => navigation.navigate('DetailScreen', { item })}  >
+                <Image source={item.source} style={styles.itemImage} />
                 <View style={styles.itemInfo}>
                   <Text style={styles.itemTitle}>{item.name}</Text>
                   <Text style={styles.itemLocation}>{item.location}</Text>

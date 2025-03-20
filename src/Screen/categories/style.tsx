@@ -8,7 +8,8 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.White4,
     paddingHorizontal: "4%",
-    marginVertical:Platform.OS==='ios'?'0%':'8%'
+    marginTop:Platform.OS==='ios'?'0%':'11%',
+    marginBottom:Platform.OS==='ios'?'0%':'2%'
   },
   header: {
     flexDirection: 'row',
