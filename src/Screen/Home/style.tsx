@@ -52,7 +52,7 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: Fonts.SF_Bold,
     color: Colors.Green,
-    lineHeight: 22,
+    lineHeight: 20,
     marginLeft: '4%',
     marginBottom: 2,
   },

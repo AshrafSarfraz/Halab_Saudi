@@ -14,8 +14,8 @@ import { Back_Icon, Search } from '../../Themes/Images';
 import { mockData } from './dummyData';
 import CustomHeader from '../../Component/CustomHeader/CustomHeader';
 
-const SearchScreen:React.FC = ({route}) => {
-  const {item} = route.params;
+const SearchScreen:React.FC = () => {
+
   const [searchQuery, setSearchQuery] = useState('');
   const navigation = useNavigation();
 

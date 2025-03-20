@@ -5,12 +5,12 @@ import { useNavigation } from '@react-navigation/native';
 const { width } = Dimensions.get('screen');
 
 const images = [
-  { id: '1', text: 'Food & Drinks',   source: require('../../../Assests/Images/resturnant.png') },
-  { id: '2', text: 'Beauty & Spa', source: require('../../../Assests/Images/candle.png') },
-  { id: '3', text: 'Health & Fitness',   source: require('../../../Assests/Images/food.png') },
-  { id: '4', text: 'Fun & Leisure',   source: require('../../../Assests/Images/resturnant.png') },
-  { id: '5', text: 'Room Night',   source: require('../../../Assests/Images/candle.png') },
-  { id: '6', text: 'Services & Retail',   source: require('../../../Assests/Images/food.png') },
+  { id: '1', text: 'Food & Drinks',   source: require('../../../Assests/Images/food_drink.png') },
+  { id: '2', text: 'Beauty & Spa', source: require('../../../Assests/Images/beauty.png') },
+  { id: '3', text: 'Health & Fitness',   source: require('../../../Assests/Images/health.png') },
+  { id: '4', text: 'Fun & Leisure',   source: require('../../../Assests/Images/fun.png') },
+  { id: '5', text: 'Room Night',   source: require('../../../Assests/Images/room_night.png') },
+  { id: '6', text: 'Services & Retail',   source: require('../../../Assests/Images/food_drink.png') },
 ];
 
 type CategoriesProps={
@@ -34,7 +34,6 @@ const Categories:React.FC<CategoriesProps> = () => {
         renderItem={({ item }) => (
           <TouchableOpacity style={styles.Flatlist_Cont} onPress={() => navigation.navigate('CategoriesScreen', { item })} >
             <Image source={item.source} style={styles.image} />
-            <Text style={styles.cate_txt} >{item.text}</Text>
           </TouchableOpacity>
         )}
       />

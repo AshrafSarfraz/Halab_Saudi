@@ -11,10 +11,11 @@ const styles = StyleSheet.create({
     Flatlist_Cont:{
       marginRight:6,
       alignItems:'center',
+      marginBottom:20
     },
     image:{
-       width:110,
-       height:110,
+       width:80,
+       height:100,
        borderRadius:10
     },
     cate_txt:{

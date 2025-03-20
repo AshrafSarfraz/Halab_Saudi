@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView, View, Text, Image, TouchableOpacity, ScrollView, StatusBar, Platform } from 'react-native';
 import { Full_logo_B, language, Scope } from '../../Themes/Images';
 import ImageSlider from './FlatOffer';
@@ -8,6 +8,8 @@ import BestSeller from './BestSellers';
 import RecentlyAdded from './RecentlyAdded';
 import LanguageModal from '../../Component/CustomAlert/Lan_Modal';
 import { Colors } from '../../Themes/Colors';
+import { useTranslation } from 'react-i18next';
+import Venues from './Venues';
 
 type HomeProps = {
   navigation: any;
@@ -15,6 +17,9 @@ type HomeProps = {
 
 const Home: React.FC<HomeProps> = ({ navigation }) => {
   const [alertVisible, setAlertVisible] = useState<boolean>(false);
+  const {t} = useTranslation();
+
+  
 
   const showAlert = () => {
     setAlertVisible(true);
@@ -51,7 +56,13 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
 
           <View style={styles.Categories_Cont}>
             <Text style={styles.Categories_Txt}>Categories</Text>
+  
             <Categories navigation={navigation} />
+          </View>
+          <View style={styles.Categories_Cont}>
+            <Text style={styles.Categories_Txt}>Venues Collection</Text>
+  
+            <Venues navigation={navigation} />
           </View>
 
           <View style={styles.BestSeller_Cont}>

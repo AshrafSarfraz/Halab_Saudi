@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Colors } from '../../../Themes/Colors';
 import { Full_logo_w } from '../../../Themes/Images';
+import { useTranslation } from 'react-i18next';
 
 
 type SplashScreenProps = {
@@ -10,6 +11,7 @@ type SplashScreenProps = {
 };
 
 const Splash_Screen: React.FC<SplashScreenProps> = ({ navigation }) => {
+  const { t } = useTranslation();
   useEffect(() => {
     const timeout = setTimeout(() => {
       navigation.navigate('Onboarding');
@@ -21,6 +23,7 @@ const Splash_Screen: React.FC<SplashScreenProps> = ({ navigation }) => {
     <View style={styles.Main_Container}>
       <View style={styles.Body}>
         <Image source={Full_logo_w} style={styles.Logo_Img} />
+       
       </View>
 
     </View>
