@@ -59,5 +59,12 @@
 		<string>SF-Pro-Rounded-Thin.otf</string>
 		<string>SF-Pro-Rounded-Ultralight.otf</string>
 	</array>
+
+	
+		<!-- New line added for calculate distance from Current location -->
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>We need your location to calculate distance</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>We need your location to calculate distance</string>
 </dict>
 </plist>
