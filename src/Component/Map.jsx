@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, View, Text, Button, Alert, PermissionsAndroid, Platform } from 'react-native';
-import Geolocation from 'react-native-geolocation-service';
 
 const Map = () => {
   useEffect(() => {
