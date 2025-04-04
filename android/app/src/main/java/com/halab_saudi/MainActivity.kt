@@ -1,4 +1,4 @@
-package com.halab_saudi
+package com.halabsaudiappreactnativeversion
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
