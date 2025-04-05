@@ -12,6 +12,7 @@ import SearchScreen from '../../Screen/SearchScreen';
 import DetailScreen from '../../Screen/detail_Screen';
 import Reedem_His from '../../Screen/Reedem_Histroy';
 import CategoriesScreen from '../../Screen/categories';
+import  PhoneSignIn  from '../../Screen/Authentication/PhoneAuth';
 
 
 type RootStackParamList = {
@@ -25,7 +26,8 @@ type RootStackParamList = {
   SearchScreen:undefined;
   DetailScreen:undefined;
   ReedemHistroy:undefined;
-  CategoriesScreen:undefined
+  CategoriesScreen:undefined;
+  PhoneSigning:undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -33,7 +35,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const StackNavigation: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator  initialRouteName='SplashBlank'  screenOptions={{headerShown:false}}  >
+      <Stack.Navigator  initialRouteName='PhoneSigning'  screenOptions={{headerShown:false}}  >
         <Stack.Screen name='SplashBlank' component={Splash_Blank} />
         <Stack.Screen name='Splash' component={Splash_Screen} />
         <Stack.Screen name='Onboarding' component={OnBoarding} />
@@ -45,6 +47,7 @@ const StackNavigation: React.FC = () => {
         <Stack.Screen name='DetailScreen' component={DetailScreen} />
         <Stack.Screen name='ReedemHistroy' component={Reedem_His} />
         <Stack.Screen name='CategoriesScreen' component={CategoriesScreen} />
+        <Stack.Screen name='PhoneSigning' component={PhoneSignIn} />
       </Stack.Navigator>
     </NavigationContainer>
   );

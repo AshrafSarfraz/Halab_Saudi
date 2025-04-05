@@ -19,6 +19,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import CustomCheckbox from '../../../Component/checkbox/checkbox';
 import { useTranslation } from 'react-i18next';
 
+
 const API_URL = "https://dev.halabsaudi.top/public/api";
 
 
