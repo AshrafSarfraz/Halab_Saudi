@@ -12,7 +12,20 @@
           "package_name": "com.halabsaudiappreactnativeversion"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "939551727593-1t3iu2332tp3fupe0glm4f2geeg5fk8i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.halabsaudiappreactnativeversion",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "939551727593-5386jpj7bc0h5qu4v6v3hmvlgpabv1he.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCcGLN4uCEuapuqaoYxcnFePTHxdmt6-3E"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "939551727593-5386jpj7bc0h5qu4v6v3hmvlgpabv1he.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "939551727593-n94vckshhulaaq9rkohfdusd148suj15.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.halabsaudiappreactnativeversion"
+              }
+            }
+          ]
         }
       }
     }
