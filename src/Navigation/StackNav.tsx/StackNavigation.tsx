@@ -35,7 +35,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const StackNavigation: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator  initialRouteName='PhoneSigning'  screenOptions={{headerShown:false}}  >
+      <Stack.Navigator  initialRouteName='BottomTab'  screenOptions={{headerShown:false}}  >
         <Stack.Screen name='SplashBlank' component={Splash_Blank} />
         <Stack.Screen name='Splash' component={Splash_Screen} />
         <Stack.Screen name='Onboarding' component={OnBoarding} />

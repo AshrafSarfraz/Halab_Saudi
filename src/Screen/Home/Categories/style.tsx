@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     container: {
       alignItems: 'center',
       marginHorizontal:"3%",
-      marginTop:10
+      marginTop:10,
     },
     Flatlist_Cont:{
       marginRight:6,

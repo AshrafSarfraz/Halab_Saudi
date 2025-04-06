@@ -1,28 +1,36 @@
 import React from 'react';
-import { View, Text, Modal, TouchableOpacity, StyleSheet,TextInput } from 'react-native';
+import { View, Text, Modal, TouchableOpacity, StyleSheet, TextInput, Alert } from 'react-native';
 import { Colors } from '../../Themes/Colors';
 import { Fonts } from '../../Themes/Fonts';
 
-
-type LanProps = {
+type Props = {
   visible: boolean;
   onClose: () => void;
+  onSubmit: (enteredPin: string) => void;
+  correctPin: string;
 };
 
-const Pin_Modal: React.FC<LanProps> = ({ visible, onClose }) => {
-    const [pin, setPin] = React.useState('');
+const Pin_Modal: React.FC<Props> = ({ visible, onClose, onSubmit }) => {
+  const [pin, setPin] = React.useState('');
+
   return (
     <Modal transparent visible={visible} animationType="fade">
       <View style={styles.overlay}>
         <View style={styles.container}>
           <Text style={styles.headerText}>Enter Pin</Text>
-            
-            <TextInput placeholder='Enter Pin' style={styles.InputField} 
-            value={pin}
-            onChangeText={(txt)=>{setPin(txt)}}
-            />
 
-          <TouchableOpacity style={styles.languageButton} onPress={onClose}>
+          <TextInput
+            placeholder="Enter Pin"
+            style={styles.InputField}
+            value={pin}
+            onChangeText={(txt) => setPin(txt)}
+            keyboardType="number-pad"
+          />
+
+          <TouchableOpacity
+            style={styles.languageButton}
+            onPress={() => {onSubmit(pin),setPin('')}}
+          >
             <Text style={styles.languageText}>Submit</Text>
           </TouchableOpacity>
 
@@ -34,6 +42,8 @@ const Pin_Modal: React.FC<LanProps> = ({ visible, onClose }) => {
     </Modal>
   );
 };
+
+// ... styles remain the same
 
 const styles = StyleSheet.create({
   overlay: {

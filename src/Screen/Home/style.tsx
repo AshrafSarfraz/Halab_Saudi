@@ -1,9 +1,13 @@
 import {StyleSheet, Platform} from 'react-native';
 import {Colors} from '../../Themes/Colors';
 import {Fonts} from '../../Themes/Fonts';
+import i18n from '../../../i18n';
 
+const isArabic = i18n.language === 'ar';
 export const styles = StyleSheet.create({
+  
   Container: {
+  
     flex:1,
     backgroundColor: Colors.Bg,
     paddingHorizontal: Platform.OS === 'ios' ? '3%' : '0%',
@@ -47,24 +51,30 @@ export const styles = StyleSheet.create({
     tintColor: '#000',
   },
   Categories_Cont: {
-    marginTop: 5,
+    marginTop: isArabic?1:5,
+    width:'100%',
+
   },
   Categories_Txt: {
-    fontSize: 18,
+    fontSize: isArabic?14:18,
     fontFamily: Fonts.SF_Bold,
     color: Colors.Green,
-    lineHeight: 20,
-    marginLeft: '4%',
+    lineHeight:  isArabic?38:22,
+    marginHorizontal:"4%",
     marginBottom: 2,
   },
   BestSeller_Cont: {
-    marginTop: 14,
+    marginTop: isArabic?5:14,
   },
   BestSeller_Txt: {
-    fontSize: 18,
+    fontSize: isArabic?14:18,
     fontFamily: Fonts.SF_Bold,
     color: Colors.Green,
-    lineHeight: 22,
-    marginLeft: '4%',
+    lineHeight:  isArabic?38:22,
+    marginHorizontal:"4%",
+    marginBottom: 2,
   },
+  txt_cont:{
+    flexDirection:"row"
+  }
 });

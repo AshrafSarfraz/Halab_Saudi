@@ -55,23 +55,30 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
           <ImageSlider />
 
           <View style={styles.Categories_Cont}>
+            <View style={styles.txt_cont} >
             <Text style={styles.Categories_Txt}>{t('categories')}</Text>
+            </View>
   
             <Categories navigation={navigation} />
           </View>
           <View style={styles.Categories_Cont}>
+          <View style={styles.txt_cont} >
             <Text style={styles.Categories_Txt}>{t("venues_collection")}</Text>
-  
+           </View>
             <Venues navigation={navigation} />
           </View>
 
           <View style={styles.BestSeller_Cont}>
+          <View style={styles.txt_cont} >
             <Text style={styles.BestSeller_Txt}>{t("best_sellers")}</Text>
+            </View>
             <BestSeller navigation={navigation} />
           </View>
 
           <View style={styles.BestSeller_Cont}>
+          <View style={styles.txt_cont} >
             <Text style={styles.BestSeller_Txt}>{t("recently_added")}</Text>
+            </View>
             <RecentlyAdded />
           </View>
         </ScrollView>

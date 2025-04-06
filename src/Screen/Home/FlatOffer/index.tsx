@@ -1,26 +1,38 @@
-import React, { useState } from 'react';
-import { View, Text, FlatList, Image, Dimensions, TouchableOpacity, } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, FlatList, Image, Dimensions, TouchableOpacity } from 'react-native';
 import styles from './style';
 import { useNavigation } from '@react-navigation/native';
+import { firestore } from '../../../firebase/firebaseconfig';
+
 const { width } = Dimensions.get('screen');
 
-const images = [
-  { id: '1', text: 'First Image',   description:'A fine dining restaurant with a great ambiance and delicious meals.A fine dining restaurant with a great ambiance and delicious meals. A fine dining restaurant with a great ambiance and delicious meals.A fine dining restaurant with a great ambiance and delicious meals.' 
-    ,discount:'10%', pin:1234, source: require('../../../Assests/Images/bgImg.jpeg') },
-  { id: '2', text: 'Second Image',  description:'A fine dining restaurant with a great ambiance and delicious meals.A fine dining restaurant with a great ambiance and delicious meals. A fine dining restaurant with a great ambiance and delicious meals.A fine dining restaurant with a great ambiance and delicious meals.' 
-    , discount:'10%', pin:1234,  source: require('../../../Assests/Images/bgImg.jpeg') },
-  { id: '3', text: 'Third Image',   description:'A fine dining restaurant with a great ambiance and delicious meals.A fine dining restaurant with a great ambiance and delicious meals. A fine dining restaurant with a great ambiance and delicious meals.A fine dining restaurant with a great ambiance and delicious meals.' 
-    , discount:'10%', pin:1234, source: require('../../../Assests/Images/bgImg.jpeg') },
-];
-
-type SliderProps={
-  navigation: any
-}
-
-
-const ImageSlider:React.FC = () => {
-  const navigation=useNavigation()
+const ImageSlider: React.FC = () => {
+  const navigation = useNavigation();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [offers, setOffers] = useState([]); // State to store Firestore data
+
+  // Fetch data from Firestore when component mounts
+  useEffect(() => {
+    const fetchOffers = async () => {
+      try {
+        const snapshot = await firestore().collection('FlatOffers').get();
+        const offersData = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        
+        // Log all data to console
+        console.log('Firestore Data:', offersData);
+        
+        // Set the data to state
+        setOffers(offersData);
+      } catch (error) {
+        console.error('Error fetching offers:', error);
+      }
+    };
+
+    fetchOffers();
+  }, []); // Empty dependency array means it runs once on mount
 
   const handleScroll = (event: any) => {
     const slideIndex = Math.round(event.nativeEvent.contentOffset.x / width);
@@ -31,17 +43,24 @@ const ImageSlider:React.FC = () => {
     <View style={styles.container}>
       {/* Image Slider */}
       <FlatList
-        data={images}
+        data={offers} // Use Firestore data
         keyExtractor={(item) => item.id}
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         onScroll={handleScroll}
         renderItem={({ item }) => (
-          <TouchableOpacity style={styles.imageContainer} onPress={() => navigation.navigate('DetailScreen', { item })} >
-            <Image source={item.source} style={styles.image} />
+          <TouchableOpacity 
+            style={styles.imageContainer} 
+            onPress={() => navigation.navigate('DetailScreen', { item })}
+          >
+            {/* Assuming image URL is stored in Firestore as 'source' */}
+            <Image 
+              source={{ uri: item.img }} // Use URI for Firestore images
+              style={styles.image} 
+            />
             <View style={styles.overlay}>
-              <Text style={styles.imageText}>{item.text}</Text>
+              <Text style={styles.imageText}>{item.pin}</Text>
             </View>
           </TouchableOpacity>
         )}
@@ -49,13 +68,14 @@ const ImageSlider:React.FC = () => {
 
       {/* Pagination Dots */}
       <View style={styles.pagination}>
-        {images.map((_, index) => (
+        {offers.map((_, index) => (
           <View
             key={index}
             style={[
               styles.dot,
-              { backgroundColor: index === currentIndex ? '#005029' : '#A2A2A2' ,
-                width: index === currentIndex ? 30 : 8 ,
+              { 
+                backgroundColor: index === currentIndex ? '#005029' : '#A2A2A2',
+                width: index === currentIndex ? 30 : 8,
               },
             ]}
           />
@@ -66,3 +86,79 @@ const ImageSlider:React.FC = () => {
 };
 
 export default ImageSlider;
+
+
+
+// import React, { useState } from 'react';
+// import { View, Text, FlatList, Image, Dimensions, TouchableOpacity, } from 'react-native';
+// import styles from './style';
+// import { useNavigation } from '@react-navigation/native';
+// const { width } = Dimensions.get('screen');
+
+// const images = [
+//   { id: '1', text: 'First Image',   description:'A fine dining restaurant with a great ambiance and delicious meals.A fine dining restaurant with a great ambiance and delicious meals. A fine dining restaurant with a great ambiance and delicious meals.A fine dining restaurant with a great ambiance and delicious meals.' 
+//     ,discount:'10%', pin:1234, source: require('../../../Assests/Images/bgImg.jpeg') },
+//   { id: '2', text: 'Second Image',  description:'A fine dining restaurant with a great ambiance and delicious meals.A fine dining restaurant with a great ambiance and delicious meals. A fine dining restaurant with a great ambiance and delicious meals.A fine dining restaurant with a great ambiance and delicious meals.' 
+//     , discount:'10%', pin:1234,  source: require('../../../Assests/Images/bgImg.jpeg') },
+//   { id: '3', text: 'Third Image',   description:'A fine dining restaurant with a great ambiance and delicious meals.A fine dining restaurant with a great ambiance and delicious meals. A fine dining restaurant with a great ambiance and delicious meals.A fine dining restaurant with a great ambiance and delicious meals.' 
+//     , discount:'10%', pin:1234, source: require('../../../Assests/Images/bgImg.jpeg') },
+// ];
+
+// type SliderProps={
+//   navigation: any
+// }
+
+
+// const ImageSlider:React.FC = () => {
+//   const navigation=useNavigation()
+//   const [currentIndex, setCurrentIndex] = useState(0);
+
+//   const handleScroll = (event: any) => {
+//     const slideIndex = Math.round(event.nativeEvent.contentOffset.x / width);
+//     setCurrentIndex(slideIndex);
+//   };
+
+//   return (
+//     <View style={styles.container}>
+//       {/* Image Slider */}
+//       <FlatList
+//         data={images}
+//         keyExtractor={(item) => item.id}
+//         horizontal
+//         pagingEnabled
+//         showsHorizontalScrollIndicator={false}
+//         onScroll={handleScroll}
+//         renderItem={({ item }) => (
+//           <TouchableOpacity style={styles.imageContainer} onPress={() => navigation.navigate('DetailScreen', { item })} >
+//             <Image source={item.source} style={styles.image} />
+//             <View style={styles.overlay}>
+//               <Text style={styles.imageText}>{item.text}</Text>
+//             </View>
+//           </TouchableOpacity>
+//         )}
+//       />
+
+//       {/* Pagination Dots */}
+//       <View style={styles.pagination}>
+//         {images.map((_, index) => (
+//           <View
+//             key={index}
+//             style={[
+//               styles.dot,
+//               { backgroundColor: index === currentIndex ? '#005029' : '#A2A2A2' ,
+//                 width: index === currentIndex ? 30 : 8 ,
+//               },
+//             ]}
+//           />
+//         ))}
+//       </View>
+//     </View>
+//   );
+// };
+
+// export default ImageSlider;
+
+
+
+
+

@@ -20,7 +20,8 @@
   "recently_added": "Recently Added",
   "toggle_more": "Show More",
   "toggle_less": "Hide",
-
+   "discount" :"Discount",
+   "descriptiom":"Description",
 
 
 
@@ -40,7 +41,7 @@
   "fill_the_code": "Fill the code",
   "didnt_get_the_code": "Didn’t get the code?",
   "resend": "Resend",
-  "categories": "categories",
+  "categories": "Categories",
   "km": "KM",
   "open": "open",
   "closed": "closed",
