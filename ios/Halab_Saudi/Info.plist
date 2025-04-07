@@ -31,7 +31,11 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
+	
+	<!-- location Access -->
 	<key>NSLocationWhenInUseUsageDescription</key>
+   <!-- location Access -->
+	
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
@@ -58,6 +62,9 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
+
 	<false/>
+
+
 </dict>
 </plist>

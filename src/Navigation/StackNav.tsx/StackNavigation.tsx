@@ -15,8 +15,6 @@ import  PhoneSignIn  from '../../Screen/Authentication/PhoneAuth';
 import SelectedCategories from '../../Screen/selected_categories';
 import SelectedVenues from '../../Screen/selected_venues';
 
-
-
 type RootStackParamList = {
   SplashBlank: undefined;
   Splash: undefined;
@@ -31,6 +29,7 @@ type RootStackParamList = {
   CategoriesScreen:undefined;
   SelectedVenue:undefined;
   PhoneSigning:undefined;
+
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -38,7 +37,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const StackNavigation: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator  initialRouteName='SplashBlank'  screenOptions={{headerShown:false}}  >
+      <Stack.Navigator  initialRouteName='BottomTab'  screenOptions={{headerShown:false}}  >
         <Stack.Screen name='SplashBlank' component={Splash_Blank} />
         <Stack.Screen name='Splash' component={Splash_Screen} />
         <Stack.Screen name='Onboarding' component={OnBoarding} />
