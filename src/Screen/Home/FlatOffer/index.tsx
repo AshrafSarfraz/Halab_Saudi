@@ -6,10 +6,17 @@ import { firestore } from '../../../firebase/firebaseconfig';
 
 const { width } = Dimensions.get('screen');
 
-const ImageSlider: React.FC = () => {
+type slider={
+  id: string;
+  img: string;
+  discount: string;
+}
+
+
+const ImageSlider: React.FC<{navigation:any}> = () => {
   const navigation = useNavigation();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [offers, setOffers] = useState([]); // State to store Firestore data
+  const [offers, setOffers] = useState<slider[]>([]); // State to store Firestore data
 
   // Fetch data from Firestore when component mounts
   useEffect(() => {
@@ -20,11 +27,7 @@ const ImageSlider: React.FC = () => {
           id: doc.id,
           ...doc.data(),
         }));
-        
-        // Log all data to console
-        console.log('Firestore Data:', offersData);
-        
-        // Set the data to state
+            // Set the data to state
         setOffers(offersData);
       } catch (error) {
         console.error('Error fetching offers:', error);
@@ -60,7 +63,7 @@ const ImageSlider: React.FC = () => {
               style={styles.image} 
             />
             <View style={styles.overlay}>
-              <Text style={styles.imageText}>{item.pin}</Text>
+              <Text style={styles.imageText}>{'Discount: '+item.discount+'%'}</Text>
             </View>
           </TouchableOpacity>
         )}

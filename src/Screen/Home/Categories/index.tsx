@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Image, Dimensions, TouchableOpacity, } from 'react-native';
 import styles from './style';
 import { useNavigation } from '@react-navigation/native';
-const { width } = Dimensions.get('screen');
+
+
 
 const images = [
-  { id: '1', text: 'Food & Drinks',   source: require('../../../Assests/Images/food_drink.png') },
-  { id: '2', text: 'Beauty & Spa', source: require('../../../Assests/Images/beauty.png') },
-  { id: '3', text: 'Health & Fitness',   source: require('../../../Assests/Images/health.png') },
-  { id: '4', text: 'Fun & Leisure',   source: require('../../../Assests/Images/fun.png') },
-  { id: '5', text: 'Room Night',   source: require('../../../Assests/Images/room_night.png') },
-  { id: '6', text: 'Services & Retail',   source: require('../../../Assests/Images/food_drink.png') },
+  { id: '1', text: 'Food and Drink', category: 'Food and Drink', source: require('../../../Assests/Images/food_drink.png') },
+  { id: '2', text: 'Beauty and Spa', category: 'Beauty and Spa', source: require('../../../Assests/Images/beauty.png') },
+  { id: '3', text: 'Health and Fitness', category: 'Health and Fitness', source: require('../../../Assests/Images/health.png') },
+  { id: '4', text: 'Fun and Leisure', category: 'Fun and Leisure', source: require('../../../Assests/Images/fun.png') },
+  { id: '5', text: 'Room Nights', category: 'Room Nights', source: require('../../../Assests/Images/room_night.png') },
+  { id: '6', text: 'Services and Retail', category: 'Services and Retail', source: require('../../../Assests/Images/food_drink.png') },
 ];
+
 
 type CategoriesProps={
   navigation: any
+  
 }
 
 const Categories:React.FC<CategoriesProps> = () => {
@@ -32,7 +35,8 @@ const Categories:React.FC<CategoriesProps> = () => {
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
-          <TouchableOpacity style={styles.Flatlist_Cont} onPress={() => navigation.navigate('CategoriesScreen', { item })} >
+          <TouchableOpacity style={styles.Flatlist_Cont} onPress={() => navigation.navigate('CategoriesScreen', { item })}
+          >
             <Image source={item.source} style={styles.image} />
           </TouchableOpacity>
         )}

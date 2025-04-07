@@ -2,12 +2,14 @@ import { Platform, StyleSheet } from 'react-native';
 import { Colors } from '../../Themes/Colors';
 import { Fonts } from '../../Themes/Fonts';
 
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.White4,
     paddingHorizontal: "4%",
-    marginVertical:Platform.OS==='ios'?'0%':'8%'
+    marginTop:Platform.OS==='ios'?'0%':'11%',
+    marginBottom:Platform.OS==='ios'?'0%':'2%'
   },
   header: {
     flexDirection: 'row',
@@ -74,33 +76,29 @@ export const styles = StyleSheet.create({
     shadowRadius: 4,
   },
   itemImage: {
-    width: 80,
-    height: 80,
-    resizeMode:"cover",
+    width: 60,
+    height: 60,
     borderRadius: 8,
     marginRight: 10,
-    
   },
   itemInfo: {
     flex: 1,
   },
   itemTitle: {
     fontSize: 16,
-    fontFamily: Fonts.SF_Bold,
+    fontFamily:Fonts.SF_Bold,
     color: Colors.Black,
-    lineHeight:20
+    lineHeight:22
   },
   itemLocation: {
-    fontSize: 14,
+    fontSize: 11,
     fontFamily: Fonts.SF_Medium,
-    color: Colors.Grey4,
-    marginVertical: 2,
-    lineHeight:18
+    color: Colors.Black2,
+    marginVertical: 1,
   },
   itemCity: {
     fontSize: 12,
-    fontFamily: Fonts.SF_Regular,
+    fontFamily: Fonts.SF_Bold,
     color: Colors.Black2,
-    lineHeight:15
   },
 });

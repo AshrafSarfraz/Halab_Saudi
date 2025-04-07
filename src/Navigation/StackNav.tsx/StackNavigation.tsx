@@ -11,8 +11,9 @@ import Otp from '../../Screen/Authentication/EnterOtp';
 import SearchScreen from '../../Screen/SearchScreen';
 import DetailScreen from '../../Screen/detail_Screen';
 import Reedem_His from '../../Screen/Reedem_Histroy';
-import CategoriesScreen from '../../Screen/categories';
 import  PhoneSignIn  from '../../Screen/Authentication/PhoneAuth';
+import selected_categories from '../../Screen/selected_categories';
+import selected_venues from '../../Screen/selected_venues';
 
 
 type RootStackParamList = {
@@ -27,6 +28,7 @@ type RootStackParamList = {
   DetailScreen:undefined;
   ReedemHistroy:undefined;
   CategoriesScreen:undefined;
+  SelectedVenue:undefined;
   PhoneSigning:undefined;
 };
 
@@ -46,7 +48,8 @@ const StackNavigation: React.FC = () => {
         <Stack.Screen name='SearchScreen' component={SearchScreen} />
         <Stack.Screen name='DetailScreen' component={DetailScreen} />
         <Stack.Screen name='ReedemHistroy' component={Reedem_His} />
-        <Stack.Screen name='CategoriesScreen' component={CategoriesScreen} />
+        <Stack.Screen name='CategoriesScreen' component={selected_categories} />
+        <Stack.Screen name='SelectedVenue' component={selected_venues} />
         <Stack.Screen name='PhoneSigning' component={PhoneSignIn} />
       </Stack.Navigator>
     </NavigationContainer>

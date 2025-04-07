@@ -86,18 +86,19 @@ export const styles = StyleSheet.create({
   },
   itemTitle: {
     fontSize: 16,
-    fontFamily: Fonts.SF_Bold,
+    fontFamily:Fonts.SF_Bold,
     color: Colors.Black,
+    lineHeight:22
   },
   itemLocation: {
-    fontSize: 14,
+    fontSize: 11,
     fontFamily: Fonts.SF_Medium,
-    color: Colors.Grey4,
-    marginVertical: 2,
+    color: Colors.Black2,
+    marginVertical: 1,
   },
-  itemDescription: {
+  itemCity: {
     fontSize: 12,
-    fontFamily: Fonts.SF_Regular,
+    fontFamily: Fonts.SF_Bold,
     color: Colors.Black2,
   },
 });

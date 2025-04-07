@@ -77,7 +77,7 @@ const DetailScreen: React.FC = ({route}) => {
             </TouchableOpacity>
           </View>
           <View style={styles.Body_Cont}>
-            <Image source={item.source} style={styles.image} />
+            <Image source={{uri:item.img}} style={styles.image} />
             <View style={styles.Type_Cont}>
               <Text style={styles.Type_Text}>{item.selectedCategory}</Text>
             </View>
