@@ -7,21 +7,16 @@ import {
   Image,
   TouchableOpacity,
   SafeAreaView,
+  ActivityIndicator,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from './style';
 import CustomHeader from '../../Component/CustomHeader/CustomHeader';
-import { firestore } from '../../firebase/firebaseconfig';
 import { Search } from '../../Themes/Images';
+import { fetchBrandsFromFirebase } from '../../firebase/firebaseutils';
+import { Colors } from '../../Themes/Colors';
 
 
-// type Data = {
-//   id: string;
-//   nameEng: string;
-//   descriptionEng: string;
-//   img: string;
-//   selectedCity: string;
-// };
 
 
 const SearchScreen: React.FC= () => {
@@ -29,24 +24,18 @@ const SearchScreen: React.FC= () => {
   const [brands, setBrands] = useState<any[]>([]);
   const navigation = useNavigation();
 
-  useEffect(() => {
-    const fetchOffers = async () => {
-      try {
-        const snapshot = await firestore().collection('Brands').get();
-        const BrandsData = snapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-
-        console.log('🔥 All Brands Data:', BrandsData);
-        setBrands(BrandsData);
-      } catch (error) {
-        console.error('❌ Error fetching offers:', error);
-      }
-    };
-
-    fetchOffers();
-  }, []);
+   const [loading, setLoading] = useState(true);
+ 
+   useEffect(() => {
+     const getBrands = async () => {
+       setLoading(true);
+       const fetchedBrands = await fetchBrandsFromFirebase();
+       setBrands(fetchedBrands);
+       setLoading(false);
+     };
+ 
+     getBrands();
+   }, []);
 
   const filteredData = brands.filter(item =>
     item.nameEng?.toLowerCase().includes(searchQuery.toLowerCase())
@@ -73,6 +62,9 @@ const SearchScreen: React.FC= () => {
 
       <View style={styles.FlatlistContainer}>
         <Text style={styles.FoundItem_Txt}>Found Items</Text>
+          {loading ? (
+                <ActivityIndicator size="small" color={Colors.Green} style={{ flex: 1 }} />
+              ) : (
         <FlatList
           data={filteredData}
           keyExtractor={item => item.id}
@@ -96,7 +88,7 @@ const SearchScreen: React.FC= () => {
               </View>
             </TouchableOpacity>
           )}
-        />
+        />)}
       </View>
     </SafeAreaView>
   </View>

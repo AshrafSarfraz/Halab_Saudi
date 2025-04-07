@@ -1,46 +1,58 @@
-import React, { useState } from 'react';
-import { View, Text, FlatList, Image, Dimensions, TouchableOpacity, } from 'react-native';
-import styles from './style';
+import React, { useState, useEffect } from 'react';
+import { View, Text, FlatList, Image, Dimensions, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+
+import styles from './style';
+import { fetchBrandsFromFirebase } from '../../../firebase/firebaseutils';
+import { Colors } from '../../../Themes/Colors';
+
 const { width } = Dimensions.get('screen');
 
-const images = [
-  { id: '1', text: 'Piccolo', description:'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée', discount:'10%', pin:1234, source: require('../../../Assests/Images/resturnant.png') },
-  { id: '2', text: 'Piccolo',description:'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée',discount:'12%', pin:1234,  source: require('../../../Assests/Images/candle.png') },
-  { id: '3', text: 'Piccolo', description:'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée',discount:'15%', pin:1234,  source: require('../../../Assests/Images/food.png') },
+const BestSeller: React.FC = () => {
+  const navigation = useNavigation();
+  const [brands, setBrands] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-];
+  useEffect(() => {
+    const getBrands = async () => {
+      setLoading(true);
+      const fetchedBrands = await fetchBrandsFromFirebase();
+      setBrands(fetchedBrands);
+      setLoading(false);
+    };
 
-type BestSellerProps={
-  navigation:any
-}
-
-const BestSeller:React.FC<BestSellerProps> = () => {
-  const navigation=useNavigation()
-  const [currentIndex, setCurrentIndex] = useState(0);
-
+    getBrands();
+  }, []);
 
   return (
     <View style={styles.container}>
-      {/* Image Slider */}
-      <FlatList
-        data={images}
-        keyExtractor={(item) => item.id}
-        horizontal
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-        renderItem={({ item }) => (
-          <TouchableOpacity style={styles.Flatlist_Cont} onPress={() => navigation.navigate('DetailScreen', { item })} >
-            <Image source={item.source} style={styles.image} />
-           <View style={styles.bestSeller_Detail} >
-            <Text style={styles.title_txt} >{item.text}</Text>
-            <Text style={styles.desc_txt} >{item.description}</Text>
-            </View>
-          </TouchableOpacity>
-        )}
-      />
-
-    
+      {loading ? (
+        <ActivityIndicator size="small" color={Colors.Green} style={{ flex: 1 }} />
+      ) : (
+        <FlatList
+          data={brands}
+          keyExtractor={(item) => item.id}
+          horizontal
+          pagingEnabled
+          showsHorizontalScrollIndicator={false}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={styles.Flatlist_Cont}
+              onPress={() => navigation.navigate('DetailScreen', { item })}
+            >
+              {item.img && <Image source={{ uri: item.img }} style={styles.image} />}
+              <View style={styles.bestSeller_Detail}>
+                <Text style={styles.title_txt}>{item.nameEng}</Text>
+                <Text style={styles.desc_txt}>
+                  {item.descriptionEng?.length > 70
+                    ? item.descriptionEng.substring(0, 60) + '...'
+                    : item.descriptionEng}
+                </Text>
+              </View>
+            </TouchableOpacity>
+          )}
+        />
+      )}
     </View>
   );
 };

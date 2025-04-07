@@ -13,6 +13,9 @@ import {
 import CustomHeader from '../../Component/CustomHeader/CustomHeader';
 import {useNavigation} from '@react-navigation/native';
 import CustomButton from '../../Component/CustomButton/CustomButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleItemInCart } from '../../redux_toolkit/cartSlice';
+import { RootState } from '../../redux_toolkit/store';
 import {Dark_Heart, Light_Heart, Location} from '../../Themes/Images';
 import Pin_Modal from '../../Component/CustomAlert/Pin_Modal';
 import {styles} from './style';
@@ -20,34 +23,45 @@ import Discount_Redeem from '../../Component/CustomAlert/DiscountRedeem';
 import i18n from '../../../i18n';
 import { t } from 'i18next';
 
-const DetailScreen: React.FC = ({route}) => {
+
+const DetailScreen: React.FC<{route:any}> = ({route}) => {
   const isArabic = i18n.language === 'ar';
-
-
-  const [wishlist, setWishlist] = useState<boolean>(false);
   const {item} = route.params; // Home se data le rahe hain
+  const dispatch = useDispatch();
   const latitude = item.latitude ? item.latitude : null;
   const longitude = item.longitude ? item.longitude : null;
   const phoneNumber = item.PhoneNumber;
   const navigation = useNavigation();
   const [alertVisible, setAlertVisible] = useState<boolean>(false);
   const [discountAlert, setdiscountAlert] = useState<boolean>(false);
+  
 
+  // Redux Toolkit
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const isInCart = cartItems.some(cartItem => cartItem.id === item.id);
+  const handleToggleCart = () => {
+    dispatch(toggleItemInCart(item));
+  };
+  
+// Redux Toolkit
+
+
+  // Alert Modal
   const showAlert = () => {
     setAlertVisible(true);
   };
-
   const hideAlert = () => {
     setAlertVisible(false);
   };
   const showDiscount_Alert = () => {
     setdiscountAlert(true);
   };
-
   const hideDiscount_Alert = () => {
     setdiscountAlert(false);
   };
+// Modal
 
+// Google Map and Mobile Number
   const handleOpenMaps = () => {
     const url = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
     Linking.openURL(url);
@@ -56,6 +70,7 @@ const DetailScreen: React.FC = ({route}) => {
     const url = `tel:${phoneNumber}`;
     Linking.openURL(url);
   };
+  // Google Map and Mobile Number
 
   return (
     <SafeAreaView>
@@ -68,8 +83,8 @@ const DetailScreen: React.FC = ({route}) => {
                 navigation.goBack();
               }}
             />
-            <TouchableOpacity onPress={() => setWishlist(!wishlist)}>
-              {wishlist ? (
+            <TouchableOpacity onPress={() =>{handleToggleCart()}}>
+              {isInCart ? (
                 <Image source={Dark_Heart} style={styles.HeartStyle} />
               ) : (
                 <Image source={Light_Heart} style={styles.HeartStyle} />

@@ -12,8 +12,9 @@ import SearchScreen from '../../Screen/SearchScreen';
 import DetailScreen from '../../Screen/detail_Screen';
 import Reedem_His from '../../Screen/Reedem_Histroy';
 import  PhoneSignIn  from '../../Screen/Authentication/PhoneAuth';
-import selected_categories from '../../Screen/selected_categories';
-import selected_venues from '../../Screen/selected_venues';
+import SelectedCategories from '../../Screen/selected_categories';
+import SelectedVenues from '../../Screen/selected_venues';
+
 
 
 type RootStackParamList = {
@@ -37,7 +38,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const StackNavigation: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator  initialRouteName='BottomTab'  screenOptions={{headerShown:false}}  >
+      <Stack.Navigator  initialRouteName='SplashBlank'  screenOptions={{headerShown:false}}  >
         <Stack.Screen name='SplashBlank' component={Splash_Blank} />
         <Stack.Screen name='Splash' component={Splash_Screen} />
         <Stack.Screen name='Onboarding' component={OnBoarding} />
@@ -48,8 +49,8 @@ const StackNavigation: React.FC = () => {
         <Stack.Screen name='SearchScreen' component={SearchScreen} />
         <Stack.Screen name='DetailScreen' component={DetailScreen} />
         <Stack.Screen name='ReedemHistroy' component={Reedem_His} />
-        <Stack.Screen name='CategoriesScreen' component={selected_categories} />
-        <Stack.Screen name='SelectedVenue' component={selected_venues} />
+        <Stack.Screen name='CategoriesScreen' component={SelectedCategories} />
+        <Stack.Screen name='SelectedVenue' component={SelectedVenues} />
         <Stack.Screen name='PhoneSigning' component={PhoneSignIn} />
       </Stack.Navigator>
     </NavigationContainer>

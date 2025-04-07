@@ -52,7 +52,7 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
             </View>
           </View>
 
-          <ImageSlider />
+          <ImageSlider navigation={navigation} />
 
           <View style={styles.Categories_Cont}>
             <View style={styles.txt_cont} >
@@ -72,7 +72,7 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
           <View style={styles.txt_cont} >
             <Text style={styles.BestSeller_Txt}>{t("best_sellers")}</Text>
             </View>
-            <BestSeller navigation={navigation} />
+            <BestSeller  />
           </View>
 
           <View style={styles.BestSeller_Cont}>

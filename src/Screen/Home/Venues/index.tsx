@@ -30,7 +30,7 @@ const Venues: React.FC<VenuesProps> = () => {
           id: doc.id,
           ...doc.data(),
         }));
-        console.log('📍 Venues Data:', venuesData);
+        // console.log('📍 Venues Data:', venuesData);
         setVenues(venuesData);
       } catch (error) {
         console.error('❌ Error fetching venues:', error);

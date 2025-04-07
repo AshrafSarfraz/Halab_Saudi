@@ -17,18 +17,19 @@ const styles = StyleSheet.create({
       borderRadius:10,
       flexDirection:"row",
       alignItems:'center',
-      paddingHorizontal:'3%',
+      paddingHorizontal:'2%',
       paddingVertical:"1%"
      
     },
     image:{
-       width:80,
-       height:80,
-       borderRadius:40
+       width:70,
+       height:70,
+       borderRadius:40,
     },
     bestSeller_Detail:{
      width:140,
      marginLeft:10,
+     textAlign:'justify'
     },
     title_txt:{
       fontSize:16,
@@ -43,7 +44,8 @@ const styles = StyleSheet.create({
       lineHeight:13,
       letterSpacing:0.2,
       marginTop:2,
-      color:Colors.Black
+      color:Colors.Black,
+      textAlign:"justify",
     }
   });
   

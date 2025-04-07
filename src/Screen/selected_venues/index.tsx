@@ -14,20 +14,12 @@ import CustomHeader from '../../Component/CustomHeader/CustomHeader';
 import {firestore} from '../../firebase/firebaseconfig';
 import {styles} from './style';
 
-type Offer = {
-  id: string;
-  nameEng: string;
-  descriptionEng: string;
-  img: string;
-  selectedCity: string;
-  selectedVenue: string;
-};
 
-const selected_venues: React.FC<{route:any}>= ({route}) => {
+const SelectedVenues: React.FC<{route:any}>= ({route}) => {
   const navigation = useNavigation<any>();
   const {item} = route.params;
   const [searchQuery, setSearchQuery] = useState('');
-  const [filteredItems, setFilteredItems] = useState<Offer[]>([]);
+  const [filteredItems, setFilteredItems] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchOffers = async () => {
@@ -37,10 +29,6 @@ const selected_venues: React.FC<{route:any}>= ({route}) => {
           id: doc.id,
           ...doc.data(),
         }));
-
-        // console.log('🔥 All Brands Data:', BrandsData);
-
-        // Filter based on selected category
         const matchedItems = BrandsData.filter(
           data =>
             data.selectedVenue?.toLowerCase() === item.venueName?.toLowerCase(),
@@ -111,4 +99,4 @@ const selected_venues: React.FC<{route:any}>= ({route}) => {
   );
 };
 
-export default selected_venues;
+export default SelectedVenues;

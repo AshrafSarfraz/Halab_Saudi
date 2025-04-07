@@ -20,9 +20,10 @@ export default StyleSheet.create({
     padding: 3,
   },
   image: {
-    width: width * 0.4, // Adjust image size according to screen width
-    height: width * 0.4,
+    width: width * 0.42, // Adjust image size according to screen width
+    height: width * 0.42,
     resizeMode: 'contain',
+    borderRadius:20
   },
   cate_txt: {
     marginTop: 7,

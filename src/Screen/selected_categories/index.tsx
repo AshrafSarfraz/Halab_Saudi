@@ -13,6 +13,7 @@ import {Search} from '../../Themes/Images';
 import CustomHeader from '../../Component/CustomHeader/CustomHeader';
 import {firestore} from '../../firebase/firebaseconfig';
 import {styles} from './style';
+import { fetchBrandsFromFirebase } from '../../firebase/firebaseutils';
 
 type Offer = {
   id: string;
@@ -27,42 +28,58 @@ type Offer = {
 
 
 
-const selected_categories: React.FC<{route:any}>= ({route}) => {
+const SelectedCategories: React.FC<{route:any}>= ({route}) => {
   const navigation = useNavigation<any>();
   const {item} = route.params;
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredItems, setFilteredItems] = useState<Offer[]>([]);
-
-  useEffect(() => {
-    const fetchOffers = async () => {
-      try {
-        const snapshot = await firestore().collection('Brands').get();
-        const BrandsData = snapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-
-        // console.log('🔥 All Brands Data:', BrandsData);
-
-        // Filter based on selected category
-        const matchedItems = BrandsData.filter(
-          data =>
+  const [loading, setLoading] = useState(true);
+   
+     useEffect(() => {
+       const getBrands = async () => {
+         setLoading(true);
+         const fetchedBrands = await fetchBrandsFromFirebase();
+         const matchedItems = fetchedBrands.filter(data =>
             data.selectedCategory?.toLowerCase() === item.text?.toLowerCase(),
         );
+        setFilteredItems(matchedItems)
+         setLoading(false);
+       };
+   
+       getBrands();
+     }, []);
+     const searchFiltered = filteredItems.filter(entry =>
+      entry.nameEng?.toLowerCase().includes(searchQuery.toLowerCase()),
+    );
 
-        setFilteredItems(matchedItems);
-      } catch (error) {
-        console.error('❌ Error fetching offers:', error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchOffers = async () => {
+  //     try {
+  //       const snapshot = await firestore().collection('Brands').get();
+  //       const BrandsData = snapshot.docs.map(doc => ({
+  //         id: doc.id,
+  //         ...doc.data(),
+  //       }));
 
-    fetchOffers();
-  }, [item.text]);
+  //       // console.log('🔥 All Brands Data:', BrandsData);
+
+  //       // Filter based on selected category
+  //       const matchedItems = BrandsData.filter(
+  //         data =>
+  //           data.selectedCategory?.toLowerCase() === item.text?.toLowerCase(),
+  //       );
+
+  //       setFilteredItems(matchedItems);
+  //     } catch (error) {
+  //       console.error('❌ Error fetching offers:', error);
+  //     }
+  //   };
+
+  //   fetchOffers();
+  // }, [item.text]);
 
   // Filter by search
-  const searchFiltered = filteredItems.filter(entry =>
-    entry.nameEng?.toLowerCase().includes(searchQuery.toLowerCase()),
-  );
+  
 
   return (
     <View style={styles.container}>
@@ -115,4 +132,4 @@ const selected_categories: React.FC<{route:any}>= ({route}) => {
   );
 };
 
-export default selected_categories;
+export default SelectedCategories;

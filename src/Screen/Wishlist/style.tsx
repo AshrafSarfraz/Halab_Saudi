@@ -9,12 +9,11 @@ export default StyleSheet.create({
     flex: 1,
     padding: 10,
     backgroundColor: Colors.Bg,
-    marginTop:Platform.OS==='ios'?'0%':'5%'
-    
+    marginTop: Platform.OS === 'ios' ? 0 : 5,
   },
   Header_Txt: {
     marginHorizontal: '5%',
-    marginBottom: '3%',
+    marginBottom: 20,
     fontSize: 22,
     fontFamily: Fonts.SF_Bold,
     color: Colors.Green,
@@ -26,40 +25,64 @@ export default StyleSheet.create({
   },
   Flatlist_Cont: {
     flex: 1,
-    alignItems: 'center',
-    margin: 6,
+    width: width * 0.45, // Reduced width for better spacing
+    margin: 8,
     borderRadius: 10,
     backgroundColor: Colors.White,
-    height: Platform.OS==='ios'? 240:250,
-    borderWidth:0.5,
-    borderColor:'#E0E0E0',
-    overflow:'hidden'
-
+    height: Platform.OS === 'ios' ? 240 : 240,
+    alignItems:'flex-start',
+    borderColor: '#E0E0E0',
+    overflow: 'hidden',
+    shadowColor: '#000', // Adding shadow effect for iOS
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 5, // For Android shadow
   },
   image: {
-    width: width * 0.45, // Adjust image size according to screen width
-    height: width * 0.45,
-    resizeMode: 'contain',
+    width: '100%', // Adjust image size according to screen width
+    height: 150,
+    resizeMode: 'cover',
+    borderRadius:10,
+
   },
   cate_txt: {
-    marginVertical:7,
-    fontSize: 13,
+    fontSize: 16,
+    marginVertical: Platform.OS==='ios'?7:2,
     fontFamily: Fonts.SF_Bold,
-    color:Colors.Green,
+    color: Colors.Green,
+    marginHorizontal:"6%",
+  },
+  Type_Cont: {
+    backgroundColor: '#D0A700',
+    paddingHorizontal: '4%',
+    paddingVertical: 4,
+    borderRadius: 3,
+    marginHorizontal:"6%",
+  },
+  Type_Text: {
+    fontSize: 11,
+    lineHeight: 13,
+    color: Colors.White,
+    fontFamily: Fonts.SF_Medium,
   },
   Loc_Status_Cont: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '85%',
+    width: '100%',
+    marginTop: 8,
+    alignSelf:"center",
+    paddingHorizontal:"6%"
+    
   },
   Loc_Cont: {
     flexDirection: 'row',
     alignItems: 'center',
+    
   },
   LocationIcon: {
-    width: 14,
-    height: 14,
+    width: 12,
+    height: 12,
     resizeMode: 'contain',
     tintColor: Colors.Green,
   },
@@ -76,5 +99,16 @@ export default StyleSheet.create({
     fontFamily: Fonts.SF_Medium,
     lineHeight: 16,
     marginLeft: 5,
+  },
+  HeaderCont: {
+    alignItems:'flex-end',
+    marginBottom: '3%',
+    margin:10
+  },
+  HeartStyle: {
+    width: 40,
+    height: 40,
+    resizeMode: 'contain',
+    tintColor: 'red',
   },
 });

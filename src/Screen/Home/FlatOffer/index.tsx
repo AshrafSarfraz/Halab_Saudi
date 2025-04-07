@@ -1,41 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, Image, Dimensions, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, Image, Dimensions, TouchableOpacity, ActivityIndicator } from 'react-native';
 import styles from './style';
 import { useNavigation } from '@react-navigation/native';
 import { firestore } from '../../../firebase/firebaseconfig';
+import { fetchFlatOfferFromFirebase } from '../../../firebase/firebaseutils';
+import { Colors } from '../../../Themes/Colors';
 
 const { width } = Dimensions.get('screen');
-
-type slider={
-  id: string;
-  img: string;
-  discount: string;
-}
-
 
 const ImageSlider: React.FC<{navigation:any}> = () => {
   const navigation = useNavigation();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [offers, setOffers] = useState<slider[]>([]); // State to store Firestore data
+  const [offers, setOffers] = useState<any[]>([]); // State to store Firestore data
+  const [loading, setLoading] = useState(true);
 
-  // Fetch data from Firestore when component mounts
-  useEffect(() => {
-    const fetchOffers = async () => {
-      try {
-        const snapshot = await firestore().collection('FlatOffers').get();
-        const offersData = snapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-            // Set the data to state
-        setOffers(offersData);
-      } catch (error) {
-        console.error('Error fetching offers:', error);
-      }
+ useEffect(() => {
+    const getFlatOffer = async () => {
+      setLoading(true);
+      const fetchedBrands = await fetchFlatOfferFromFirebase();
+      setOffers(fetchedBrands);
+      setLoading(false);
     };
 
-    fetchOffers();
-  }, []); // Empty dependency array means it runs once on mount
+    getFlatOffer();
+  }, []);
 
   const handleScroll = (event: any) => {
     const slideIndex = Math.round(event.nativeEvent.contentOffset.x / width);
@@ -44,7 +32,9 @@ const ImageSlider: React.FC<{navigation:any}> = () => {
 
   return (
     <View style={styles.container}>
-      {/* Image Slider */}
+       {loading ? (
+              <ActivityIndicator size="small" color={Colors.Green} style={{ flex: 1 }} />
+            ) : (
       <FlatList
         data={offers} // Use Firestore data
         keyExtractor={(item) => item.id}
@@ -67,7 +57,7 @@ const ImageSlider: React.FC<{navigation:any}> = () => {
             </View>
           </TouchableOpacity>
         )}
-      />
+      />)}
 
       {/* Pagination Dots */}
       <View style={styles.pagination}>

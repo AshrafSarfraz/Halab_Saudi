@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { persistStore, persistReducer } from 'redux-persist';
 import { combineReducers } from 'redux';
 import languageReducer, { loadLanguage } from './languageSlice';
-
+import cartReducer from './cartSlice';
 // ✅ Persist config
 const persistConfig = {
   key: 'root',
@@ -12,6 +12,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   language: languageReducer,
+  cart: cartReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
