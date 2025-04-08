@@ -1,13 +1,10 @@
 import React from 'react';
 import { View, Text, Modal, TouchableOpacity, StyleSheet } from 'react-native';
-import { useTranslation } from 'react-i18next';
-import i18n from '../../../i18n';
 import { Colors } from '../../Themes/Colors';
 import { Fonts } from '../../Themes/Fonts';
+import { RootState } from '../../redux_toolkit/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { setLanguage } from '../../redux_toolkit/languageSlice';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { RootState } from '../../redux_toolkit/store'; // Import RootState for type safety
+import { switchLanguage } from '../../redux_toolkit/language/languageSlice'; // Import the switchLanguage action
 
 type LanProps = {
   visible: boolean;
@@ -15,39 +12,38 @@ type LanProps = {
 };
 
 const LanguageModal: React.FC<LanProps> = ({ visible, onClose }) => {
-  const { t } = useTranslation();
   const dispatch = useDispatch();
-  const language = useSelector((state: RootState) => state.language.language); // Type-safe selector
+  const language = useSelector((state: RootState) => state.language.language); // Get current language from the Redux store
 
-  const changeLanguage = async (lang: 'en' | 'ar') => {
-    await AsyncStorage.setItem('language', lang); // Save language persistently
-    i18n.changeLanguage(lang);
-    dispatch(setLanguage(lang)); // Update Redux state
-    onClose();
+  const handleLanguageChange = (newLanguage: 'en' | 'ar') => {
+    dispatch(switchLanguage(newLanguage)); // Dispatch the switchLanguage action
+    onClose(); // Close the modal
   };
 
   return (
     <Modal transparent visible={visible} animationType="fade">
       <View style={styles.overlay}>
         <View style={styles.container}>
-          <Text style={styles.headerText}>{t('language')}</Text>
+          <Text style={{ fontSize: 18 }}>
+            {language === 'en' ? 'Login' : 'تسجيل الدخول'} 
+          </Text>
 
           <TouchableOpacity 
             style={[styles.languageButton, language === 'en' && styles.selectedButton]} 
-            onPress={() => {changeLanguage('en'),onClose()}}
+            onPress={() => handleLanguageChange('en')}
           >
             <Text style={styles.languageText}>English</Text>
           </TouchableOpacity>
 
           <TouchableOpacity 
             style={[styles.languageButton, language === 'ar' && styles.selectedButton]} 
-            onPress={() => {changeLanguage('ar'),onClose()}}
+            onPress={() => handleLanguageChange('ar')}
           >
             <Text style={styles.languageText}>العربية</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-            <Text style={styles.closeButtonText}>{t('cancel')}</Text>
+            <Text style={styles.closeButtonText}>Close</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -61,13 +57,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.8)',
-   
   },
   container: {
     backgroundColor: 'white',
-    paddingTop:30,
+    paddingTop: 30,
     width: '85%',
-    height:300,
+    height: 300,
     borderRadius: 12,
     alignItems: 'center',
     elevation: 5,
@@ -81,16 +76,16 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.SF_Bold,
     color: Colors.Black,
     marginBottom: 15,
-    lineHeight:30
+    lineHeight: 30,
   },
   languageButton: {
-    backgroundColor: Colors.Green,
+    backgroundColor: 'green',
     width: '80%',
-    height:60,
+    height: 60,
     borderRadius: 8,
     alignItems: 'center',
     marginVertical: 8,
-    justifyContent:"center"
+    justifyContent: 'center',
   },
   selectedButton: {
     backgroundColor: Colors.Green, // Highlight selected language

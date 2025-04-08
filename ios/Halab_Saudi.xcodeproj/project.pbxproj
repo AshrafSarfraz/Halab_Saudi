@@ -18,7 +18,7 @@
 		A0E63EE4858E27FF625331C5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		AB1396D54F1F49D0A881992F /* SF-Pro-Rounded-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6100AF2CC386492D8E5A72F4 /* SF-Pro-Rounded-Bold.otf */; };
 		B41E62DCDD6A4F9C9ABD87CB /* SF-Pro-Rounded-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15BD20488C9547A48B62DD76 /* SF-Pro-Rounded-Black.otf */; };
-		BDCC806A2DA032E200FC9DE4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDCC80692DA032E200FC9DE4 /* GoogleService-Info.plist */; };
+		BDDC5F0E2DA402BC000CBD7A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDDC5F0D2DA402BC000CBD7A /* GoogleService-Info.plist */; };
 		C6FB1FD3F616244C0FA03674 /* Pods_Halab_Saudi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE90D86FD8B720E90911FE7 /* Pods_Halab_Saudi.framework */; };
 		C72FFF2077E048F694DFFF13 /* SF-Pro-Rounded-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F53311F05D8461286D4428C /* SF-Pro-Rounded-Ultralight.otf */; };
 		EE408B20FAF44FE38DCDED3E /* SF-Pro-Rounded-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = F4A3A8A58E874F5280B459B7 /* SF-Pro-Rounded-Light.otf */; };
@@ -38,7 +38,8 @@
 		8D93CA8636CD395BB297BC77 /* Pods-Halab_Saudi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Halab_Saudi.debug.xcconfig"; path = "Target Support Files/Pods-Halab_Saudi/Pods-Halab_Saudi.debug.xcconfig"; sourceTree = "<group>"; };
 		A4A16EDD0C5543B78EBD6900 /* SF-Pro-Rounded-Heavy.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Heavy.otf"; path = "../src/Assests/Fonts/SF-Pro-Rounded-Heavy.otf"; sourceTree = "<group>"; };
 		A8C474C832104825BD4B78EA /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Semibold.otf"; path = "../src/Assests/Fonts/SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
-		BDCC80692DA032E200FC9DE4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BDDC5F0D2DA402BC000CBD7A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BDDC5F0F2DA4092F000CBD7A /* Halab_Saudi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Halab_Saudi.entitlements; path = Halab_Saudi/Halab_Saudi.entitlements; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F4A3A8A58E874F5280B459B7 /* SF-Pro-Rounded-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Light.otf"; path = "../src/Assests/Fonts/SF-Pro-Rounded-Light.otf"; sourceTree = "<group>"; };
 		F5FED17BE90C40B082EB6FEC /* SF-Pro-Rounded-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Regular.otf"; path = "../src/Assests/Fonts/SF-Pro-Rounded-Regular.otf"; sourceTree = "<group>"; };
@@ -62,7 +63,8 @@
 		13B07FAE1A68108700A75B9A /* Halab_Saudi */ = {
 			isa = PBXGroup;
 			children = (
-				BDCC80692DA032E200FC9DE4 /* GoogleService-Info.plist */,
+				BDDC5F0F2DA4092F000CBD7A /* Halab_Saudi.entitlements */,
+				BDDC5F0D2DA402BC000CBD7A /* GoogleService-Info.plist */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				761780EC2CA45674006654EE /* AppDelegate.swift */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -200,7 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDCC806A2DA032E200FC9DE4 /* GoogleService-Info.plist in Resources */,
+				BDDC5F0E2DA402BC000CBD7A /* GoogleService-Info.plist in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				A0E63EE4858E27FF625331C5 /* PrivacyInfo.xcprivacy in Resources */,
@@ -324,6 +326,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Halab_Saudi/Halab_Saudi.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BL7628DU9X;
 				ENABLE_BITCODE = NO;
@@ -353,6 +356,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Halab_Saudi/Halab_Saudi.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BL7628DU9X;
 				INFOPLIST_FILE = Halab_Saudi/Info.plist;

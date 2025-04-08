@@ -3,7 +3,7 @@ import { Colors } from "../../../Themes/Colors";
 import { Fonts } from "../../../Themes/Fonts";
 
 
-export const styles = StyleSheet.create({
+export const getStyles=(language:string)=> StyleSheet.create({
     MainCont: {
       backgroundColor: Colors.Bg,
       flexGrow: 1,
@@ -14,10 +14,12 @@ export const styles = StyleSheet.create({
      height:50,
      marginBottom:"1%",
      paddingHorizontal:"1%",
+     alignItems:language==='en'?'flex-start':'flex-end'
     },
     BackIcon:{
      width:25,height:25,
-     tintColor:Colors.Green
+     tintColor:Colors.Green,
+     transform:language==='en'?[{scaleX:1}]:[{scaleX:-1}]
     },
     Logo: {
       width: 120,
@@ -38,8 +40,17 @@ export const styles = StyleSheet.create({
       color: Colors.Black,
       alignSelf: 'center',
       lineHeight: 26,
-      marginTop: '8%',
+      marginTop: '5%',
       marginBottom: '1%',
+    },
+    PhoneNumber:{
+      fontFamily: Fonts.SF_Medium,
+      fontSize: 20,
+      color: Colors.Green,
+      alignSelf: 'center',
+      lineHeight: 26,
+      marginTop: '1%',
+      marginBottom: '6%'
     },
     inputContainer: {
       flexDirection: 'row',

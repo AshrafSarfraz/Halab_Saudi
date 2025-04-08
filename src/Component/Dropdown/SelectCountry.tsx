@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Colors } from '../../Themes/Colors';
 import { DropdownIcon } from '../../Themes/Images';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux_toolkit/store';
 
 type Country = {
   name: string;
@@ -23,6 +25,8 @@ const CountryDropdown: React.FC<Props> = ({ onSelectCountry }) => {
   const [dropdown, setDropdown] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState<Country>(countryOptions[0]);
 
+  const language = useSelector((state: RootState) => state.language.language);
+
   const handleSelectCountry = (country: Country) => {
     setSelectedCountry(country);
     setDropdown(false);
@@ -32,9 +36,12 @@ const CountryDropdown: React.FC<Props> = ({ onSelectCountry }) => {
   return (
     <View style={styles.Dropdown_Cont}>
       {/* Dropdown Button */}
-      <TouchableOpacity style={styles.Dropdown_Btn} onPress={() => setDropdown(!dropdown)}>
+      <TouchableOpacity
+        style={[styles.Dropdown_Btn,{flexDirection:language==='en'?'row':'row-reverse'}]}
+        onPress={() => setDropdown(!dropdown)}
+      >
         <Image source={selectedCountry.image} style={styles.flag} />
-        <Text style={styles.selectedText}>{selectedCountry.name} ({selectedCountry.code})</Text>
+        <Text style={styles.selectedText}>({selectedCountry.code})</Text>
         <Image source={DropdownIcon} style={styles.dropdown_Icon} />
       </TouchableOpacity>
 
@@ -48,7 +55,7 @@ const CountryDropdown: React.FC<Props> = ({ onSelectCountry }) => {
               onPress={() => handleSelectCountry(country)}
             >
               <Image source={country.image} style={styles.flag} />
-              <Text style={styles.dropdownText}>{country.name} ({country.code})</Text>
+              <Text style={styles.dropdownText}>({country.code})</Text>
             </TouchableOpacity>
           ))}
         </View>
@@ -59,70 +66,57 @@ const CountryDropdown: React.FC<Props> = ({ onSelectCountry }) => {
 
 const styles = StyleSheet.create({
   Dropdown_Cont: {
-    backgroundColor: 'ffffff',
-    width: '100%',
     alignSelf: 'center',
+    width: 85,
   },
   Dropdown_Btn: {
-    flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: 2,
-    borderColor: Colors.grey1,
-    paddingVertical: 12,
-    paddingHorizontal: 15,
-    borderRadius: 8,
-    marginBottom:'3%',
-    width: '100%',
-    height:60,
+    paddingHorizontal: 5,
+    paddingVertical: 6, // Added vertical padding to make it look less cramped
+    borderRadius: 4,
+    height: 50,
     justifyContent: 'space-between',
-    backgroundColor: '#f4f4f4',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
+
     shadowRadius: 4,
-    elevation: 2, // For Android shadow
   },
   dropdown_Icon: {
-    width: 15,
-    height: 15,
+    width: 12,
+    height: 12,
     tintColor: Colors.Black,
   },
   flag: {
-    width: 24,
-    height: 24,
-    marginRight: 8,
+    width: 16,
+    height: 16,
+    marginRight: 6,
   },
   selectedText: {
-    fontSize: 16,
+    fontSize: 10,
     fontWeight: '500',
     color: Colors.Black,
     flex: 1, // Push the icon to the right
   },
   dropdown_Container: {
     position: 'absolute',
-    top: 60, // Positioning below the button
+    top: 54, // Positioning dropdown slightly lower for better spacing
     left: 0,
     right: 0,
-    backgroundColor: 'white',
-    borderRadius: 8,
+    backgroundColor: '#ffffff',
+    borderRadius: 4,
+    zIndex: 10,
     borderWidth: 1,
     borderColor: Colors.grey1,
-    paddingVertical: 5,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3, // For Android shadow
-    zIndex: 10,
+    elevation: 4, // Adding shadow for Android
   },
   Dropdown_ContItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 15,
+    paddingHorizontal: 10,
+    height:50,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.grey1,
   },
   dropdownText: {
-    fontSize: 16,
+    fontSize: 10,
     color: Colors.Black,
   },
 });

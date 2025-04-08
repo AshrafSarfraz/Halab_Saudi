@@ -2,12 +2,12 @@ import {StyleSheet} from 'react-native'
 import { Colors } from '../../../Themes/Colors';
 import { Fonts } from '../../../Themes/Fonts';
 
-export const styles = StyleSheet.create({
+export const getStyles =(language: string)=> StyleSheet.create({
     MainContainer: {
       backgroundColor: Colors.Bg,
       padding: 10,
       paddingHorizontal:'5%',
-      paddingTop:'20%',
+      paddingTop:'22%',
       flexGrow: 1,
     },
     H_Logo: {
@@ -32,15 +32,14 @@ export const styles = StyleSheet.create({
      
     },
     InputContainer: {
-      marginTop:'7%',
+      marginTop:'8%',
+      
   
     },
     Input_Field: {
-      flexDirection: 'row',
-      alignItems: 'center',
+      alignItems: 'flex-start',
       height:60,
       backgroundColor:Colors.White4,
-      elevation:1,
       borderWidth:2,
       borderColor:Colors.grey1,
       borderRadius: 10,
@@ -54,18 +53,39 @@ export const styles = StyleSheet.create({
        backgroundColor:Colors.White
   
     },
-    Input_Icon: {
-      width: 20,
-      height: 20,
-      marginRight: 10,
-      tintColor: Colors.Grey9,
+    PhoneInput_Field:{
+      flexDirection: language==='en'?'row':'row-reverse',
+      alignItems: 'center',
+      height:60,
+      backgroundColor:Colors.White4,
+      borderWidth:2,
+      borderColor:Colors.grey1,
+      borderRadius: 10,
+      paddingHorizontal: 6,
+      paddingVertical: 6,
+      marginBottom: 14,
+      zIndex:10
     },
     User_Input: {
       flex: 1,
-      fontSize: 16,
+      width:"100%",
+      fontSize: 14,
       color: Colors.Black2,
+      lineHeight:18,
+      textAlign:language==='en'?'left':'right'
     },
+    PhoneNumber_Input:{
+      textAlign:language==='en'?'left':'right',
+      fontSize: 14,
+      color: Colors.Black2,
+      paddingHorizontal:"3%",
+      borderLeftWidth:language==='en'?1:0,
+      borderRightWidth:language==='en'?0:1,
+      borderColor:Colors.Grey9,
+      width:200,
+      height:59,
 
+    },
     SignUp_Btn:{
      marginVertical:'10%',
     },
@@ -87,7 +107,14 @@ export const styles = StyleSheet.create({
       fontSize: 16,
       fontWeight: "bold",
       color: Colors.Black2
+    },
+    Error:{
+      marginTop: 10,
+      fontSize: 12,
+      fontWeight: 'bold',
+      color:'red'
     }
+  
     
 
     

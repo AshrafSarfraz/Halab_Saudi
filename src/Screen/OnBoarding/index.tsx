@@ -2,30 +2,80 @@ import React, { useState, useRef } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import CustomButton from '../../Component/CustomButton/CustomButton';
-import { styles } from './style';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { getSlidesData } from './DummyData';
-import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux_toolkit/store';
+import { Colors } from '../../Themes/Colors';
+import { getStyles } from './style';
+
+const languageData = {
+  en: {
+    restaurants_discounts: {
+      title: "Restaurants Discounts",
+      text: "Hala B Saudi offers exclusive discounts at top restaurants, cafés, and food chains within Doha, Morocco, Egypt, and many other countries, letting you enjoy diverse cuisines and unforgettable dining experiences on your travels."
+    },
+    shopping_discounts: {
+      title: "Shopping & Discounts",
+      text: "Shop and Save Anywhere You Go! Hala B Saudi gives you exclusive discounts at top retail stores, boutiques, and global brands. Enjoy incredible deals while shopping for fashion, electronics, gifts, and more at your travel destinations."
+    },
+    hotels_discounts: {
+      title: "Hotels Discounts",
+      text: "Stay in Comfort and Save! Exclusive discounts on top hotels and luxury accommodations worldwide. Enjoy exceptional hospitality and premium stays at unbeatable rates during your travels."
+    }
+  },
+  ar: {
+    restaurants_discounts: {
+      title: "خصومات المطاعم",
+      text: "تقدم هلا بي السعودية خصومات حصرية في أفضل المطاعم والمقاهي وسلاسل الطعام في الدوحة والمغرب ومصر والعديد من الدول الأخرى، مما يتيح لك الاستمتاع بمأكولات متنوعة وتجارب طعام لا تُنسى خلال رحلاتك."
+    },
+    shopping_discounts: {
+      title: "التسوق والخصومات",
+      text: "تسوق وادخر في أي مكان تذهب إليه! تقدم لك هلا بي السعودية خصومات حصرية في أفضل المتاجر والبوتيكات والعلامات التجارية العالمية. استمتع بعروض مذهلة أثناء التسوق لشراء الأزياء والإلكترونيات والهدايا والمزيد في وجهات سفرك."
+    },
+    hotels_discounts: {
+      title: "خصومات الفنادق",
+      text: "أقم براحة وادخر! خصومات حصرية على أفضل الفنادق وأماكن الإقامة الفاخرة حول العالم. استمتع بضيافة استثنائية وإقامة فاخرة بأسعار لا تُقارن خلال رحلاتك."
+    }
+  }
+};
 
 type OnBoardingProps = {
   navigation: NativeStackNavigationProp<any>;
 };
 
-type SlideItem = {
-  Title: string;
-  text: string;
-  image: any;
-  backgroundColor: string;
-};
-
 const OnBoarding: React.FC<OnBoardingProps> = ({ navigation }) => {
-  const { t } = useTranslation();
-  const slides = getSlidesData(); // Call inside the component
-
   const [showRealApp, setShowRealApp] = useState(false);
-  const sliderRef = useRef<AppIntroSlider<SlideItem>>(null);
+  const sliderRef = useRef<AppIntroSlider<any>>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const language = useSelector((state: RootState) => state.language.language); // Get the current language from Redux
+ 
+  const styles = getStyles(language);
+ 
+  const slides = [
+    {
+      key: 1,
+      Title: languageData[language].restaurants_discounts.title, // Fetch title based on language
+      text: languageData[language].restaurants_discounts.text,   // Fetch text based on language
+      image: require('../../Assests/Images/slider1.png'),
+      backgroundColor: Colors.Bg,
+    },
+    {
+      key: 2,
+      Title: languageData[language].shopping_discounts.title, // Fetch title based on language
+      text: languageData[language].shopping_discounts.text,   // Fetch text based on language
+      image: require('../../Assests/Images/slider2.png'),
+      backgroundColor: Colors.Bg,
+    },
+    {
+      key: 3,
+      Title: languageData[language].hotels_discounts.title, // Fetch title based on language
+      text: languageData[language].hotels_discounts.text,   // Fetch text based on language
+      image: require('../../Assests/Images/slider3.png'),
+      backgroundColor: Colors.Bg,
+    }
+  ];
 
   const handleNextSlide = () => {
     if (currentIndex < slides.length - 1) {
@@ -41,7 +91,7 @@ const OnBoarding: React.FC<OnBoardingProps> = ({ navigation }) => {
     }
   };
 
-  const renderItem = ({ item, index }: { item: SlideItem; index: number }) => {
+  const renderItem = ({ item, index }: { item: any; index: number }) => {
     const isLastSlide = index === slides.length - 1;
     const isFirstSlide = index === 0;
 
@@ -49,12 +99,12 @@ const OnBoarding: React.FC<OnBoardingProps> = ({ navigation }) => {
       <SafeAreaView style={[styles.slide, { backgroundColor: item.backgroundColor }]}>
         {!isFirstSlide && (
           <TouchableOpacity style={styles.prevButton} onPress={handlePrevSlide}>
-            <Image source={require('../../Assests/Icons/Back.png')} style={styles.Back_Icon} />
+            <Image source={require('../../Assests/Icons/Back.png')} style={styles.backIcon} />
           </TouchableOpacity>
         )}
         <Image source={item.image} style={styles.image} resizeMode="contain" />
         <View style={{ height: 170, justifyContent: 'center', alignItems: 'center', width: '85%' }}>
-          <Text style={styles.Title}>{item.Title}</Text>
+          <Text style={styles.title}>{item.Title}</Text>
           <Text style={styles.description}>{item.text}</Text>
         </View>
         <View style={styles.paginationContainer}>
@@ -66,7 +116,7 @@ const OnBoarding: React.FC<OnBoardingProps> = ({ navigation }) => {
           ))}
         </View>
         <View style={styles.buttonContainer}>
-          <CustomButton title={t('next')} onPress={isLastSlide ? () => navigation.navigate('Login') : handleNextSlide} />
+          <CustomButton title={"Next"} onPress={isLastSlide ? () => navigation.navigate('Login') : handleNextSlide} />
         </View>
       </SafeAreaView>
     );
@@ -80,7 +130,7 @@ const OnBoarding: React.FC<OnBoardingProps> = ({ navigation }) => {
         <AppIntroSlider
           ref={sliderRef}
           renderItem={renderItem}
-          data={slides} // Use slides instead of SlidesData
+          data={slides} // Use slides array instead of SlidesData
           initialNumToRender={slides.length}
           onSlideChange={(index) => setCurrentIndex(index)}
           renderNextButton={() => null}

@@ -32,7 +32,7 @@ const CustomCheckbox: React.FC<CheckboxProps> = ({ label, onPress, isChecked, li
           {linkText} 
         </Text>
         <Text style={styles.label} onPress={onLinkPress}>
-        {t('and')}
+        {t(' and ')}
         </Text>
         <Text style={styles.linkText} onPress={onLinkPress1}>
           {linkTerm} 
@@ -49,17 +49,19 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: 5,
+    marginBottom:30
   },
   checkbox: {
-    width: 24,
-    height: 24,
+    width: 20,
+    height: 20,
     borderWidth: 2,
     borderColor: Colors.grey1, // ✅ Default grey border
     borderRadius: 6,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 10,
+  
   },
   checked: {
     borderColor: Colors.Green,
