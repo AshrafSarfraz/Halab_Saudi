@@ -40,7 +40,7 @@ export const getStyles = (language: string) =>
       textAlign: 'center',
       fontFamily: language === 'en' ? Fonts.SF_Bold : undefined,
       color: Colors.Black,
-      lineHeight: 28,
+      lineHeight: language==='en'?28:40,
       marginTop: '3%',
       marginBottom: '2%',
     },

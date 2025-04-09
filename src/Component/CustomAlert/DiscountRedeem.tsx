@@ -1,45 +1,81 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
   Modal,
-  TouchableOpacity,
   StyleSheet,
   Image,
+  StatusBar,
 } from 'react-native';
 import {Colors} from '../../Themes/Colors';
 import {Fonts} from '../../Themes/Fonts';
-import {Giftpack, Remove} from '../../Themes/Images';
+import {Giftpack} from '../../Themes/Images';
 import CustomButton from '../CustomButton/CustomButton';
+import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 
 type LanProps = {
   visible: boolean;
   onClose: () => void;
+  discount: number; 
 };
 
-const Discount_Redeem: React.FC<LanProps> = ({visible, onClose}) => {
+const Discount_Redeem: React.FC<LanProps> = ({visible, onClose,discount}) => {
+  const [discountCode, setDiscountCode] = useState('');
+
+  useEffect(() => {
+    if (visible) {
+      setDiscountCode(generateCode());
+    }
+  }, [visible]);
+
+  const generateCode = () => {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    return Array.from({length: 6}, () =>
+      chars.charAt(Math.floor(Math.random() * chars.length)),
+    ).join('');
+  };
+
+  const handleRedeem = async () => {
+    const user = auth().currentUser;
+    if (user) {
+      await firestore()
+        .collection('users')
+        .doc(user.uid)
+        .collection('redeemed_discounts')
+        .add({
+          code: discountCode,
+          percentage: `-${discount}%`,
+          createdAt: firestore.FieldValue.serverTimestamp(),
+        });
+    }
+    onClose();
+  };
+
   return (
     <Modal transparent visible={visible} animationType="fade">
+        <StatusBar hidden={true} translucent={true} animated={true} />
       <View style={styles.overlay}>
         <View style={styles.container}>
           <Image
-            style={{width: 150, height: 150, resizeMode: 'cover',marginVertical:20}}
+            style={{width: 150, height: 150, resizeMode: 'cover', marginVertical: 20}}
             source={Giftpack}
           />
           <Text style={styles.header_Text}>Your discount code is :</Text>
-          <Text style={styles.code_Text}>SKVMMY</Text>
-          <Text style={styles.dis_Text}>-15%</Text>
+          <Text style={styles.code_Text}>{discountCode}</Text>
+          <Text style={styles.dis_Text}>-{discount}%</Text>
           <Text style={styles.desc_Text}>
             This is single use of code for your use only. Get a new code each
             time you open the App
           </Text>
 
-          <CustomButton onPress={onClose} title="Redeem" />
+          <CustomButton onPress={handleRedeem} title="Redeem" />
         </View>
       </View>
     </Modal>
   );
 };
+
 
 const styles = StyleSheet.create({
   overlay: {

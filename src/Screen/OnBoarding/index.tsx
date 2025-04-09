@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StatusBar } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import CustomButton from '../../Component/CustomButton/CustomButton';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -8,8 +8,9 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../redux_toolkit/store';
 import { Colors } from '../../Themes/Colors';
 import { getStyles } from './style';
+import { languageData } from '../../redux_toolkit/language/languageSlice';
 
-const languageData = {
+const langData = {
   en: {
     restaurants_discounts: {
       title: "Restaurants Discounts",
@@ -56,22 +57,22 @@ const OnBoarding: React.FC<OnBoardingProps> = ({ navigation }) => {
   const slides = [
     {
       key: 1,
-      Title: languageData[language].restaurants_discounts.title, // Fetch title based on language
-      text: languageData[language].restaurants_discounts.text,   // Fetch text based on language
+      Title: langData[language].restaurants_discounts.title, // Fetch title based on language
+      text: langData[language].restaurants_discounts.text,   // Fetch text based on language
       image: require('../../Assests/Images/slider1.png'),
       backgroundColor: Colors.Bg,
     },
     {
       key: 2,
-      Title: languageData[language].shopping_discounts.title, // Fetch title based on language
-      text: languageData[language].shopping_discounts.text,   // Fetch text based on language
+      Title: langData[language].shopping_discounts.title, // Fetch title based on language
+      text: langData[language].shopping_discounts.text,   // Fetch text based on language
       image: require('../../Assests/Images/slider2.png'),
       backgroundColor: Colors.Bg,
     },
     {
       key: 3,
-      Title: languageData[language].hotels_discounts.title, // Fetch title based on language
-      text: languageData[language].hotels_discounts.text,   // Fetch text based on language
+      Title: langData[language].hotels_discounts.title, // Fetch title based on language
+      text: langData[language].hotels_discounts.text,   // Fetch text based on language
       image: require('../../Assests/Images/slider3.png'),
       backgroundColor: Colors.Bg,
     }
@@ -97,6 +98,7 @@ const OnBoarding: React.FC<OnBoardingProps> = ({ navigation }) => {
 
     return (
       <SafeAreaView style={[styles.slide, { backgroundColor: item.backgroundColor }]}>
+          <StatusBar hidden={true} translucent={true} animated={true} />
         {!isFirstSlide && (
           <TouchableOpacity style={styles.prevButton} onPress={handlePrevSlide}>
             <Image source={require('../../Assests/Icons/Back.png')} style={styles.backIcon} />
@@ -116,7 +118,7 @@ const OnBoarding: React.FC<OnBoardingProps> = ({ navigation }) => {
           ))}
         </View>
         <View style={styles.buttonContainer}>
-          <CustomButton title={"Next"} onPress={isLastSlide ? () => navigation.navigate('Login') : handleNextSlide} />
+          <CustomButton title={languageData[language].next} onPress={isLastSlide ? () => navigation.navigate('Login') : handleNextSlide} />
         </View>
       </SafeAreaView>
     );

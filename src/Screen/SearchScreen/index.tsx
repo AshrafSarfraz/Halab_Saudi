@@ -8,13 +8,17 @@ import {
   TouchableOpacity,
   SafeAreaView,
   ActivityIndicator,
+  StatusBar,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { styles } from './style';
+
 import CustomHeader from '../../Component/CustomHeader/CustomHeader';
 import { Search } from '../../Themes/Images';
 import { fetchBrandsFromFirebase } from '../../firebase/firebaseutils';
 import { Colors } from '../../Themes/Colors';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux_toolkit/store';
+import { getStyles } from './style';
 
 
 
@@ -23,9 +27,12 @@ const SearchScreen: React.FC= () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [brands, setBrands] = useState<any[]>([]);
   const navigation = useNavigation();
-
-   const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
  
+  const language = useSelector((state: RootState) => state.language.language); // Get the current language from Redux
+  const styles = getStyles(language);
+
+
    useEffect(() => {
      const getBrands = async () => {
        setLoading(true);
@@ -43,6 +50,7 @@ const SearchScreen: React.FC= () => {
 
   return (
     <View style={styles.container}>
+        <StatusBar hidden={true} translucent={true} animated={true} />
     <SafeAreaView style={{flex: 1}}>
       <CustomHeader
         title={'Search'}

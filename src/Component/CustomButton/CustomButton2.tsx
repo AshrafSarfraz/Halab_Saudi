@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     color: Colors.Green,
     fontSize: 16,
     fontWeight: 'bold',
-    lineHeight:20
+    lineHeight:22
   },
 });
 

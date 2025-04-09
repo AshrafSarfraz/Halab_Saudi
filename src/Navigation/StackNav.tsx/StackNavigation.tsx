@@ -14,6 +14,7 @@ import Reedem_His from '../../Screen/Reedem_Histroy';
 import SelectedCategories from '../../Screen/selected_categories';
 import SelectedVenues from '../../Screen/selected_venues';
 import auth from '@react-native-firebase/auth';
+import AccountScreen from '../../Screen/AccountScreen';
 
 type RootStackParamList = {
   SplashBlank: undefined;
@@ -28,6 +29,7 @@ type RootStackParamList = {
   ReedemHistroy: undefined;
   CategoriesScreen: undefined;
   SelectedVenue: undefined;
+  AccountScreen:undefined;
 };
 type SplashScreenProps = {
   navigation?: any;
@@ -71,6 +73,7 @@ const StackNavigation: React.FC = () => {
         <Stack.Screen name='ReedemHistroy' component={Reedem_His} />
         <Stack.Screen name='CategoriesScreen' component={SelectedCategories} />
         <Stack.Screen name='SelectedVenue' component={SelectedVenues} />
+        <Stack.Screen name='AccountScreen' component={AccountScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, StatusBar } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Colors } from '../../../Themes/Colors';
 import { Full_logo_w } from '../../../Themes/Images';
@@ -19,6 +19,7 @@ const Splash_Screen: React.FC<SplashScreenProps> = ({ navigation }) => {
 
   return (
     <View style={styles.Main_Container}>
+        <StatusBar hidden={true} translucent={true} animated={true} />
       <View style={styles.Body}>
         <Image source={Full_logo_w} style={styles.Logo_Img} />
        

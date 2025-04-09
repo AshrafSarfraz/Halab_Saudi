@@ -9,7 +9,7 @@ export default StyleSheet.create({
     flex: 1,
     padding: 10,
     backgroundColor: Colors.Bg,
-    marginTop: Platform.OS === 'ios' ? 0 : 5,
+    marginTop: Platform.OS === 'ios' ? 0 : '8%',
   },
   Header_Txt: {
     marginHorizontal: '5%',

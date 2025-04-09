@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Modal, TouchableOpacity, StyleSheet, TextInput, Alert } from 'react-native';
+import { View, Text, Modal, TouchableOpacity, StyleSheet, TextInput, Alert, StatusBar } from 'react-native';
 import { Colors } from '../../Themes/Colors';
 import { Fonts } from '../../Themes/Fonts';
 
@@ -15,6 +15,7 @@ const Pin_Modal: React.FC<Props> = ({ visible, onClose, onSubmit }) => {
 
   return (
     <Modal transparent visible={visible} animationType="fade">
+        <StatusBar hidden={true} translucent={true} animated={true} />
       <View style={styles.overlay}>
         <View style={styles.container}>
           <Text style={styles.headerText}>Enter Pin</Text>
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: Fonts.SF_Bold,
     color: Colors.Black,
-    marginBottom: 25,
+    marginBottom: 10,
   },
    InputField:{
     borderWidth:2,
@@ -86,11 +87,11 @@ const styles = StyleSheet.create({
   languageButton: {
     backgroundColor: Colors.Green,
     width: '85%',
-    paddingVertical: 12,
     borderRadius: 8,
     alignItems: 'center',
-    marginVertical: 8,
-    height:45,
+    justifyContent:"center",
+    marginVertical: 4,
+    height:55,
   },
   languageText: {
     color: Colors.White,
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.SF_Bold,
   },
   closeButton: {
-    marginTop: 10,
+    marginTop: 8,
     paddingVertical: 8,
     paddingHorizontal: 20,
   },

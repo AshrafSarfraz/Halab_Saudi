@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, StatusBar } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Colors } from '../../../Themes/Colors';
 
@@ -15,7 +15,11 @@ const Splash_Blank: React.FC<SplashBlankProps> = ({ navigation }) => {
     return () => clearTimeout(timeout);
   }, [navigation]);
 
-  return <View style={styles.Main_Container} />;
+  return (
+    <View style={styles.Main_Container}>
+      <StatusBar hidden={true} translucent={true} animated={true} />
+    </View>
+  );
 };
 
 export default Splash_Blank;

@@ -16,13 +16,12 @@ export const getStyles=(language:String)=>  StyleSheet.create({
   Flatlist_Cont: {
     flex: 1,
     alignItems: 'center',
-    margin: 5,
     borderRadius: 10,
-    padding: 3,
+    padding: 1,
   },
   image: {
-    width: width * 0.42, // Adjust image size according to screen width
-    height: width * 0.42,
+    width: width * 0.43, // Adjust image size according to screen width
+    height: width * 0.43,
     resizeMode: 'contain',
     borderRadius:20
   },

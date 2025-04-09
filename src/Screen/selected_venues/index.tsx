@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity,
   SafeAreaView,
+  StatusBar,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {Search} from '../../Themes/Images';
@@ -59,6 +60,7 @@ const SelectedVenues: React.FC<{route:any}>= ({route}) => {
 
   return (
     <View style={styles.container}>
+        <StatusBar hidden={true} translucent={true} animated={true} />
       <SafeAreaView style={{flex: 1}}>
         <CustomHeader
           title={item.venueName}

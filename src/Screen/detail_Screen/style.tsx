@@ -7,7 +7,7 @@ import {Fonts} from '../../Themes/Fonts';
 export const getStyles=(language:string) => StyleSheet.create({
   container: {
     paddingHorizontal: 24,
-    marginTop: Platform.OS === 'ios' ? '1%' : '11%',
+    marginTop: Platform.OS === 'ios' ? '0%' : '10%',
     marginBottom: Platform.OS === 'ios' ? '1%' : '6%',
   },
   HeaderCont: {

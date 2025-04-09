@@ -122,11 +122,7 @@ const saveUserData = async () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Colors.Bg }}>
-      <StatusBar
-        barStyle={Platform.OS === 'ios' ? 'dark-content' : 'dark-content'}
-        translucent={Platform.OS === 'android'}
-        backgroundColor={Platform.OS === 'android' ? Colors.Bg : 'transparent'}
-      />
+       <StatusBar hidden={true} translucent={true} animated={true} />
       <ScrollView contentContainerStyle={styles.MainCont}>
         <View>
           <TouchableOpacity

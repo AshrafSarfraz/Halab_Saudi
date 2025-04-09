@@ -81,11 +81,7 @@ const Login: React.FC<NativeStackScreenProps<any>> = ({ navigation }) => {
 
   return (
     <ScrollView contentContainerStyle={styles.MainContainer}>
-      <StatusBar
-        barStyle={Platform.OS === 'ios' ? 'dark-content' : 'dark-content'}
-        translucent={Platform.OS === 'android'}
-        backgroundColor={Platform.OS === 'android' ? Colors.Bg : 'transparent'}
-      />
+       <StatusBar hidden={true} translucent={true} animated={true} />
       <View>
         <Image source={Logo_W} style={styles.H_Logo} resizeMode="contain" />
         <Text style={styles.Welcome_Txt}>{languageData[language].welcome_back}</Text>

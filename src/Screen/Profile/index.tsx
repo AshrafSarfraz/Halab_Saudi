@@ -35,16 +35,12 @@ const Profile:React.FC<ProfileProps> = () => {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: Colors.Bg }}>
       {/* StatusBar fix for iOS */}
-      <StatusBar
-        barStyle={Platform.OS === 'ios' ? 'dark-content' : 'dark-content'} 
-        translucent={Platform.OS === 'android'} 
-        backgroundColor={Platform.OS === 'android' ? Colors.Bg : 'transparent'}
-      />
+      <StatusBar hidden={true} translucent={true} animated={true} />
 
        <View style={styles.Container} >
             <Text style={styles.Header_Txt} >Profile</Text>
             <View style={styles.Button_Cont} >
-              <CustomButton2 title='Account' onPress={() => console.log('Account Pressed')} />
+              <CustomButton2 title='Account' onPress={() =>{navigation.navigate('AccountScreen')} } />
               <CustomButton2 title='Reedem Histroy' onPress={() => {navigation.navigate('ReedemHistroy')}} />
               <CustomButton2 title='Language' onPress={() =>{showAlert()}} />
             </View>

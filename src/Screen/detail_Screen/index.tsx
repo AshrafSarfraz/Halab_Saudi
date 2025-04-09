@@ -9,6 +9,7 @@ import {
   ScrollView,
   Linking,
   Alert,
+  StatusBar,
 } from 'react-native';
 import CustomHeader from '../../Component/CustomHeader/CustomHeader';
 import {useNavigation} from '@react-navigation/native';
@@ -24,6 +25,7 @@ import i18n from '../../../i18n';
 import { t } from 'i18next';
 import { getStyles } from './style';
 import { languageData } from '../../redux_toolkit/language/languageSlice';
+import { Colors } from '../../Themes/Colors';
 
 
 const DetailScreen: React.FC<{route:any}> = ({route}) => {
@@ -78,6 +80,7 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
 
   return (
     <SafeAreaView>
+          <StatusBar hidden={true} translucent={true} animated={true} />
       <ScrollView>
         <View style={styles.container}>
           <View style={styles.HeaderCont}>
@@ -103,6 +106,7 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
             <View style={styles.Title_Cont}>
               {language==='ar'?<Text style={styles.title}>{item.nameArabic}</Text>:
               <Text style={styles.title}>{item.nameEng}</Text>}
+              <Text style={styles.title}>{item.pin}</Text>
               
               <TouchableOpacity onPress={Contact} style={styles.call_cont}>
                 <Image
@@ -164,6 +168,7 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
 
         <Discount_Redeem
           visible={discountAlert}
+          discount={item.discount}
           onClose={() => {
             hideDiscount_Alert();
           }}

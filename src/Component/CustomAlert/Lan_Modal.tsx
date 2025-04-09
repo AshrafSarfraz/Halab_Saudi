@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Modal, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Modal, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
 import { Colors } from '../../Themes/Colors';
 import { Fonts } from '../../Themes/Fonts';
 import { RootState } from '../../redux_toolkit/store';
@@ -22,24 +22,25 @@ const LanguageModal: React.FC<LanProps> = ({ visible, onClose }) => {
 
   return (
     <Modal transparent visible={visible} animationType="fade">
+        <StatusBar hidden={true} translucent={true} animated={true} />
       <View style={styles.overlay}>
         <View style={styles.container}>
-          <Text style={{ fontSize: 18 }}>
-            {language === 'en' ? 'Login' : 'تسجيل الدخول'} 
+          <Text style={styles.headerText}>
+            {language === 'en' ? 'Language' : 'لغة'} 
           </Text>
 
           <TouchableOpacity 
             style={[styles.languageButton, language === 'en' && styles.selectedButton]} 
             onPress={() => handleLanguageChange('en')}
           >
-            <Text style={styles.languageText}>English</Text>
+            <Text style={[styles.languageText,language === 'en' && styles.selectedButtonTxt]}>English</Text>
           </TouchableOpacity>
 
           <TouchableOpacity 
             style={[styles.languageButton, language === 'ar' && styles.selectedButton]} 
             onPress={() => handleLanguageChange('ar')}
           >
-            <Text style={styles.languageText}>العربية</Text>
+            <Text style={[styles.languageText,language === 'ar' && styles.selectedButtonTxt]}>العربية</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.closeButton} onPress={onClose}>
@@ -60,9 +61,9 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: 'white',
-    paddingTop: 30,
+    paddingTop: 15,
     width: '85%',
-    height: 300,
+    height: 255,
     borderRadius: 12,
     alignItems: 'center',
     elevation: 5,
@@ -79,31 +80,36 @@ const styles = StyleSheet.create({
     lineHeight: 30,
   },
   languageButton: {
-    backgroundColor: 'green',
+    backgroundColor: '#fff',
+    borderWidth:2,
+    borderColor:Colors.Green,
     width: '80%',
     height: 60,
     borderRadius: 8,
     alignItems: 'center',
-    marginVertical: 8,
+    marginVertical: 4,
     justifyContent: 'center',
   },
   selectedButton: {
     backgroundColor: Colors.Green, // Highlight selected language
   },
+  selectedButtonTxt:{
+   color:"#FFF"
+  },
   languageText: {
-    color: Colors.White,
+    color: Colors.Green,
     fontSize: 16,
     fontFamily: Fonts.SF_Bold,
   },
   closeButton: {
-    marginTop: 10,
-    paddingVertical: 8,
+    marginTop: 6,
+    paddingVertical: 4,
     paddingHorizontal: 20,
   },
   closeButtonText: {
     fontSize: 16,
     color: Colors.Black,
-    fontFamily: Fonts.SF_Medium,
+    fontFamily: Fonts.SF_Bold,
   },
 });
 
