@@ -18,10 +18,12 @@ import { toggleItemInCart } from '../../redux_toolkit/cartSlice';
 import { RootState } from '../../redux_toolkit/store';
 import {Dark_Heart, Light_Heart, Location} from '../../Themes/Images';
 import Pin_Modal from '../../Component/CustomAlert/Pin_Modal';
-import {styles} from './style';
+
 import Discount_Redeem from '../../Component/CustomAlert/DiscountRedeem';
 import i18n from '../../../i18n';
 import { t } from 'i18next';
+import { getStyles } from './style';
+import { languageData } from '../../redux_toolkit/language/languageSlice';
 
 
 const DetailScreen: React.FC<{route:any}> = ({route}) => {
@@ -37,6 +39,8 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
   
 
   // Redux Toolkit
+   const language = useSelector((state: RootState) => state.language.language); // Get the current language from Redux
+    const styles = getStyles(language);
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const isInCart = cartItems.some(cartItem => cartItem.id === item.id);
   const handleToggleCart = () => {
@@ -97,7 +101,7 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
               <Text style={styles.Type_Text}>{item.selectedCategory}</Text>
             </View>
             <View style={styles.Title_Cont}>
-              {isArabic?<Text style={styles.title}>{item.nameArabic}</Text>:
+              {language==='ar'?<Text style={styles.title}>{item.nameArabic}</Text>:
               <Text style={styles.title}>{item.nameEng}</Text>}
               
               <TouchableOpacity onPress={Contact} style={styles.call_cont}>
@@ -114,22 +118,18 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
               <Text style={styles.Address}>{item.longitude}</Text>
             </View> */}
             <View style={styles.Dis_Cont}>
-              <Text style={styles.Discount}>{t('discount')} </Text>
-              <Text style={styles.Total_Discount}>
-                {' '+item.discount+'%'}
-              
-              </Text>
+              <Text style={styles.Discount}>{languageData[language].discount} </Text>
+              <Text style={styles.Total_Discount}> {''+ item.discount +'%'}  </Text>
             </View>
-            <View style={styles.Desc_Cont}>
-              <View style={{flexDirection:'row'}} >
-              <Text style={styles.Desc}>{t("description")}</Text>
+            
+              <View style={styles.Desc_Cont} >
+              <Text style={styles.Desc}>{languageData[language].description}</Text>
               </View>
               {
-                isArabic?<Text style={styles.Detail}>{item.descriptionArabic}</Text>:
+                language==='ar'?<Text style={styles.Detail}>{item.descriptionArabic}</Text>:
                 <Text style={styles.Detail}>{item.descriptionEng}</Text>
               }
               
-            </View>
 {/* 
             <Text style={styles.pin}>Pin: {item.pin}</Text> */}
           </View>

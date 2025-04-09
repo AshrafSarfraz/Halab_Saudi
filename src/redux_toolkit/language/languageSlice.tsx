@@ -32,7 +32,8 @@ const languageData = {
     discount: " Discount ",
     description: "Description",
     region: "region",
-
+    Found_Items:"Items Found",
+    No_Items_Found:"No Item Found ",
 
     
     privacy_policy_1: "I have read and accept the",
@@ -58,7 +59,8 @@ const languageData = {
     single_use_1: "This is a single-use code for your use only.",
     single_use_2: "Get a new code each time you open the app.",
     get_a_new_code: "Get a new code",
-   
+    Search_for_anything :"Search for anything you need",
+
     confirm: "Confirm",
     hello: "Hello",
     discount_history: "Discount history",
@@ -96,6 +98,11 @@ const languageData = {
     country: "الدولة",
     region: "المنطقة",
     next: "التالي",
+    Search_for_anything:"ابحث عن أي شيء تحتاجه",
+    Found_Items:'تم العثور على العناص'   ,
+    No_Items_Found:"لم يتم العثور على عناصر"  ,    
+    
+    
     your_phone_number: "رقم هاتفك",
     code_is_sent: "تم إرسال الكود.",
     still_didnt_get_the_code_message: "إذا لم يصلك الكود، يرجى التأكد من إدخال رقم هاتفك بشكل صحيح.",

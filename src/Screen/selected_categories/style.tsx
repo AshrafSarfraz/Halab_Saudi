@@ -3,7 +3,7 @@ import { Colors } from '../../Themes/Colors';
 import { Fonts } from '../../Themes/Fonts';
 
 
-export const styles = StyleSheet.create({
+export const getStyles=(language:String) => StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.White4,
@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
     color: Colors.Green,
   },
   searchContainer: {
-    flexDirection: 'row',
+    flexDirection:language==='en'?'row':'row-reverse' ,
     alignItems: 'center',
     backgroundColor: Colors.White,
     height: 55,
@@ -40,15 +40,18 @@ export const styles = StyleSheet.create({
     width: 18,
     height: 18,
     marginRight: 8,
+    marginLeft:language==='ar'?8:0,
     resizeMode: "contain",
     tintColor: Colors.Green,
   },
   searchInput: {
     flex: 1,
-    fontSize: 16,
-    fontFamily: Fonts.SF_Medium,
+    fontSize: 14,
+    lineHeight:language==='en'?27:20,
+    fontFamily: language==='en'?Fonts.SF_Medium:'',
     color: Colors.Black,
     paddingVertical: 8,
+    textAlign:language==='en'?'left':'right'
   },
   FlatlistContainer: {
     flex: 1,
@@ -56,13 +59,15 @@ export const styles = StyleSheet.create({
   },
   FoundItem_Txt: {
     color: Colors.Green,
-    fontSize: 16,
-    fontFamily: Fonts.SF_Medium,
-    lineHeight: 22,
+    fontSize: language==='en'?16:16,
+    fontFamily: language==='en'?Fonts.SF_Medium:"",
+    lineHeight: language==='en'?22:30,
+    fontWeight:'500',
     marginBottom: 10,
+    textAlign:language==='en'?'left':'right'
   },
   itemContainer: {
-    flexDirection: 'row',
+    flexDirection: language==='en'?'row':"row-reverse",
     alignItems: 'center',
     backgroundColor: Colors.White,
     padding: 12,
@@ -79,26 +84,38 @@ export const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 8,
-    marginRight: 10,
+    marginRight: language==='en'?10:0,
+    marginLeft: language==='ar'?10:0,
   },
   itemInfo: {
     flex: 1,
   },
   itemTitle: {
-    fontSize: 16,
-    fontFamily:Fonts.SF_Bold,
+    fontSize: language==='en'?16:16,
+    fontFamily: language==='en'?Fonts.SF_Bold:"",
+    lineHeight: language==='en'?22:30,
+    fontWeight:'500',
     color: Colors.Black,
-    lineHeight:22
+    marginLeft:language==='ar'?"2%":0,
+    textAlign:language==='en'?'left':'right'
   },
   itemLocation: {
-    fontSize: 11,
-    fontFamily: Fonts.SF_Medium,
-    color: Colors.Black2,
-    marginVertical: 1,
+    fontSize: language==='en'?11:13,
+    fontFamily: language==='en'?Fonts.SF_Medium:"",
+    lineHeight: language==='en'?14:24,
+    fontWeight:'300',
+    color: Colors.Black,
+    marginLeft:language==='ar'?"2%":0,
+     textAlign:language==='en'?'left':'right'
+  
   },
   itemCity: {
-    fontSize: 12,
-    fontFamily: Fonts.SF_Bold,
-    color: Colors.Black2,
+    fontSize: language==='en'?12:12,
+    fontFamily: language==='en'?Fonts.SF_Bold:"",
+    lineHeight: language==='en'?14:24,
+    fontWeight:'500',
+    color: Colors.Black,
+    marginLeft:language==='ar'?"2%":0,
+     textAlign:language==='en'?'left':'right'
   },
 });

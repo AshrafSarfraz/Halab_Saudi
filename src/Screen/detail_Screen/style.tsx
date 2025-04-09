@@ -1,17 +1,17 @@
 import {Platform, StyleSheet} from 'react-native';
 import {Colors} from '../../Themes/Colors';
 import {Fonts} from '../../Themes/Fonts';
-import i18n from '../../../i18n';
 
-const isArabic = i18n.language === 'ar';
-export const styles = StyleSheet.create({
+
+
+export const getStyles=(language:string) => StyleSheet.create({
   container: {
     paddingHorizontal: 24,
     marginTop: Platform.OS === 'ios' ? '1%' : '11%',
     marginBottom: Platform.OS === 'ios' ? '1%' : '6%',
   },
   HeaderCont: {
-    flexDirection: 'row',
+    flexDirection: language==='en'?'row':'row-reverse',
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
@@ -36,38 +36,40 @@ export const styles = StyleSheet.create({
   Type_Cont: {
     backgroundColor: '#D0A700',
     alignItems: 'center',
-    alignSelf: 'flex-start',
+    alignSelf: language==='en'?'flex-start':'flex-end',
     padding: '2%',
     marginBottom: '3%',
     borderRadius: 5,
   },
   Type_Text: {
     fontSize: 14,
-    lineHeight: 16,
+    lineHeight: 18,
     color: Colors.White,
     fontFamily: Fonts.SF_Medium,
   },
   
   Title_Cont: {
-    flexDirection:"row",
+    flexDirection:language==='en'?'row':'row-reverse',
     alignItems: 'center',
     width:'100%',
     justifyContent:"space-between",
   },
   title: {
-    fontSize:isArabic?16:22,
-    lineHeight:isArabic?38:26,
+    fontSize:20,
+    lineHeight:language==='en'?26:32,
     color: Colors.Black,
     letterSpacing:0.5,
-    fontFamily: Fonts.SF_Bold,
+    fontWeight:language==='en'?'400':'bold',
+    fontFamily: language==='en'?Fonts.SF_Bold:'',
   },
   call_cont:{
-    flexDirection:"row",
+    flexDirection:'row',
     alignItems:"center",
    },
    Phone_Icon:{
      width:22,height:22,
-     resizeMode:"contain"
+     resizeMode:"contain",
+
    },
    
    call_txt: {
@@ -76,28 +78,7 @@ export const styles = StyleSheet.create({
        color: Colors.Black,
        fontFamily: Fonts.SF_Bold,
    },
-  //  Address_Cont: {
-  //   flexDirection: 'row',
-  //   alignItems: "center",
-  //   marginTop: "1%",
 
-  // },
-  // Address_Img: {
-  //   width: 14, height: 20,
-  //   resizeMode: 'contain',
-  //   marginRight: "1%",
-  //   tintColor:Colors.Green,
-  // },
-  // Address: {
-  //   fontSize: 12,
-  //   lineHeight: 15,
-  //   color: Colors.Black,
-  //   fontFamily: Fonts.SF_Bold,
-  // },
-
-  Desc_Cont: {
-
-  },
 
   Dis_Cont: {
     marginVertical: "3%",
@@ -105,14 +86,15 @@ export const styles = StyleSheet.create({
     padding: "3%",
     paddingVertical:"4%",
     borderRadius: 10,
-    flexDirection:"row"
+    flexDirection:language==='en'?'row':'row-reverse'
   },
   Discount: {
-    fontSize: isArabic?16:20,
+    fontSize:language==='en'?20:20,
     color: Colors.Green,
-    fontFamily: Fonts.SF_Bold,
+    fontFamily: language==='en'?Fonts.SF_Bold:'',
     letterSpacing:0.4,
-    lineHeight:isArabic?38:28,
+    lineHeight:language==='en'?26:36,
+    fontWeight:language==='en'?'400':'bold'
   
   },
   Total_Discount: {
@@ -122,24 +104,28 @@ export const styles = StyleSheet.create({
     letterSpacing:0.4,
     lineHeight:28
   },
+  Desc_Cont: {
+      flexDirection:language==='en'?'row':'row-reverse',
+  },
   Desc: {
     fontSize: 18,
-    lineHeight: isArabic?24:17,
+    lineHeight:language==='en'?26:32,
     letterSpacing:0.6,
     color: Colors.Black,
     fontWeight:'500',
-    fontFamily:isArabic?'': Fonts.SF_Medium,
+    fontFamily:language==='en'?Fonts.SF_Bold:'',
     marginTop:'2%',
-    marginBottom:"1%",
-
+    marginBottom:language==='en'?'2%':'0.5%'
   },
+
   Detail: {
-    fontSize: isArabic?16:14,
-    lineHeight: isArabic?24:17,
+    fontSize: 14,
+    lineHeight:language==='en'?17:26,
     color: Colors.Black,
-    fontFamily:isArabic?'': Fonts.SF_Regular,
+    fontFamily:language==='en'?Fonts.SF_Regular:"",
+    fontWeight:'400',
     marginBottom: '3%',
-    textAlign:"justify",
+    textAlign:language==='en'?'left':'right',
   },
 
 });
