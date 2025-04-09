@@ -3,7 +3,7 @@ import { Fonts } from "../../../Themes/Fonts";
 import { Colors } from "../../../Themes/Colors";
 
 const { width } = Dimensions.get('window');
-const styles = StyleSheet.create({
+export const getStyles=(language:String) => StyleSheet.create({
     container: {
       alignItems: 'center',
       marginHorizontal:Platform.OS==='ios'?"3%":'1%'   ,
@@ -11,11 +11,11 @@ const styles = StyleSheet.create({
     },
     Flatlist_Cont:{
       width:240,
-      height:100,
+      height:language==='en'?100:110,
       backgroundColor:Colors.White,
       marginRight:10,
       borderRadius:10,
-      flexDirection:"row",
+      flexDirection:language==='en'?'row':'row-reverse',
       alignItems:'center',
       paddingHorizontal:'2%',
       paddingVertical:"1%"
@@ -28,26 +28,30 @@ const styles = StyleSheet.create({
     },
     bestSeller_Detail:{
      width:140,
-     marginLeft:10,
+     marginLeft:language==='en'?10:0,
+     marginRight:language==='en'?0:10,
      textAlign:'justify'
     },
     title_txt:{
       fontSize:16,
-      fontFamily:Fonts.SF_Bold,
+      fontFamily:language==='en'?Fonts.SF_Bold:'',
+      fontWeight :language==='en'?'400':'bold',
       color:Colors.Green,
-      lineHeight:22,
-      letterSpacing:0.3
+      lineHeight:language==='en'?22:30,
+      letterSpacing:language==='en'?0.3:0,
+      textAlign:language==='en'?'left':'right',
     },
     desc_txt:{
       fontSize:12,
-      fontFamily:Fonts.SF_Regular,
-      lineHeight:13,
+      fontFamily:language==='en'?Fonts.SF_Regular:'',
+      fontWeight :'400',
+      lineHeight:language==='en'?13:18,
       letterSpacing:0.2,
       marginTop:2,
       color:Colors.Black,
-      textAlign:"justify",
+      textAlign:language==='en'?'left':'right',
     }
   });
   
-  export default styles;
+
   

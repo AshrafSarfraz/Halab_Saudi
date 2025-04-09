@@ -1,9 +1,10 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import { Fonts } from '../../../Themes/Fonts';
 
+
 const { width } = Dimensions.get('window');
 
-export default StyleSheet.create({
+export const getStyles=(language:String)=>  StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,

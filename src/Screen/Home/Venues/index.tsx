@@ -5,42 +5,49 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from './style';
-import { useTranslation } from 'react-i18next';
-import { firestore } from '../../../firebase/firebaseconfig';
-
+import { fetchVenuFromFirebase } from '../../../firebase/firebaseutils';
 
 type VenuesProps = {
   navigation: any;
 };
 
 const Venues: React.FC<VenuesProps> = () => {
-  const { t } = useTranslation();
   const navigation = useNavigation();
   const [showAll, setShowAll] = useState(false);
   const [venues, setVenues] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [imageLoading, setImageLoading] = useState(true);
+
+  const handleImageLoad = () => {
+    setImageLoading(false); // Stop loader when image is loaded
+  };
+
+  const handleImageError = () => {
+    setImageLoading(false); // Stop loader in case of error
+  };
 
   useEffect(() => {
-    const fetchVenues = async () => {
-      try {
-        const snapshot = await firestore().collection('Venues').get();
-        const venuesData = snapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        // console.log('📍 Venues Data:', venuesData);
-        setVenues(venuesData);
-      } catch (error) {
-        console.error('❌ Error fetching venues:', error);
-      }
+    const loadData = async () => {
+      const data = await fetchVenuFromFirebase(); // 👈 use your logic here
+      setVenues(data);
+      setLoading(false);
     };
-
-    fetchVenues();
+    loadData();
   }, []);
 
   const visibleItems = showAll ? venues : venues.slice(0, 8);
+
+  if (loading) {
+    return (
+      <View style={styles.loaderContainer}>
+        <ActivityIndicator size="small" color="gray" />
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -48,38 +55,44 @@ const Venues: React.FC<VenuesProps> = () => {
         data={visibleItems}
         keyExtractor={item => item.id}
         numColumns={4}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={styles.Flatlist_Cont}
-            onPress={() => navigation.navigate('SelectedVenue', { item })}
-          >
-            {item.img && (
-              <Image source={{ uri: item.img }} style={styles.image} />
-            )}
-            <Text style={styles.cate_txt}>{item.venueName}</Text>
-          </TouchableOpacity>
-        )}
+        renderItem={({ item }) => {
+          return (
+            <TouchableOpacity
+              style={styles.Flatlist_Cont}
+              onPress={() => navigation.navigate('SelectedVenue', { item })}
+            >
+              {imageLoading && (
+                <ActivityIndicator
+                  size="small"
+                  color="gray"
+                  style={styles.loader}
+                />
+              )}
+
+              {item.img && (
+                <Image
+                  source={{ uri: item.img }}
+                  style={styles.image}
+                  onLoad={handleImageLoad}
+                  onError={handleImageError}
+                />
+              )}
+              <Text style={styles.cate_txt}>{item.venueName}</Text>
+            </TouchableOpacity>
+          );
+        }}
       />
 
-{venues.length > 8 && (
-  <TouchableOpacity
-    style={styles.showMoreButton}
-    onPress={() => setShowAll(!showAll)}
-  >
-    <Text style={styles.showMoreText}>
-      {showAll ? t('Hide') : t('Show More')}
-    </Text>
-  </TouchableOpacity>
-)}
-      {/* Show More Button */}
-      {/* <TouchableOpacity
-        style={styles.showMoreButton}
-        onPress={() => setShowAll(!showAll)}
-      >
-        <Text style={styles.showMoreText}>
-          {showAll ? t('Hide') : t('Show More')}
-        </Text>
-      </TouchableOpacity> */}
+      {venues.length > 8 && (
+        <TouchableOpacity
+          style={styles.showMoreButton}
+          onPress={() => setShowAll(!showAll)}
+        >
+          <Text style={styles.showMoreText}>
+            {showAll ? t('Hide') : t('Show More')}
+          </Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

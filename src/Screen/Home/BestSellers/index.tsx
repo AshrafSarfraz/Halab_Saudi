@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, Image, Dimensions, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, Text, FlatList, Image, Dimensions, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import styles from './style';
 import { fetchBrandsFromFirebase } from '../../../firebase/firebaseutils';
-import { Colors } from '../../../Themes/Colors';
+import ActivityIndicatorModal from '../../../Component/Loader/ActivityIndicator';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../redux_toolkit/store';
+import { getStyles } from './style';
+
 
 const { width } = Dimensions.get('screen');
 
@@ -12,6 +15,9 @@ const BestSeller: React.FC = () => {
   const navigation = useNavigation();
   const [brands, setBrands] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const language = useSelector((state: RootState) => state.language.language); // Get the current language from Redux
+  const styles = getStyles(language);
 
   useEffect(() => {
     const getBrands = async () => {
@@ -27,7 +33,7 @@ const BestSeller: React.FC = () => {
   return (
     <View style={styles.container}>
       {loading ? (
-        <ActivityIndicator size="small" color={Colors.Green} style={{ flex: 1 }} />
+        <ActivityIndicatorModal visible={loading} />
       ) : (
         <FlatList
           data={brands}
@@ -42,12 +48,26 @@ const BestSeller: React.FC = () => {
             >
               {item.img && <Image source={{ uri: item.img }} style={styles.image} />}
               <View style={styles.bestSeller_Detail}>
-                <Text style={styles.title_txt}>{item.nameEng}</Text>
-                <Text style={styles.desc_txt}>
-                  {item.descriptionEng?.length > 70
-                    ? item.descriptionEng.substring(0, 60) + '...'
-                    : item.descriptionEng}
-                </Text>
+                {
+                  language==='en'?
+                  <Text style={styles.title_txt}>{item.nameEng}</Text>:
+                  <Text style={styles.title_txt}>{item.nameArabic}</Text>
+                }
+               
+               {
+                 language==='en'?
+                 <Text style={styles.desc_txt}>
+                 {item.descriptionEng?.length > 70
+                   ? item.descriptionEng.substring(0, 60) + '...'
+                   : item.descriptionEng}
+               </Text>:
+                 <Text style={styles.desc_txt}>
+                 {item.descriptionArabic?.length > 70
+                   ? item.descriptionArabic.substring(0, 60) + '...'
+                   : item.descriptionArabic}
+               </Text>
+               }
+              
               </View>
             </TouchableOpacity>
           )}

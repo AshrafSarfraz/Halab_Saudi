@@ -1,10 +1,8 @@
 import {StyleSheet, Platform} from 'react-native';
 import {Colors} from '../../Themes/Colors';
 import {Fonts} from '../../Themes/Fonts';
-import i18n from '../../../i18n';
 
-const isArabic = i18n.language === 'ar';
-export const styles = StyleSheet.create({
+export const getStyles =(language:String)=> StyleSheet.create({
   
   Container: {
   
@@ -16,7 +14,7 @@ export const styles = StyleSheet.create({
   },
   header: {
     paddingHorizontal: '4%',
-    flexDirection: 'row',
+    flexDirection: language==='en'?'row':'row-reverse',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
@@ -27,7 +25,7 @@ export const styles = StyleSheet.create({
   },
   language_Cont: {
     width: 82,
-    flexDirection: 'row',
+    flexDirection:  language==='en'?'row':'row-reverse',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
@@ -51,30 +49,35 @@ export const styles = StyleSheet.create({
     tintColor: '#000',
   },
   Categories_Cont: {
-    marginTop: isArabic?1:5,
     width:'100%',
-
   },
   Categories_Txt: {
-    fontSize: isArabic?14:18,
-    fontFamily: Fonts.SF_Bold,
+    fontSize: language==='en'?18:16,
+    fontFamily: language==='en'?Fonts.SF_Bold:'',
     color: Colors.Green,
-    lineHeight:  isArabic?38:22,
-    marginHorizontal:"4%",
-    marginBottom: 2,
+    fontWeight:language==='en'?'400':'bold',
+    lineHeight: language==='en'?24:30,
+    marginHorizontal:'4%',
+    width:"92%",
+    textAlign:language==='en'?'left':'right',
   },
   BestSeller_Cont: {
-    marginTop: isArabic?5:14,
+   marginBottom:"4%",
   },
   BestSeller_Txt: {
-    fontSize: isArabic?14:18,
-    fontFamily: Fonts.SF_Bold,
+  fontSize: language==='en'?18:16,
+    fontFamily: language==='en'?Fonts.SF_Bold:'',
     color: Colors.Green,
-    lineHeight:  isArabic?38:22,
-    marginHorizontal:"4%",
-    marginBottom: 2,
+    fontWeight:language==='en'?'400':'bold',
+    lineHeight: language==='en'?24:30,
+    marginHorizontal:'4%',
+    width:"92%",
+    textAlign:language==='en'?'left':'right'
   },
   txt_cont:{
     flexDirection:"row"
+  },
+  loader:{
+
   }
 });

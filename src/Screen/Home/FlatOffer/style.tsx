@@ -2,7 +2,7 @@ import {Dimensions, Platform, StyleSheet} from 'react-native';
 import {Colors} from '../../../Themes/Colors';
 
 const {width} = Dimensions.get('window');
-const styles = StyleSheet.create({
+export const getStyles=(language:string) => StyleSheet.create({
   container: {
     backgroundColor: Colors.White4,
     alignItems: 'center',
@@ -46,6 +46,12 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginHorizontal: 2,
   },
+  loader:{
+    position:"absolute",
+    alignSelf:"center",
+    justifyContent:'center',
+
+  }
 });
 
-export default styles;
+

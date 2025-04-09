@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import styles from './style';
+
 import { firestore } from '../../../firebase/firebaseconfig';
 import { Colors } from '../../../Themes/Colors';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../redux_toolkit/store';
+import { getStyles } from './style';
 
 const RecentlyAdded = () => {
   const navigation = useNavigation();
   const [recentItems, setRecentItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const language = useSelector((state: RootState) => state.language.language); // Get the current language from Redux
+  const styles = getStyles(language);
 
   useEffect(() => {
     const fetchRecentlyAdded = async () => {
@@ -54,7 +59,12 @@ const RecentlyAdded = () => {
         renderItem={({ item }) => (
           <TouchableOpacity style={styles.Flatlist_Cont} onPress={() => navigation.navigate('DetailScreen', { item })}  >
             <Image source={{uri:item.img}} style={styles.image} />
-            <Text style={styles.cate_txt}>{item.nameEng}</Text>
+            {
+              language==='en'?
+              <Text style={styles.cate_txt}>{item.nameEng}</Text>:
+              <Text style={styles.cate_txt}>{item.nameArabic}</Text>
+            }
+          
           </TouchableOpacity>
         )}
       /> )}

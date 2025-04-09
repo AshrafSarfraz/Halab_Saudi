@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Platform, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
-
+import auth from '@react-native-firebase/auth';
 import CustomButton2 from '../../Component/CustomButton/CustomButton2';
 import CustomButton from '../../Component/CustomButton/CustomButton';
 import { useNavigation } from '@react-navigation/native';
@@ -13,16 +13,25 @@ type ProfileProps={
 }
 
 const Profile:React.FC<ProfileProps> = () => {
-    const navigation=useNavigation()
-      const [alertVisible, setAlertVisible] = useState<boolean>(false);
+   const navigation=useNavigation()
+   const [alertVisible, setAlertVisible] = useState<boolean>(false);
     
-       const showAlert = () => {
-         setAlertVisible(true);
-       };
-     
-       const hideAlert = () => {
-         setAlertVisible(false);
-       };
+  const showAlert = () => {
+  setAlertVisible(true)};
+   
+  const hideAlert = () => {
+  setAlertVisible(false);  };
+
+  const handleLogout = async () => {
+    try {
+      await auth().signOut();
+      console.log('User signed out!');
+      navigation.navigate('Login')
+    } catch (error) {
+      console.error('Error signing out: ', error);
+    }
+  };
+
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: Colors.Bg }}>
       {/* StatusBar fix for iOS */}
@@ -40,13 +49,12 @@ const Profile:React.FC<ProfileProps> = () => {
               <CustomButton2 title='Language' onPress={() =>{showAlert()}} />
             </View>
             <View style={styles.Logout_cont}>
-            <CustomButton title='Logout' onPress={() => {navigation.navigate('Login')}} />
+            <CustomButton title='Logout' onPress={() => {handleLogout()}} />
             </View>
         </View>
         <LanguageModal
         visible={alertVisible}
         onClose={() => { hideAlert() }}
-      //   onClose={() => { hideAlert(), navigation.navigate('RentedItem', { updateButtonState: 1 }) }}
       />
         </SafeAreaView>
     );

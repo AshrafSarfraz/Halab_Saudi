@@ -22,16 +22,19 @@ const languageData = {
     incorrect_otp: "The OTP passcode you’ve entered is incorrect",
     no_code_received: "I haven’t received a code",
     resend: "RESEND",
-
+     // home Screen
     categories: "Categories",
     venues_collection: "Venues Collection",
     best_sellers: "Best Sellers",
     recently_added: "Recently Added",
     toggle_more: "Show More",
     toggle_less: "Hide",
-    discount: "Discount",
+    discount: " Discount ",
     description: "Description",
     region: "region",
+
+
+    
     privacy_policy_1: "I have read and accept the",
     privacy_policy_2: "privacy policy",
     privacy_policy_3: "and agree that my personal data will be processed by you",
@@ -88,7 +91,7 @@ const languageData = {
     recently_added: "المضافة حديثًا",
     toggle_more: "عرض المزيد",
     toggle_less: "إخفاء",
-    discount: "خصم",
+    discount: " خصم " ,
     description: "وصف:",
     country: "الدولة",
     region: "المنطقة",

@@ -15,7 +15,8 @@ export const styles = StyleSheet.create({
     marginRight: 6,
     alignItems: 'center',
     width: imageSize, // Making container responsive
-    marginBottom:10
+    marginBottom:10,
+   
   },
   image: {
     width: imageSize * 0.85,
@@ -44,4 +45,15 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
   },
+  loaderContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff', // or your theme background
+  },
+  loader:{
+    position:"absolute",
+    alignSelf:"center",
+    justifyContent:'center',
+  }
 });
