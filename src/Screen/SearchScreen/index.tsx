@@ -109,30 +109,21 @@ const SearchScreen: React.FC = () => {
               contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
               showsVerticalScrollIndicator={false}
               renderItem={({ item }) => {
-                const isLoaded = imageLoaded[item.id] || false;
 
                 return (
                   <TouchableOpacity
                     style={styles.itemContainer}
                     onPress={() => navigation.navigate('DetailScreen', { item })}
                   >
-                    {/* IMAGE shimmer */}
-                    <ShimmerPlaceholder
-                      visible={isLoaded}
-                      style={styles.itemImage}
-                    >
+                
                       <Image
                         source={{ uri: item.img }}
                         style={styles.itemImage}
                         onLoad={() => handleImageLoad(item.id)}
                       />
-                    </ShimmerPlaceholder>
 
-                    {/* TEXT shimmer */}
-                    <ShimmerPlaceholder
-                      visible={isLoaded}
-                      style={styles.itemInfo}
-                    >
+
+
                       <View style={styles.itemInfo}>
                         <Text style={styles.itemTitle}>
                           {language === 'en' ? item.nameEng : item.nameArabic}
@@ -148,7 +139,6 @@ const SearchScreen: React.FC = () => {
                         </Text>
                         <Text style={styles.itemCity}>{item.selectedCity}</Text>
                       </View>
-                    </ShimmerPlaceholder>
                   </TouchableOpacity>
                 );
               }}

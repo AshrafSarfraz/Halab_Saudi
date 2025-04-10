@@ -18,7 +18,7 @@ type Props = {
 // ✅ Country Options with correct image paths
 const countryOptions: Country[] = [
   { name: 'Saudi Arabia', code: '+966', image: require('../../Assests/Icons/Saudi_Flag.png') },
-  { name: 'Qatar', code: '+974', image: require('../../Assests/Icons/Qatar_Flag.jpg') },
+  // { name: 'Qatar', code: '+974', image: require('../../Assests/Icons/Qatar_Flag.jpg') },
 ];
 
 const CountryDropdown: React.FC<Props> = ({ onSelectCountry }) => {
