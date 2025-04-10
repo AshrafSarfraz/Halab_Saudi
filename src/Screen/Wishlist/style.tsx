@@ -43,7 +43,6 @@ export default StyleSheet.create({
     height: 150,
     resizeMode: 'cover',
     borderRadius:10,
-
   },
   cate_txt: {
     fontSize: 16,

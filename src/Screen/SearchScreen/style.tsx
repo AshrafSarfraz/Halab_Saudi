@@ -47,10 +47,10 @@ export const getStyles=(language:String) => StyleSheet.create({
   searchInput: {
     flex: 1,
     fontSize: 14,
-    lineHeight:language==='en'?27:20,
+    height:55,
+    lineHeight:language==='en'?20:20,
     fontFamily: language==='en'?Fonts.SF_Medium:'',
     color: Colors.Black,
-    paddingVertical: 8,
     textAlign:language==='en'?'left':'right'
   },
   FlatlistContainer: {
@@ -117,5 +117,57 @@ export const getStyles=(language:String) => StyleSheet.create({
     color: Colors.Black,
     marginLeft:language==='ar'?"2%":0,
      textAlign:language==='en'?'left':'right'
+  },
+  shimmerItem: {
+    width: '100%',
+    height: 60,
+    borderRadius: 8,
+    backgroundColor: '#E0E0E0',  // This will be the base color of the shimmer
+    marginBottom: 10,
+  },
+  shimmerText: {
+    width: '80%',
+    height: 14,
+    borderRadius: 4,
+    backgroundColor: '#E0E0E0',
+    marginTop: 10,
+  },
+  emptyStateContainer:{
+    marginTop:90,
+    alignItems:"center",
+   justifyContent:"center",
+  },
+  emptyStateImage:{
+   width:200,
+   height:200
+  },
+  emptyStateText:{
+   fontSize:16,
+   marginTop:12,
+   fontWeight:'bold',
+   color:Colors.Black
+  },
+  Flatlist_Cont:{
+    width:240,
+    height:language==='en'?100:110,
+    backgroundColor:Colors.White,
+    marginRight:10,
+    borderRadius:10,
+    flexDirection:language==='en'?'row':'row-reverse',
+    alignItems:'center',
+    paddingHorizontal:'2%',
+    paddingVertical:"1%"
+   
+  },
+  image:{
+     width:70,
+     height:70,
+     borderRadius:40,
+  },
+  bestSeller_Detail:{
+   width:140,
+   marginLeft:language==='en'?10:0,
+   marginRight:language==='en'?0:10,
+   textAlign:'justify'
   },
 });

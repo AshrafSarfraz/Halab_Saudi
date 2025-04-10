@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, View, StyleSheet } from 'react-native';
+import { Modal, View, StyleSheet, StatusBar } from 'react-native';
 import {
   BallIndicator,
   BarIndicator,
@@ -22,7 +22,7 @@ const ActivityIndicatorModal = ({ visible }) => {
       onRequestClose={() => {}}
     >
       <View style={styles.container}>
-
+       <StatusBar hidden={true} translucent={true} animated={true} />
          <BarIndicator color={Colors.White} size='30' />
       
          

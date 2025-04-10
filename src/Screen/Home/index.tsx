@@ -39,7 +39,7 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
        <StatusBar hidden={true} translucent={true} animated={true} />
 
       <SafeAreaView style={styles.Container}>
-        <ScrollView>
+        <ScrollView  showsVerticalScrollIndicator={false} >
           <View style={styles.header}>
             <Image source={Full_logo_B} style={styles.logo} />
             <View style={styles.language_Cont}>

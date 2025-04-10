@@ -22,16 +22,17 @@ export const styles = StyleSheet.create({
     width: imageSize * 0.85,
     height: imageSize * 0.85,
     borderRadius: 10,
+    resizeMode:"cover",
   },
   cate_txt: {
     fontSize: 10,
     color:Colors.Black,
-    fontFamily:Fonts.SF_Regular,
+    fontFamily:Fonts.SF_Bold,
     marginTop: 5,
     lineHeight: 14,
     letterSpacing: 0.3,
     textAlign: 'center',
-    width:"80%"
+    width:"100%"
   },
   showMoreButton: {
     marginTop: 10,

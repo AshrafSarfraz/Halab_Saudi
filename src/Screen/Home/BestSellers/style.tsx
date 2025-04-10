@@ -7,7 +7,8 @@ export const getStyles=(language:String) => StyleSheet.create({
     container: {
       alignItems: 'center',
       marginHorizontal:Platform.OS==='ios'?"3%":'1%'   ,
-      marginTop:10
+      marginTop:10,
+      marginLeft:'4%'
     },
     Flatlist_Cont:{
       width:240,

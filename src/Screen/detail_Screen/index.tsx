@@ -106,7 +106,7 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
             <View style={styles.Title_Cont}>
               {language==='ar'?<Text style={styles.title}>{item.nameArabic}</Text>:
               <Text style={styles.title}>{item.nameEng}</Text>}
-              <Text style={styles.title}>{item.pin}</Text>
+            
               
               <TouchableOpacity onPress={Contact} style={styles.call_cont}>
                 <Image

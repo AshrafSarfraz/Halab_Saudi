@@ -81,7 +81,7 @@ const DistanceFromDevice: React.FC<DistanceFromDeviceProps> = ({
             userLong,
             targetLat,
             targetLong,
-          )*2.2;   // i add 2.5 bcz haversineDistance gave straight line distance which is less than by google map 
+          );   // i add 2.5 bcz haversineDistance gave straight line distance which is less than by google map 
 
           // Display in meters if less than 1 km
           if (distanceInKm < 1) {

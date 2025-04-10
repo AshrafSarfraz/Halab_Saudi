@@ -47,10 +47,10 @@ export const getStyles=(language:String) => StyleSheet.create({
   searchInput: {
     flex: 1,
     fontSize: 14,
-    lineHeight:language==='en'?26:20,
+    height:55,
+    lineHeight:language==='en'?18:20,
     fontFamily: language==='en'?Fonts.SF_Medium:'',
     color: Colors.Black,
-    paddingVertical: 8,
     textAlign:language==='en'?'left':'right'
   },
   FlatlistContainer: {
@@ -118,4 +118,19 @@ export const getStyles=(language:String) => StyleSheet.create({
     marginLeft:language==='ar'?"2%":0,
      textAlign:language==='en'?'left':'right'
   },
+  emptyStateContainer:{
+    marginTop:90,
+    alignItems:"center",
+   justifyContent:"center",
+  },
+  emptyStateImage:{
+   width:200,
+   height:200
+  },
+  emptyStateText:{
+   fontSize:16,
+   marginTop:12,
+   fontWeight:'bold',
+   color:Colors.Black
+  }
 });

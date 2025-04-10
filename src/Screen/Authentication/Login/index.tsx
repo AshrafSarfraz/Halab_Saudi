@@ -71,7 +71,7 @@ const Login: React.FC<NativeStackScreenProps<any>> = ({ navigation }) => {
       });
     } catch (error: any) {
       setError('Error sending verification code: ' + error.message);
-      console.error('Error Code:', error.code, 'Message:', error.message);
+      // console.error('Error Code:', error.code, 'Message:', error.message);
     } finally {
       setIsLoading(false); // Hide loader
     }
@@ -119,12 +119,13 @@ const Login: React.FC<NativeStackScreenProps<any>> = ({ navigation }) => {
             onLinkPress={() => Linking.openURL('https://halabsaudi.com/privacy-policy-2/')}
             onLinkPress1={() => Linking.openURL('https://halabsaudi.com/terms-of-use/')}
           />
+            {error && <Text style={styles.Error}>{error}</Text>}
             <View style={{height:100}} />
           <CustomButton
             title={languageData[language].login}
             onPress={sendVerificationCode}
           />
-  {error && <Text style={styles.Error}>{error}</Text>}
+
           {isLoading && (
             <ActivityIndicatorModal visible={isLoading} />
           )}

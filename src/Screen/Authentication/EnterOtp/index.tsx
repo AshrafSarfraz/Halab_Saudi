@@ -67,7 +67,7 @@ const saveUserData = async () => {
     const user = auth().currentUser;
 
     if (!user) {
-      console.log('No user is currently signed in');
+      // console.log('No user is currently signed in');
       return;
     }
 
@@ -91,11 +91,12 @@ const saveUserData = async () => {
         name: Name,
         lastLogin: firestore.FieldValue.serverTimestamp(),
       });
-      console.log('Existing user updated');
+      // console.log('Existing user updated');
     }
 
   } catch (error: any) {
-    setError('Error saving user data: ' + error.message);
+      setError('Error saving user data: ');
+    // setError('Error saving user data: ' + error.message);
     // console.error('Firestore Error:', error.message);
   }
 };
@@ -106,14 +107,13 @@ const saveUserData = async () => {
 
     try {
       await Confirmation.confirm(otp.join(''));
-      console.log('OTP verified successfully');
+      // console.log('OTP verified successfully');
 
       // Save user data to Firestore after successful verification
       await saveUserData();
-
       navigation.navigate('BottomTab'); // Navigate to next screen
     } catch (error: any) {
-      console.log('Invalid code:', error.message);
+      // console.log('Invalid code:', error.message);
       setError('Invalid OTP. Please check the OTP and try again.');
     } finally {
       setIsLoading(false); // Hide loader

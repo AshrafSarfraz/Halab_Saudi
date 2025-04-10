@@ -47,10 +47,10 @@ export const getStyles=(language:String) => StyleSheet.create({
   searchInput: {
     flex: 1,
     fontSize: 14,
-    lineHeight:language==='en'?27:20,
+    height: 50,
+    lineHeight:language==='en'?18:20,
     fontFamily: language==='en'?Fonts.SF_Medium:'',
     color: Colors.Black,
-    paddingVertical: 8,
     textAlign:language==='en'?'left':'right'
   },
   FlatlistContainer: {
@@ -84,8 +84,9 @@ export const getStyles=(language:String) => StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 8,
-    marginRight: language==='en'?10:0,
-    marginLeft: language==='ar'?10:0,
+   marginRight: language==='en'?10:10,
+    marginLeft:language==='ar'?10:0, 
+
   },
   itemInfo: {
     flex: 1,
@@ -93,29 +94,43 @@ export const getStyles=(language:String) => StyleSheet.create({
   itemTitle: {
     fontSize: language==='en'?16:16,
     fontFamily: language==='en'?Fonts.SF_Bold:"",
-    lineHeight: language==='en'?22:30,
+    lineHeight: language==='en'?22:24,
     fontWeight:'500',
     color: Colors.Black,
-    marginLeft:language==='ar'?"2%":0,
-    textAlign:language==='en'?'left':'right'
+    textAlign:language==='en'?'left':'right',
   },
   itemLocation: {
     fontSize: language==='en'?11:13,
     fontFamily: language==='en'?Fonts.SF_Medium:"",
-    lineHeight: language==='en'?14:24,
+    lineHeight: language==='en'?14:20,
     fontWeight:'300',
     color: Colors.Black,
     marginLeft:language==='ar'?"2%":0,
-     textAlign:language==='en'?'left':'right'
+    textAlign:language==='en'?'left':'right'
   
   },
   itemCity: {
     fontSize: language==='en'?12:12,
     fontFamily: language==='en'?Fonts.SF_Bold:"",
-    lineHeight: language==='en'?14:24,
+    lineHeight: language==='en'?14:20,
     fontWeight:'500',
     color: Colors.Black,
     marginLeft:language==='ar'?"2%":0,
      textAlign:language==='en'?'left':'right'
   },
+  emptyStateContainer:{
+    marginTop:90,
+    alignItems:"center",
+   justifyContent:"center",
+  },
+  emptyStateImage:{
+   width:200,
+   height:200
+  },
+  emptyStateText:{
+   fontSize:16,
+   marginTop:12,
+   fontWeight:'bold',
+   color:Colors.Black
+  }
 });

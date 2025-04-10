@@ -8,6 +8,9 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import ShimmerPlaceholder from 'react-native-shimmer-placeholder';
+import LinearGradient from 'react-native-linear-gradient';
+
 import { styles } from './style';
 import { fetchVenuFromFirebase } from '../../../firebase/firebaseutils';
 
@@ -41,6 +44,40 @@ const Venues: React.FC<VenuesProps> = () => {
 
   const visibleItems = showAll ? venues : venues.slice(0, 8);
 
+  const renderShimmerItem = () => (
+    <View style={styles.Flatlist_Cont}>
+      <ShimmerPlaceholder LinearGradient={LinearGradient} style={styles.image} />
+      <View style={styles.bestSeller_Detail}>
+        <ShimmerPlaceholder LinearGradient={LinearGradient} style={{ width: '80%', height: 20, marginBottom: 8, borderRadius: 5 }} />
+        <ShimmerPlaceholder LinearGradient={LinearGradient} style={{ width: '100%', height: 15, borderRadius: 5 }} />
+      </View>
+    </View>
+  );
+
+  const renderVenueItem = ({ item }: { item: any }) => {
+    return (
+      <TouchableOpacity
+        style={styles.Flatlist_Cont}
+        onPress={() => navigation.navigate('SelectedVenue', { item })}
+      >
+        {/* Shimmer effect for image */}
+        <ShimmerPlaceholder visible={!imageLoading} LinearGradient={LinearGradient} style={styles.image}>
+          <Image
+            source={{ uri: item.img }}
+            style={styles.image}
+            onLoad={handleImageLoad}
+            onError={handleImageError}
+          />
+        </ShimmerPlaceholder>
+
+        {/* Shimmer effect for venue name */}
+        <ShimmerPlaceholder visible={!imageLoading} LinearGradient={LinearGradient} style={{ width: '80%',  marginTop: 2,  height: 20, borderRadius: 5, }}>
+          <Text style={styles.cate_txt}>{item.venueName}</Text>
+        </ShimmerPlaceholder>
+      </TouchableOpacity>
+    );
+  };
+
   if (loading) {
     return (
       <View style={styles.loaderContainer}>
@@ -55,32 +92,8 @@ const Venues: React.FC<VenuesProps> = () => {
         data={visibleItems}
         keyExtractor={item => item.id}
         numColumns={4}
-        renderItem={({ item }) => {
-          return (
-            <TouchableOpacity
-              style={styles.Flatlist_Cont}
-              onPress={() => navigation.navigate('SelectedVenue', { item })}
-            >
-              {imageLoading && (
-                <ActivityIndicator
-                  size="small"
-                  color="gray"
-                  style={styles.loader}
-                />
-              )}
-
-              {item.img && (
-                <Image
-                  source={{ uri: item.img }}
-                  style={styles.image}
-                  onLoad={handleImageLoad}
-                  onError={handleImageError}
-                />
-              )}
-              <Text style={styles.cate_txt}>{item.venueName}</Text>
-            </TouchableOpacity>
-          );
-        }}
+        renderItem={renderVenueItem}
+        ListEmptyComponent={renderShimmerItem} // Render shimmer effect when the list is empty
       />
 
       {venues.length > 8 && (
@@ -89,7 +102,7 @@ const Venues: React.FC<VenuesProps> = () => {
           onPress={() => setShowAll(!showAll)}
         >
           <Text style={styles.showMoreText}>
-            {showAll ? t('Hide') : t('Show More')}
+            {showAll ? 'Hide' : 'Show More'}
           </Text>
         </TouchableOpacity>
       )}

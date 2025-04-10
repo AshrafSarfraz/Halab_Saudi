@@ -16,9 +16,11 @@ const firebaseConfig = {
 };
 
 
-// Initialize Firebase if not already initialized
+
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
+} else {
+  firebase.app(); // Use the default app
 }
 
 

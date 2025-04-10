@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, Image, Dimensions, TouchableOpacity, ActivityIndicator } from 'react-native';
-
-
+import { View, Text, FlatList, Image, Dimensions, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import ShimmerPlaceholder from 'react-native-shimmer-placeholder';
+import LinearGradient from 'react-native-linear-gradient';
+
 import { fetchFlatOfferFromFirebase } from '../../../firebase/firebaseutils';
 import { Colors } from '../../../Themes/Colors';
 import { useSelector } from 'react-redux';
@@ -12,7 +13,7 @@ import { getStyles } from './style';
 
 const { width } = Dimensions.get('screen');
 
-const ImageSlider: React.FC<{navigation:any}> = () => {
+const ImageSlider: React.FC<{ navigation: any }> = () => {
   const navigation = useNavigation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [offers, setOffers] = useState<any[]>([]); // State to store Firestore data
@@ -21,12 +22,11 @@ const ImageSlider: React.FC<{navigation:any}> = () => {
   const language = useSelector((state: RootState) => state.language.language); // Get the current language from Redux
   const styles = getStyles(language);
 
-  
- useEffect(() => {
+  useEffect(() => {
     const getFlatOffer = async () => {
       setLoading(true);
-      const fetchedBrands = await fetchFlatOfferFromFirebase();
-      setOffers(fetchedBrands);
+      const fetchedOffers = await fetchFlatOfferFromFirebase();
+      setOffers(fetchedOffers);
       setLoading(false);
     };
 
@@ -37,48 +37,59 @@ const ImageSlider: React.FC<{navigation:any}> = () => {
     const slideIndex = Math.round(event.nativeEvent.contentOffset.x / width);
     setCurrentIndex(slideIndex);
   };
+
   const handleImageLoad = () => {
-    setImageLoading(false); // Stop the loader when image has loaded
+    setImageLoading(false); // Stop the shimmer when image has loaded
   };
-    const handleImageError = () => {
-    setImageLoading(false); // Stop the loader in case of an error
+
+  const handleImageError = () => {
+    setImageLoading(false); // Stop the shimmer in case of an error
   };
 
   return (
     <View style={styles.container}>
-       {loading ? (
-              <ActivityIndicator size="small" color={Colors.Green} style={{ flex: 1 }} />
-            ) : (
-      <FlatList
-        data={offers} // Use Firestore data
-        keyExtractor={(item) => item.id}
-        horizontal
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-        onScroll={handleScroll}
-        renderItem={({ item }) => (
-          <TouchableOpacity  style={styles.imageContainer} onPress={() => navigation.navigate('DetailScreen', { item })}>
-            
-            {imageLoading && (
-                <ActivityIndicator
-                  size="large"
-                  color={Colors.Green}
-                  style={styles.loader}
+      {loading ? (
+        <ShimmerPlaceholder
+          visible={false}
+          LinearGradient={LinearGradient}
+          style={styles.image}
+        />
+      ) : (
+        <FlatList
+          data={offers} // Use Firestore data
+          keyExtractor={(item) => item.id}
+          horizontal
+          pagingEnabled
+          showsHorizontalScrollIndicator={false}
+          onScroll={handleScroll}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={styles.imageContainer}
+              onPress={() => navigation.navigate('DetailScreen', { item })}
+            >
+              {/* Shimmer effect for image */}
+              <ShimmerPlaceholder
+                visible={!imageLoading}
+                LinearGradient={LinearGradient}
+                style={styles.image}
+              >
+                <Image
+                  source={{ uri: item.img }} // Use URI for Firestore images
+                  style={styles.image}
+                  onLoad={handleImageLoad}
+                  onError={handleImageError}
                 />
-              )}
+              </ShimmerPlaceholder>
 
-            <Image 
-              source={{ uri: item.img }} // Use URI for Firestore images
-              style={styles.image} 
-                   onLoad={handleImageLoad}
-            />
-            <View style={styles.overlay}>
-
-              <Text style={styles.imageText}>{languageData[language].discount+item.discount+'%'}</Text>
-            </View>
-          </TouchableOpacity>
-        )}
-      />)}
+              {/* <View style={styles.overlay}>
+                <Text style={styles.imageText}>
+                  {languageData[language].discount + item.discount + '%'}
+                </Text>
+              </View> */}
+            </TouchableOpacity>
+          )}
+        />
+      )}
 
       {/* Pagination Dots */}
       <View style={styles.pagination}>
@@ -87,7 +98,7 @@ const ImageSlider: React.FC<{navigation:any}> = () => {
             key={index}
             style={[
               styles.dot,
-              { 
+              {
                 backgroundColor: index === currentIndex ? '#005029' : '#A2A2A2',
                 width: index === currentIndex ? 30 : 8,
               },
@@ -100,4 +111,3 @@ const ImageSlider: React.FC<{navigation:any}> = () => {
 };
 
 export default ImageSlider;
-
