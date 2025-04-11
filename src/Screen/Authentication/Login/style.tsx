@@ -109,7 +109,8 @@ export const getStyles =(language: string)=> StyleSheet.create({
       color: Colors.Black2
     },
     Error:{
-      marginTop: 10,
+      marginVertical: 5,
+      marginBottom:15,
       fontSize: 12,
       fontWeight: 'bold',
       color:'red'
