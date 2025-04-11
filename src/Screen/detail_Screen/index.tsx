@@ -19,13 +19,13 @@ import { toggleItemInCart } from '../../redux_toolkit/cartSlice';
 import { RootState } from '../../redux_toolkit/store';
 import {Dark_Heart, Light_Heart, Location} from '../../Themes/Images';
 import Pin_Modal from '../../Component/CustomAlert/Pin_Modal';
+import ShimmerPlaceholder from 'react-native-shimmer-placeholder';
+import LinearGradient from 'react-native-linear-gradient';
 
 import Discount_Redeem from '../../Component/CustomAlert/DiscountRedeem';
 import i18n from '../../../i18n';
-import { t } from 'i18next';
 import { getStyles } from './style';
 import { languageData } from '../../redux_toolkit/language/languageSlice';
-import { Colors } from '../../Themes/Colors';
 
 
 const DetailScreen: React.FC<{route:any}> = ({route}) => {
@@ -38,6 +38,7 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
   const navigation = useNavigation();
   const [alertVisible, setAlertVisible] = useState<boolean>(false);
   const [discountAlert, setdiscountAlert] = useState<boolean>(false);
+   const [imageLoading, setImageLoading] = useState(true);
   
 
   // Redux Toolkit
@@ -78,6 +79,10 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
   };
   // Google Map and Mobile Number
 
+  const handleImageLoad = () => {
+    setImageLoading(false); // Stop shimmer effect once the image has loaded
+  };
+
   return (
     <SafeAreaView>
           <StatusBar hidden={true} translucent={true} animated={true} />
@@ -99,7 +104,13 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
             </TouchableOpacity>
           </View>
           <View style={styles.Body_Cont}>
-            <Image source={{uri:item.img}} style={styles.image} />
+          <ShimmerPlaceholder
+                visible={!imageLoading}
+                LinearGradient={LinearGradient}
+                style={styles.image}
+              >
+            <Image source={{uri:item.img}} style={styles.image}    onLoad={handleImageLoad} />
+            </ShimmerPlaceholder>
             <View style={styles.Type_Cont}>
               <Text style={styles.Type_Text}>{item.selectedCategory}</Text>
             </View>

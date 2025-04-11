@@ -19,6 +19,7 @@ import { getStyles } from './style';
 import { languageData } from '../../redux_toolkit/language/languageSlice';
 import { Colors } from '../../Themes/Colors';
 import ShimmerPlaceholder from 'react-native-shimmer-placeholder';
+import LinearGradient from 'react-native-linear-gradient';
 
 const SelectedVenues: React.FC<{ route: any }> = ({ route }) => {
   const navigation = useNavigation<any>();
@@ -97,18 +98,21 @@ const SelectedVenues: React.FC<{ route: any }> = ({ route }) => {
               contentContainerStyle={{ paddingBottom: 20 }}
               renderItem={() => (
                 <View style={styles.itemContainer}>
-                  <ShimmerPlaceholder visible={false} style={styles.itemImage} />
+                  <ShimmerPlaceholder visible={false} LinearGradient={LinearGradient} style={styles.itemImage} />
                   <View style={styles.itemInfo}>
                     <ShimmerPlaceholder
                       visible={false}
+                      LinearGradient={LinearGradient}
                       style={{ width: '70%', height: 16, borderRadius: 5, marginBottom: 6 }}
                     />
                     <ShimmerPlaceholder
                       visible={false}
+                      LinearGradient={LinearGradient}
                       style={{ width: '90%', height: 14, borderRadius: 5, marginBottom: 4 }}
                     />
                     <ShimmerPlaceholder
                       visible={false}
+                      LinearGradient={LinearGradient}
                       style={{ width: '40%', height: 12, borderRadius: 5 }}
                     />
                   </View>
@@ -136,6 +140,7 @@ const SelectedVenues: React.FC<{ route: any }> = ({ route }) => {
                 >
                   <ShimmerPlaceholder
                     visible={imageLoaded[item.id] || false}
+                    LinearGradient={LinearGradient}
                     style={styles.itemImage}
                   >
                     <Image
@@ -145,14 +150,12 @@ const SelectedVenues: React.FC<{ route: any }> = ({ route }) => {
                     />
                   </ShimmerPlaceholder>
 
-                  <ShimmerPlaceholder
-                    visible={imageLoaded[item.id] || false}
-                    style={styles.itemInfo}
-                  >
+                
                     <View style={styles.itemInfo}>
                       <Text style={styles.itemTitle}>
                         {language === 'en' ? item.nameEng : item.nameArabic}
                       </Text>
+
                       <Text style={styles.itemLocation}>
                         {language === 'en'
                           ? item.descriptionEng?.length > 70
@@ -162,11 +165,13 @@ const SelectedVenues: React.FC<{ route: any }> = ({ route }) => {
                           ? item.descriptionArabic.substring(0, 70) + '...'
                           : item.descriptionArabic}
                       </Text>
+                  
                       <Text style={styles.itemCity}>
                         {item.selectedCity}
                       </Text>
+            
                     </View>
-                  </ShimmerPlaceholder>
+                  
                 </TouchableOpacity>
               )}
             />

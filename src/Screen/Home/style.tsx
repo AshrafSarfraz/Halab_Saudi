@@ -17,6 +17,8 @@ export const getStyles =(language:String)=> StyleSheet.create({
     flexDirection: language==='en'?'row':'row-reverse',
     justifyContent: 'space-between',
     alignItems: 'center',
+
+
   },
   logo: {
     width: 130,

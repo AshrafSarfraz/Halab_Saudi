@@ -26,6 +26,7 @@ export const getStyles=(language:String) => StyleSheet.create({
        width:70,
        height:70,
        borderRadius:40,
+       marginLeft:3
     },
     bestSeller_Detail:{
      width:140,

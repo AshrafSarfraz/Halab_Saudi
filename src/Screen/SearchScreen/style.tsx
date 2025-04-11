@@ -84,8 +84,9 @@ export const getStyles=(language:String) => StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 8,
-    marginRight: language==='en'?10:0,
+    marginRight: language==='en'?10:10,
     marginLeft: language==='ar'?10:0,
+    resizeMode:"cover"
   },
   itemInfo: {
     flex: 1,

@@ -11,7 +11,7 @@ const images = [
   { id: '3', text: 'Health and Fitness', category: 'Health and Fitness', source: require('../../../Assests/Images/health.png') },
   { id: '4', text: 'Fun and Leisure', category: 'Fun and Leisure', source: require('../../../Assests/Images/fun.png') },
   { id: '5', text: 'Room Nights', category: 'Room Nights', source: require('../../../Assests/Images/room_night.png') },
-  { id: '6', text: 'Services and Retail', category: 'Services and Retail', source: require('../../../Assests/Images/food_drink.png') },
+  { id: '6', text: 'Services and Retail', category: 'Services and Retail', source: require('../../../Assests/Images/service.png') },
 ];
 
 

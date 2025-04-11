@@ -20,6 +20,7 @@ import { RootState } from '../../redux_toolkit/store';
 import ShimmerPlaceholder from 'react-native-shimmer-placeholder';
 import { getStyles } from './style';
 import { languageData } from '../../redux_toolkit/language/languageSlice';
+import LinearGradient from 'react-native-linear-gradient';
 
 const SearchScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -91,11 +92,11 @@ const SearchScreen: React.FC = () => {
               keyExtractor={(item, index) => index.toString()}
               renderItem={() => (
                 <View style={styles.itemContainer}>
-                  <ShimmerPlaceholder visible={false} style={styles.itemImage} />
+                  <ShimmerPlaceholder  visible={false}    LinearGradient={LinearGradient}  style={styles.itemImage} />
                   <View style={styles.itemInfo}>
-                    <ShimmerPlaceholder visible={false} style={{ height: 20, marginBottom: 6 }} />
-                    <ShimmerPlaceholder visible={false} style={{ height: 15, marginBottom: 6 }} />
-                    <ShimmerPlaceholder visible={false} style={{ height: 15, width: 80 }} />
+                    <ShimmerPlaceholder visible={false}    LinearGradient={LinearGradient} style={{ height: 20, marginBottom: 6 }} />
+                    <ShimmerPlaceholder visible={false}    LinearGradient={LinearGradient} style={{ height: 15, marginBottom: 6 }} />
+                    <ShimmerPlaceholder visible={false}    LinearGradient={LinearGradient} style={{ height: 15, width: 80 }} />
                   </View>
                 </View>
               )}
@@ -109,18 +110,23 @@ const SearchScreen: React.FC = () => {
               contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
               showsVerticalScrollIndicator={false}
               renderItem={({ item }) => {
-
+  const isLoaded = imageLoaded[item.id] || false;
                 return (
                   <TouchableOpacity
                     style={styles.itemContainer}
                     onPress={() => navigation.navigate('DetailScreen', { item })}
                   >
-                
+                 <ShimmerPlaceholder
+                      visible={isLoaded}
+                      LinearGradient={LinearGradient}
+                      style={styles.itemImage}
+                    >
                       <Image
                         source={{ uri: item.img }}
                         style={styles.itemImage}
                         onLoad={() => handleImageLoad(item.id)}
                       />
+                      </ShimmerPlaceholder>
 
 
 

@@ -39,8 +39,7 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
        <StatusBar hidden={true} translucent={true} animated={true} />
 
       <SafeAreaView style={styles.Container}>
-        <ScrollView  showsVerticalScrollIndicator={false} >
-          <View style={styles.header}>
+      <View style={styles.header}>
             <Image source={Full_logo_B} style={styles.logo} />
             <View style={styles.language_Cont}>
               <TouchableOpacity style={styles.Btn} onPress={showAlert}>
@@ -51,7 +50,9 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
               </TouchableOpacity>
             </View>
           </View>
-
+        <ScrollView  showsVerticalScrollIndicator={false} >
+         
+      
           <ImageSlider navigation={navigation} />
 
           <View style={[styles.Categories_Cont,{marginTop:7}]}>
