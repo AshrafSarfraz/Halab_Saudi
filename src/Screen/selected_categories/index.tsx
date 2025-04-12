@@ -69,8 +69,12 @@ const SelectedCategories: React.FC<{ route: any }> = ({ route }) => {
     <View style={styles.container}>
       <StatusBar hidden={true} translucent={true} animated={true} />
       <SafeAreaView style={{ flex: 1 }}>
-        <CustomHeader title={item.text} onBackPress={() => navigation.goBack()} />
-
+        {
+          language==='en'? <CustomHeader title={item.text} onBackPress={() => navigation.goBack()} />:
+          <CustomHeader title={item.categoryArabic} onBackPress={() => navigation.goBack()} />
+        }
+       
+      
         <View style={{ marginTop: '7%' }} />
         <View style={styles.searchContainer}>
           <Image source={Search} style={styles.searchIcon} />

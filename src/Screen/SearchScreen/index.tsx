@@ -65,7 +65,7 @@ const SearchScreen: React.FC = () => {
       <StatusBar hidden={true} translucent={true} animated={true} />
       <SafeAreaView style={{ flex: 1 }}>
         <CustomHeader
-          title={language === 'en' ? 'Search' : 'بحث'}
+          title={language === 'en' ? 'Search Screen' : 'شاشة البحث'}
           onBackPress={() => navigation.goBack()}
         />
 

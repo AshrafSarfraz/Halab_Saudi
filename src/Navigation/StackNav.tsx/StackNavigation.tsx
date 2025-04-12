@@ -46,7 +46,7 @@ const StackNavigation: React.FC = () => {
       if (user) {
         setInitialRoute('BottomTab'); // User is logged in
       } else {
-        setInitialRoute('SplashBlank'); // User not logged in
+        setInitialRoute('BottomTab'); // User not logged in
       }
     });
 

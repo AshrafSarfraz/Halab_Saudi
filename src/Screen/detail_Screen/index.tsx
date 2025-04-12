@@ -23,13 +23,12 @@ import ShimmerPlaceholder from 'react-native-shimmer-placeholder';
 import LinearGradient from 'react-native-linear-gradient';
 
 import Discount_Redeem from '../../Component/CustomAlert/DiscountRedeem';
-import i18n from '../../../i18n';
 import { getStyles } from './style';
 import { languageData } from '../../redux_toolkit/language/languageSlice';
 
 
 const DetailScreen: React.FC<{route:any}> = ({route}) => {
-  const isArabic = i18n.language === 'ar';
+
   const {item} = route.params; // Home se data le rahe hain
   const dispatch = useDispatch();
   const latitude = item.latitude ? item.latitude : null;
@@ -90,7 +89,7 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
         <View style={styles.container}>
           <View style={styles.HeaderCont}>
             <CustomHeader
-              title="Detail Screen"
+              title={languageData[language].Detail_Screen}
               onBackPress={() => {
                 navigation.goBack();
               }}

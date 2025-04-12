@@ -6,12 +6,12 @@ import { useNavigation } from '@react-navigation/native';
 
 
 const images = [
-  { id: '1', text: 'Food and Drink', category: 'Food and Drink', source: require('../../../Assests/Images/food_drink.png') },
-  { id: '2', text: 'Beauty and Spa', category: 'Beauty and Spa', source: require('../../../Assests/Images/beauty.png') },
-  { id: '3', text: 'Health and Fitness', category: 'Health and Fitness', source: require('../../../Assests/Images/health.png') },
-  { id: '4', text: 'Fun and Leisure', category: 'Fun and Leisure', source: require('../../../Assests/Images/fun.png') },
-  { id: '5', text: 'Room Nights', category: 'Room Nights', source: require('../../../Assests/Images/room_night.png') },
-  { id: '6', text: 'Services and Retail', category: 'Services and Retail', source: require('../../../Assests/Images/service.png') },
+  { id: '1', text: 'Food and Drink', category: 'Food and Drink', categoryArabic: 'المأكولات والمشروبات', source: require('../../../Assests/Images/food_drink.png') },
+  { id: '2', text: 'Beauty and Spa', category: 'Beauty and Spa',categoryArabic:  'الجمال والمنتجعات'  ,source: require('../../../Assests/Images/beauty.png') },
+  { id: '3', text: 'Health and Fitness', category: 'Health and Fitness',categoryArabic:  'الصحة واللياقة' , source: require('../../../Assests/Images/health.png') },
+  { id: '4', text: 'Fun and Leisure', category: 'Fun and Leisure', categoryArabic:  'الترفيه والتسلية' , source: require('../../../Assests/Images/fun.png') },
+  { id: '5', text: 'Room Nights', category: 'Room Nights', categoryArabic:  'الإقامة الفندقية' , source: require('../../../Assests/Images/room_night.png') },
+  { id: '6', text: 'Services and Retail', category: 'Services and Retail', categoryArabic:  'الخدمات والتجزئة' , source: require('../../../Assests/Images/service.png') },
 ];
 
 

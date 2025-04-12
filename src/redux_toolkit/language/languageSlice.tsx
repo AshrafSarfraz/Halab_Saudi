@@ -34,7 +34,7 @@ const languageData = {
     region: "region",
     Found_Items:"Items Found",
     No_Items_Found:"No Item Found ",
-
+    Detail_Screen:"Detail Screen",
     
     privacy_policy_1: "I have read and accept the",
     privacy_policy_2: "privacy policy",
@@ -101,7 +101,7 @@ const languageData = {
     Search_for_anything:"ابحث عن أي شيء تحتاجه",
     Found_Items:'تم العثور على العناص'   ,
     No_Items_Found:"لم يتم العثور على عناصر"  ,    
-    
+    Detail_Screen:"شاشة التفاصيل",
     
     your_phone_number: "رقم هاتفك",
     code_is_sent: "تم إرسال الكود.",
