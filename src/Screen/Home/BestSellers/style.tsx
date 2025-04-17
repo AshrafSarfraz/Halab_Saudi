@@ -32,15 +32,15 @@ export const getStyles=(language:String) => StyleSheet.create({
      width:140,
      marginLeft:language==='en'?10:0,
      marginRight:language==='en'?0:10,
-     textAlign:'justify'
+     textAlign:'justify',
     },
     title_txt:{
       fontSize:16,
       fontFamily:language==='en'?Fonts.SF_Bold:'',
       fontWeight :language==='en'?'400':'bold',
       color:Colors.Green,
-      lineHeight:language==='en'?22:30,
-      letterSpacing:language==='en'?0.3:0,
+      lineHeight:language==='en'?22:22,
+      letterSpacing:language==='en'?0.2:0,
       textAlign:language==='en'?'left':'right',
     },
     desc_txt:{

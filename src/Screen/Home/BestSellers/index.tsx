@@ -49,13 +49,13 @@ const BestSeller: React.FC = () => {
     const isLoaded = loadedCards[item.id] ?? false;
     return (
       <TouchableOpacity style={styles.Flatlist_Cont} onPress={() => navigation.navigate('DetailScreen', { item })}>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <View style={{ flexDirection: language==='en'?'row':"row-reverse", alignItems: 'center' }}>
           <ShimmerPlaceholder visible={isLoaded} LinearGradient={LinearGradient} style={styles.image}>
             <Image source={{ uri: item.img }} style={styles.image} onLoadEnd={() => handleCardLoad(item.id)} />
           </ShimmerPlaceholder>
           <View style={styles.bestSeller_Detail}>
-            <ShimmerPlaceholder visible={isLoaded} LinearGradient={LinearGradient} style={{ width: '80%', height: 20, marginBottom: 2, borderRadius: 5 }}>
-              <Text style={styles.title_txt}>{language === 'en' ? item.nameEng : item.nameArabic}</Text>
+            <ShimmerPlaceholder visible={isLoaded} LinearGradient={LinearGradient} style={{ width: '100%', height: 20, marginBottom: 2, borderRadius: 5 }}>
+              <Text style={styles.title_txt}>{language === 'en' ? <Text>{item.nameEng.length > 16 ? item.nameEng.substring(0, 16) + '...' : item.nameEng}</Text> : item.nameArabic}</Text>
             </ShimmerPlaceholder>
             {!isLoaded ? (
               <>

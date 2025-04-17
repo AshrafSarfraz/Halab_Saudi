@@ -22,6 +22,22 @@
           }
         },
         {
+          "client_id": "939551727593-in8pfkfk8bgpp1ovqio6bhtpir4lk9k9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.halabsaudiappreactnativeversion",
+            "certificate_hash": "0e11342b69558d1e9d1772b9fa207b64f0bd2c8b"
+          }
+        },
+        {
+          "client_id": "939551727593-uas719ft7f758dapt1jjpgjqm43eh66g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.halabsaudiappreactnativeversion",
+            "certificate_hash": "87309aea747cee04fe720947b79566af3157db6e"
+          }
+        },
+        {
           "client_id": "939551727593-5386jpj7bc0h5qu4v6v3hmvlgpabv1he.apps.googleusercontent.com",
           "client_type": 3
         }

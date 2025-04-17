@@ -45,11 +45,11 @@ export default StyleSheet.create({
     borderRadius:10,
   },
   cate_txt: {
-    fontSize: 16,
+    fontSize: 15,
     marginVertical: Platform.OS==='ios'?7:2,
     fontFamily: Fonts.SF_Bold,
     color: Colors.Green,
-    marginHorizontal:"6%",
+    marginHorizontal:"4%",
   },
   Type_Cont: {
     backgroundColor: '#D0A700',

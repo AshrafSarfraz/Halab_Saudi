@@ -120,6 +120,7 @@ const Login: React.FC<NativeStackScreenProps<any>> = ({ navigation }) => {
             onLinkPress1={() => Linking.openURL('https://halabsaudi.com/terms-of-use/')}
           />
             {error && <Text style={styles.Error}>{error}</Text>}
+         <View style={{height:10}} />
           <CustomButton
             title={languageData[language].login}
             onPress={sendVerificationCode}

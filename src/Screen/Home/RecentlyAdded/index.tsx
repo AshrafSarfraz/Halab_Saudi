@@ -82,7 +82,7 @@ const RecentlyAdded = () => {
                 />
               </ShimmerPlaceholder>
               <Text style={styles.cate_txt}>
-                {language === 'en' ? item.nameEng : item.nameArabic}
+                {language === 'en' ?    <Text> {item.nameEng.length > 20 ? item.nameEng.substring(0, 20) + '...' : item.nameEng}</Text> : item.nameArabic}
               </Text>
 
               <View style={styles.Type_Cont}>

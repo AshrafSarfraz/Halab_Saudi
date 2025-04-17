@@ -75,7 +75,7 @@ const Wishlist: React.FC<WishlistProps> = () => {
                   )}
                 </TouchableOpacity>
               </ImageBackground>
-              <Text style={styles.cate_txt}>{item.nameEng}</Text>
+              <Text   style={[  styles.cate_txt ]}>  {item.nameEng.length > 20 ? item.nameEng.substring(0, 20) + '...' : item.nameEng}</Text>
               <View style={styles.Type_Cont}>
                 <Text style={styles.Type_Text}>{item.selectedCategory}</Text>
               </View>

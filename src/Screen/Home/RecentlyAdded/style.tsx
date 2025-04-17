@@ -36,18 +36,21 @@ Flatlist_Cont: {
       
     },
     cate_txt: {
+      width:"90%",
       fontSize: 14,
-      marginVertical: Platform.OS==='ios'?3:0,
+      marginVertical: Platform.OS==='ios'?3:2,
       fontFamily: Fonts.SF_Bold,
       color: Colors.Green,
-      marginHorizontal:"6%",
+      marginHorizontal:"4%",
+      textAlign:language==='en'?'left':"right",
     },
     Type_Cont: {
       backgroundColor: '#D0A700',
       paddingHorizontal: '4%',
       paddingVertical: 3,
       borderRadius: 3,
-      marginHorizontal:"6%",
+      marginHorizontal:"5%",
+      alignSelf:language==='en'?'flex-start':'flex-end'
     },
     Type_Text: {
       fontSize: 9,
@@ -62,7 +65,7 @@ Flatlist_Cont: {
       width: '100%',
       marginTop: 6,
       alignSelf:"center",
-      paddingHorizontal:"6%"
+      paddingHorizontal:"5%"
       
     },
     Loc_Cont: {

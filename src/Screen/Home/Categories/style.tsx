@@ -2,7 +2,7 @@ import { Dimensions, StyleSheet } from "react-native";
 import { Fonts } from "../../../Themes/Fonts";
 
 const { width } = Dimensions.get('window');
-const styles = StyleSheet.create({
+export  const getStyles=(language:string) => StyleSheet.create({
     container: {
       alignItems: 'center',
       marginHorizontal:"3%",
@@ -15,8 +15,9 @@ const styles = StyleSheet.create({
     },
     image:{
        width:80,
-       height:100,
-       borderRadius:10
+       height:104,
+
+       
     },
     cate_txt:{
       fontSize:12,
@@ -24,8 +25,15 @@ const styles = StyleSheet.create({
       marginTop:5,
       lineHeight:16,
       letterSpacing:0.3
+    },
+    Txt:{
+      fontSize:11,
+      fontWeight:"bold",
+      textAlign:"center",
+      lineHeight:14,
+      marginTop:64,
+      width:language==='en'?'80%':'70%',
+      alignSelf:"center"
     }
   });
-  
-  export default styles;
   

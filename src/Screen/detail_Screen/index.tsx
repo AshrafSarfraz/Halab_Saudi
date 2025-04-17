@@ -39,9 +39,10 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
   const [discountAlert, setdiscountAlert] = useState<boolean>(false);
    const [imageLoading, setImageLoading] = useState(true);
   
+   console.log("Fetched Offers:", item);
 
   // Redux Toolkit
-   const language = useSelector((state: RootState) => state.language.language); // Get the current language from Redux
+   const language = useSelector((state: RootState) => state.language.language); 
     const styles = getStyles(language);
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const isInCart = cartItems.some(cartItem => cartItem.id === item.id);
