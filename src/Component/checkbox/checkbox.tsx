@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { Colors } from '../../Themes/Colors';
 import { Tick } from '../../Themes/Images';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux_toolkit/store';
 
 
  // ✅ Dummy tick icon
@@ -17,7 +19,9 @@ type CheckboxProps = {
 };
 
 const CustomCheckbox: React.FC<CheckboxProps> = ({ label, onPress, isChecked, linkText, onLinkPress,linkTerm, onLinkPress1 }) => {
-
+  const language = useSelector((state: RootState) => state.language.language); // Get the current language from Redux
+ 
+  const styles = getStyles(language);
   return (
     <View style={styles.container}>
       {/* Checkbox */}
@@ -32,8 +36,8 @@ const CustomCheckbox: React.FC<CheckboxProps> = ({ label, onPress, isChecked, li
           {linkText} 
         </Text>
         <Text style={styles.label} onPress={onLinkPress}>
-        {' and '}
-        </Text>
+           {language === 'ar' ? ' و ' : ' and '}
+           </Text>
         <Text style={styles.linkText} onPress={onLinkPress1}>
           {linkTerm} 
         </Text>
@@ -45,9 +49,9 @@ const CustomCheckbox: React.FC<CheckboxProps> = ({ label, onPress, isChecked, li
   );
 };
 
-const styles = StyleSheet.create({
+const getStyles=(language:string) => StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    flexDirection: language==='en'?'row':'row-reverse',
     alignItems: 'center',
     marginTop: 5,
     marginBottom:5
@@ -60,8 +64,8 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: 10,
-  
+    marginRight:language==='en'? 10:0,
+    marginLeft:language==='ar'?10:0
   },
   checked: {
     borderColor: Colors.Green,
