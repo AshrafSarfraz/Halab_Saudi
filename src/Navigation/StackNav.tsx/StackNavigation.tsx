@@ -55,7 +55,7 @@ const StackNavigation: React.FC = () => {
 
   if (!initialRoute) {
     // Auth status still checking – show splash or loader
-    return <Splash_Screen />;
+    return <Splash_Screen  />;
   }
 
   return (

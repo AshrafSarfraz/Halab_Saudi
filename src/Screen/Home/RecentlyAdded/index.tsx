@@ -10,10 +10,12 @@ import { RootState } from '../../../redux_toolkit/store';
 import { getStyles } from './style';
 import DistanceFromDevice from '../../../Component/distanceCalculate/distanceCalculate';
 import { Location } from '../../../Themes/Images';
+import DetectCountry from '../../../Component/distanceCalculate/DetectCountry';
 
 const RecentlyAdded = () => {
   const navigation = useNavigation();
   const [recentItems, setRecentItems] = useState<any[]>([]);
+  const [country, setCountry] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [imageLoading, setImageLoading] = useState(true); // State to track image loading
   const language = useSelector((state: RootState) => state.language.language); // Get the current language from Redux
@@ -62,7 +64,15 @@ const RecentlyAdded = () => {
         />
       ) : (
         <FlatList
-          data={recentItems}
+        data={
+          recentItems.filter(item => {
+            if (country) {
+              return item.selectedCountry?.toLowerCase() === country.toLowerCase();
+            }
+            return true; // agar country detect na ho to sab items dikhao
+          })
+        }
+      
           keyExtractor={(item) => item.id}
           numColumns={2} // Display 2 items in a row
           columnWrapperStyle={styles.row} // Apply styles for spacing between columns
@@ -100,6 +110,9 @@ const RecentlyAdded = () => {
                     loadingText="Calculating..."
                   />
                 </View>
+
+                <DetectCountry onCountryDetect={(value) => setCountry(value)} />
+           
                 {item.status === 'Yes' ? (
                   <Text style={styles.Status_Txt}>Active</Text>
                 ) : (
