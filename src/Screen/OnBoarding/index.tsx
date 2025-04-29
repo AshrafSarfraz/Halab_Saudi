@@ -59,21 +59,21 @@ const OnBoarding: React.FC<OnBoardingProps> = ({ navigation }) => {
       key: 1,
       Title: langData[language].restaurants_discounts.title, // Fetch title based on language
       text: langData[language].restaurants_discounts.text,   // Fetch text based on language
-      image: require('../../Assests/Images/Slider1.png'),
+      image: require('../../Assests/Images/slider1.png'),
       backgroundColor: Colors.Bg,
     },
     {
       key: 2,
       Title: langData[language].shopping_discounts.title, // Fetch title based on language
       text: langData[language].shopping_discounts.text,   // Fetch text based on language
-      image: require('../../Assests/Images/Slider2.png'),
+      image: require('../../Assests/Images/slider2.png'),
       backgroundColor: Colors.Bg,
     },
     {
       key: 3,
       Title: langData[language].hotels_discounts.title, // Fetch title based on language
       text: langData[language].hotels_discounts.text,   // Fetch text based on language
-      image: require('../../Assests/Images/Slider3.png'),
+      image: require('../../Assests/Images/slider3.png'),
       backgroundColor: Colors.Bg,
     }
   ];
