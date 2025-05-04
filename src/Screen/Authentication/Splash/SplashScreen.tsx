@@ -12,7 +12,7 @@ type SplashScreenProps = {
 const Splash_Screen: React.FC<SplashScreenProps> = ({ navigation }) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
-      navigation.navigate('Onboarding');
+      navigation.navigate('Onboarding1');
     }, 3000);
     return () => clearTimeout(timeout);
   }, [navigation]);
@@ -21,10 +21,14 @@ const Splash_Screen: React.FC<SplashScreenProps> = ({ navigation }) => {
     <View style={styles.Main_Container}>
         <StatusBar hidden={true} translucent={true} animated={true} />
       <View style={styles.Body}>
-        <Image source={Full_logo_w} style={styles.Logo_Img} />
-       
+      <View style={styles.Img_Box} >
+      <Image source={Full_logo_w} style={styles.Logo_Img} />
       </View>
-
+      <View style={styles.Footer} >
+      <Image source={require('../../../Assests/Images/saudi.png')} style={styles.SaudiFlag_Logo} />
+      <Text style={styles.Txt} >This Discount Application is Exclusively for Saudi Visitors</Text>
+      </View>
+      </View>
     </View>
   );
 };
@@ -44,11 +48,39 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
   },
+  Img_Box:{
+    flex:0.55,
+    width:"100%",
+    justifyContent:"flex-end",
+    alignItems:'center'
+  },
   Logo_Img: {
-    width: '70%',
-    height: '90%',
+    width: '80%',
+    height: 70,
     resizeMode: 'contain',
   },
+  SaudiFlag_Logo:{
+  width:170,height:120,
+  resizeMode:"contain"
+  },
+  Footer:{
+    flex:0.45,
+    width:"100%",
+    alignItems:"center",
+    justifyContent:"flex-end",
+    paddingBottom:"10%"
+
+  },
+  Txt:{
+    color:Colors.White,
+    fontSize:14,
+    fontWeight:"600",
+    marginBottom:"2%",
+    marginTop:"-3%",
+    alignSelf:"center",
+    width:"80%",
+    textAlign:'center'
+  }
 
   
 });

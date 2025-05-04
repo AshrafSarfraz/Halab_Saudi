@@ -28,11 +28,11 @@ import { languageData } from '../../redux_toolkit/language/languageSlice';
 
 
 const DetailScreen: React.FC<{route:any}> = ({route}) => {
-
   const {item} = route.params; // Home se data le rahe hain
   const dispatch = useDispatch();
   const latitude = item.latitude ? item.latitude : null;
   const longitude = item.longitude ? item.longitude : null;
+  const Address = item.address ? item.address : null;
   const phoneNumber = item.PhoneNumber;
   const navigation = useNavigation();
   const [alertVisible, setAlertVisible] = useState<boolean>(false);
@@ -128,15 +128,25 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
               </TouchableOpacity>
             </View>
 
-            {/* <View style={styles.Address_Cont}>
-              <Image source={Location} style={styles.Address_Img} />
-              <Text style={styles.Address}>{item.longitude}</Text>
-            </View> */}
+            <View style={styles.Loc_Cont}>
+              <Image source={Location} style={styles.Loc_Icon}/>
+              <Text style={styles.Loc_Txt} >{Address} </Text>
+            </View>
             <View style={styles.Dis_Cont}>
+              <View style={styles.Dis_txt_cont} >
               <Text style={styles.Discount}>{languageData[language].discount} </Text>
               <Text style={styles.Total_Discount}> {''+ item.discount +'%'}  </Text>
+              </View>
+              
+              <TouchableOpacity style={styles.Menu_Btn} onPress={() => {
+          if (item.pdfUrl) {
+            navigation.navigate('PDFViewerScreen', { pdfUrl: item.pdfUrl });
+          } else { Alert.alert("No menu available"); }}}  >
+               
+                <Text style={styles.menu_txt} >View Menu</Text>
+              </TouchableOpacity>
             </View>
-            
+                        
               <View style={styles.Desc_Cont} >
               <Text style={styles.Desc}>{languageData[language].description}</Text>
               </View>
@@ -144,9 +154,6 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
                 language==='ar'?<Text style={styles.Detail}>{item.descriptionArabic}</Text>:
                 <Text style={styles.Detail}>{item.descriptionEng}</Text>
               }
-              
-{/* 
-            <Text style={styles.pin}>Pin: {item.pin}</Text> */}
           </View>
 
           <CustomButton
