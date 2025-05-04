@@ -21,12 +21,14 @@ import { languageData } from '../../redux_toolkit/language/languageSlice';
 import { Colors } from '../../Themes/Colors';
 import ShimmerPlaceholder from 'react-native-shimmer-placeholder';
 import LinearGradient from 'react-native-linear-gradient';
+import DetectCountry from '../../Component/distanceCalculate/DetectCountry';
 
 const SelectedCategories: React.FC<{ route: any }> = ({ route }) => {
   const navigation = useNavigation<any>();
   const { item } = route.params;
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredItems, setFilteredItems] = useState<any[]>([]);
+    const [country, setCountry] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [imageLoaded, setImageLoaded] = useState<{ [key: string]: boolean }>({});
 
@@ -111,7 +113,14 @@ const SelectedCategories: React.FC<{ route: any }> = ({ route }) => {
             renderEmptyState()
           ) : (
             <FlatList
-              data={searchFiltered}
+            data={
+              searchFiltered.filter(item => {
+                if (country) {
+                  return item.selectedCountry?.toLowerCase() === country.toLowerCase();
+                }
+                return true; // agar country detect na ho to sab items dikhao
+              })
+            }
               keyExtractor={item => item.id}
               contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
               showsVerticalScrollIndicator={false}
@@ -164,6 +173,7 @@ const SelectedCategories: React.FC<{ route: any }> = ({ route }) => {
           )}
         </View>
       </SafeAreaView>
+      <DetectCountry onCountryDetect={(value) => setCountry(value)} />
     </View>
   );
 };

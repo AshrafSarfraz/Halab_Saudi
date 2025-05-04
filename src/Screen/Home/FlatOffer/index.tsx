@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux_toolkit/store';
 import { languageData } from '../../../redux_toolkit/language/languageSlice';
 import { getStyles } from './style';
+import DetectCountry from '../../../Component/distanceCalculate/DetectCountry';
 
 const { width } = Dimensions.get('screen');
 
@@ -17,6 +18,7 @@ const ImageSlider: React.FC<{ navigation: any }> = () => {
   const navigation = useNavigation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [offers, setOffers] = useState<any[]>([]); // State to store Firestore data
+   const [country, setCountry] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [imageLoading, setImageLoading] = useState(true);
   const language = useSelector((state: RootState) => state.language.language); // Get the current language from Redux
@@ -56,7 +58,14 @@ const ImageSlider: React.FC<{ navigation: any }> = () => {
         />
       ) : (
         <FlatList
-          data={offers} // Use Firestore data
+        data={
+          offers.filter(item => {
+            if (country) {
+              return item.selectedCountry?.toLowerCase() === country.toLowerCase();
+            }
+            return true; // agar country detect na ho to sab items dikhao
+          })
+        } // Use Firestore data
           keyExtractor={(item) => item.id}
           horizontal
           pagingEnabled
@@ -106,6 +115,7 @@ const ImageSlider: React.FC<{ navigation: any }> = () => {
           />
         ))}
       </View>
+      <DetectCountry onCountryDetect={(value) => setCountry(value)} />
     </View>
   );
 };

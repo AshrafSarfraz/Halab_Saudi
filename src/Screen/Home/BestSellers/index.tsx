@@ -8,6 +8,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { fetchBrandsFromFirebase } from '../../../firebase/firebaseutils';
 import { RootState } from '../../../redux_toolkit/store';
 import { getStyles } from './style';
+import DetectCountry from '../../../Component/distanceCalculate/DetectCountry';
 
 const { width } = Dimensions.get('screen');
 
@@ -17,6 +18,7 @@ const BestSeller: React.FC = () => {
   const styles = getStyles(language);
 
   const [brands, setBrands] = useState<any[]>([]);
+  const [country, setCountry] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [loadedCards, setLoadedCards] = useState<{ [key: string]: boolean }>({});
 
@@ -82,13 +84,21 @@ const BestSeller: React.FC = () => {
          renderItem={renderShimmerItem} />
       ) : (
         <FlatList 
-         data={brands}
+        data={
+          brands.filter(item => {
+            if (country) {
+              return item.selectedCountry?.toLowerCase() === country.toLowerCase();
+            }
+            return true; // agar country detect na ho to sab items dikhao
+          })
+        }
          horizontal
          pagingEnabled 
          keyExtractor={item => item.id} 
          showsHorizontalScrollIndicator={false}
         renderItem={renderBrandItem} />
       )}
+      <DetectCountry onCountryDetect={(value) => setCountry(value)} />
     </View>
   );
 };

@@ -1,5 +1,3 @@
-
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { firestore } from './firebaseconfig';
 
 export const fetchBrandsFromFirebase = async () => {

@@ -26,16 +26,19 @@ const DetectCountry: React.FC<DetectCountryProps> = ({ onCountryDetect }) => {
     };
 
     const getLocation = () => {
-      Geolocation.getCurrentPosition(
-        position => {
-        const { latitude, longitude } = position.coords;
-          fetchCountry(latitude, longitude);
-        },
-        error => {
-          console.error(error);
-        },
-        { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
-      );
+      const latitude= 25.276987
+      const  longitude= 51.520008
+      fetchCountry(latitude, longitude);
+      // Geolocation.getCurrentPosition(
+      //   position => {
+      //   const { latitude, longitude } = position.coords;
+      //     fetchCountry(latitude, longitude);
+      //   },
+      //   error => {
+      //     console.error(error);
+      //   },
+      //   { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
+      // );
     };
 
     const fetchCountry = async (lat: number, lon: number) => {

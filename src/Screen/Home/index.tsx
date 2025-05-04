@@ -36,7 +36,7 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
   return (
     <View style={{ flex: 1, backgroundColor: Colors.Bg }}>
       {/* StatusBar Fix */}
-       <StatusBar hidden={true} translucent={true} animated={true} />
+       <StatusBar hidden={true} translucent={true} animated={true}  />
 
       <SafeAreaView style={styles.Container}>
       <View style={styles.header}>

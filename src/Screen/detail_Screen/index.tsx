@@ -25,6 +25,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import Discount_Redeem from '../../Component/CustomAlert/DiscountRedeem';
 import { getStyles } from './style';
 import { languageData } from '../../redux_toolkit/language/languageSlice';
+import MenuUnavailableModal from '../../Component/CustomAlert/MenuAlert';
+import IncorrectPin from '../../Component/CustomAlert/IncorrectPin';
 
 
 const DetailScreen: React.FC<{route:any}> = ({route}) => {
@@ -35,9 +37,11 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
   const Address = item.address ? item.address : null;
   const phoneNumber = item.PhoneNumber;
   const navigation = useNavigation();
-  const [alertVisible, setAlertVisible] = useState<boolean>(false);
   const [discountAlert, setdiscountAlert] = useState<boolean>(false);
-   const [imageLoading, setImageLoading] = useState(true);
+  const [imageLoading, setImageLoading] = useState(true);
+  const [alertVisible, setAlertVisible] = useState<boolean>(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [incorrectPinModal, setIncorrectPinModal] = useState(false);
   
    console.log("Fetched Offers:", item);
 
@@ -134,14 +138,15 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
             </View>
             <View style={styles.Dis_Cont}>
               <View style={styles.Dis_txt_cont} >
-              <Text style={styles.Discount}>{languageData[language].discount} </Text>
               <Text style={styles.Total_Discount}> {''+ item.discount +'%'}  </Text>
+              <Text style={styles.Discount}>{languageData[language].discount} </Text>
+            
               </View>
               
               <TouchableOpacity style={styles.Menu_Btn} onPress={() => {
           if (item.pdfUrl) {
             navigation.navigate('PDFViewerScreen', { pdfUrl: item.pdfUrl });
-          } else { Alert.alert("No menu available"); }}}  >
+          } else { setModalVisible(true)}}}  >
                
                 <Text style={styles.menu_txt} >View Menu</Text>
               </TouchableOpacity>
@@ -177,20 +182,17 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
     if (userPin === item.pin) {
       showDiscount_Alert();
     } else {
-      Alert.alert('Pin is incorrect'); // or use console.warn()
+     setIncorrectPinModal(true); // or use console.warn()
     }
     hideAlert(); // Close pin modal in both cases
   }}
   onClose={() => hideAlert()}
 />
 
-        <Discount_Redeem
-          visible={discountAlert}
-          discount={item.discount}
-          onClose={() => {
-            hideDiscount_Alert();
-          }}
-        />
+        <Discount_Redeem visible={discountAlert} discount={item.discount} onClose={() => {hideDiscount_Alert();}}/>
+        <MenuUnavailableModal visible={modalVisible} onClose={() => setModalVisible(false)}/>
+        <IncorrectPin visible={incorrectPinModal} onClose={() => setIncorrectPinModal(false)}/>
+      
       </ScrollView>
     </SafeAreaView>
   );

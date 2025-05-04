@@ -9,6 +9,7 @@ export const getStyles = (language: string) =>
       paddingHorizontal: 24,
       marginTop: Platform.OS === 'ios' ? '0%' : '10%',
       marginBottom: Platform.OS === 'ios' ? '1%' : '6%',
+      paddingBottom:Platform.OS === 'ios' ? '0%' : '4%',
     },
     HeaderCont: {
       flexDirection: language === 'en' ? 'row' : 'row-reverse',
@@ -106,7 +107,7 @@ export const getStyles = (language: string) =>
     
     },
     Discount: {
-      fontSize: language === 'en' ? 20 : 20,
+      fontSize: language === 'en' ? 14 : 14,
       color: Colors.Green,
       fontFamily: language === 'en' ? Fonts.SF_Bold : '',
       letterSpacing: 0.4,
@@ -114,11 +115,11 @@ export const getStyles = (language: string) =>
       fontWeight: language === 'en' ? '400' : 'bold',
     },
     Total_Discount: {
-      fontSize: 20,
+      fontSize: 18,
       color: Colors.Green,
       fontFamily: Fonts.SF_Bold,
-      letterSpacing: 0.4,
-      lineHeight: 28,
+      letterSpacing: 0.2,
+      lineHeight: 26,
     },
     Desc_Cont: {
       flexDirection: language === 'en' ? 'row' : 'row-reverse',

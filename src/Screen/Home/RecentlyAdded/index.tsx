@@ -32,7 +32,7 @@ const RecentlyAdded = () => {
 
         // 🕒 Get current time and subtract 1 month
         const oneMonthAgo = new Date();
-        oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+        oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 4);
 
         const filtered = data.filter(item => {
           const createdAt = item.time?.toDate?.(); // Convert Firestore Timestamp to JS Date

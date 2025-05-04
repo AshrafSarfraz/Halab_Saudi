@@ -21,10 +21,12 @@ import ShimmerPlaceholder from 'react-native-shimmer-placeholder';
 import { getStyles } from './style';
 import { languageData } from '../../redux_toolkit/language/languageSlice';
 import LinearGradient from 'react-native-linear-gradient';
+import DetectCountry from '../../Component/distanceCalculate/DetectCountry';
 
 const SearchScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [brands, setBrands] = useState<any[]>([]);
+    const [country, setCountry] = useState<string | null>(null);
   const [imageLoaded, setImageLoaded] = useState<{ [key: string]: boolean }>({});
   const navigation = useNavigation();
   const [loading, setLoading] = useState(true);
@@ -105,7 +107,14 @@ const SearchScreen: React.FC = () => {
             renderEmptyState()
           ) : (
             <FlatList
-              data={filteredData}
+            data={
+              filteredData.filter(item => {
+                if (country) {
+                  return item.selectedCountry?.toLowerCase() === country.toLowerCase();
+                }
+                return true; // agar country detect na ho to sab items dikhao
+              })
+            }
               keyExtractor={item => item.id}
               contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
               showsVerticalScrollIndicator={false}
@@ -152,6 +161,7 @@ const SearchScreen: React.FC = () => {
           )}
         </View>
       </SafeAreaView>
+      <DetectCountry onCountryDetect={(value) => setCountry(value)} />
     </View>
   );
 };
