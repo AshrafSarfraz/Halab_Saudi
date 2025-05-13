@@ -16,7 +16,6 @@ import SelectedVenues from '../../Screen/selected_venues';
 import auth from '@react-native-firebase/auth';
 import AccountScreen from '../../Screen/AccountScreen';
 import PDFViewerScreen from '../../Screen/pdfViewer';
-import PDFExample from '../../Screen/pdfViewer';
 
 type RootStackParamList = {
   SplashBlank: undefined;
@@ -49,7 +48,7 @@ const StackNavigation: React.FC = () => {
       if (user) {
         setInitialRoute('BottomTab'); // User is logged in
       } else {
-        setInitialRoute('BottomTab'); // User not logged in
+        setInitialRoute('SplashBlank'); // User not logged in
       }
     });
 
@@ -77,7 +76,7 @@ const StackNavigation: React.FC = () => {
         <Stack.Screen name='CategoriesScreen' component={SelectedCategories} />
         <Stack.Screen name='SelectedVenue' component={SelectedVenues} />
         <Stack.Screen name='AccountScreen' component={AccountScreen} />
-        <Stack.Screen name='PDFViewerScreen' component={PDFExample} />
+        <Stack.Screen name='PDFViewerScreen' component={PDFViewerScreen} />
         
       </Stack.Navigator>
     </NavigationContainer>

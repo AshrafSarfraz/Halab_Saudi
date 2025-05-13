@@ -46,8 +46,10 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<!-- <key>NSLocationWhenInUseUsageDescription</key> -->
+     <key>NSLocationWhenInUseUsageDescription</key>
+    <string>We use your location to show nearby discounts and company-approved offers when you are using the app.</string>
+
 	<key>UIAppFonts</key>
 	<array>
 		<string>SF-Pro-Rounded-Black.otf</string>

@@ -4,10 +4,7 @@ export const Full_logo_w=require(ImgPath+'logo_W.png')
 export const Full_logo_B=require(ImgPath+'logo_B.png')
 export const Logo_W=require(ImgPath+'logo.png')
 export const LoginBg=require(ImgPath+'loginBg.png')
-export const Candle=require(ImgPath+'candle.png')
 export const Food2=require(ImgPath+'food2.png')
-export const Resturnant=require(ImgPath+'resturnant.png')
-export const Seller=require(ImgPath+'seller1.png')
 export const Giftpack=require(ImgPath+'giftpack.png')
 
 

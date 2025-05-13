@@ -5,7 +5,7 @@ import { Colors } from '../../Themes/Colors';
 import { Fonts } from '../../Themes/Fonts';
 import { useNavigation } from '@react-navigation/native';
 
-const PDFViewerScreen = ({ route }: any) => {
+const PDFViewerScreen:React.FC = ({ route }: any) => {
  const navigation=useNavigation()
   const { pdfUrl } = route.params;
   const source = { uri: pdfUrl, cache: true };

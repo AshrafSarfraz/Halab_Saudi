@@ -12,7 +12,7 @@ type SplashScreenProps = {
 const Splash_Screen: React.FC<SplashScreenProps> = ({ navigation }) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
-      navigation.navigate('Onboarding1');
+      navigation.navigate('Onboarding');
     }, 3000);
     return () => clearTimeout(timeout);
   }, [navigation]);
@@ -25,7 +25,6 @@ const Splash_Screen: React.FC<SplashScreenProps> = ({ navigation }) => {
       <Image source={Full_logo_w} style={styles.Logo_Img} />
       </View>
       <View style={styles.Footer} >
-      <Image source={require('../../../Assests/Images/saudi.png')} style={styles.SaudiFlag_Logo} />
       <Text style={styles.Txt} >This Discount Application is Exclusively for Saudi Visitors</Text>
       </View>
       </View>
