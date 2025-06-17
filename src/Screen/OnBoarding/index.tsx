@@ -98,7 +98,7 @@ const OnBoarding: React.FC<OnBoardingProps> = ({ navigation }) => {
 
     return (
       <SafeAreaView style={[styles.slide, { backgroundColor: item.backgroundColor }]}>
-          <StatusBar hidden={true} translucent={true} animated={true} />
+          <StatusBar hidden={false} translucent={true} animated={true} backgroundColor='#fff' barStyle='dark-content' />
         {!isFirstSlide && (
           <TouchableOpacity style={styles.prevButton} onPress={handlePrevSlide}>
             <Image source={require('../../Assests/Icons/Back.png')} style={styles.backIcon} />

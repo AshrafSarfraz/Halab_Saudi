@@ -33,8 +33,6 @@ export const getStyles =(language: string)=> StyleSheet.create({
     },
     InputContainer: {
       marginTop:'8%',
-      
-  
     },
     Input_Field: {
       alignItems: 'flex-start',
@@ -51,7 +49,6 @@ export const getStyles =(language: string)=> StyleSheet.create({
        borderWidth:2,
        borderColor:Colors.Green,
        backgroundColor:Colors.White
-  
     },
     PhoneInput_Field:{
       flexDirection: language==='en'?'row':'row-reverse',
@@ -114,6 +111,17 @@ export const getStyles =(language: string)=> StyleSheet.create({
       fontSize: 12,
       fontWeight: 'bold',
       color:'red'
+    },
+    Partner_Btn:{
+      width:'100%',
+
+    },
+    Partner_Txt:{
+      fontSize: 14,
+      color:Colors.Green,
+      textAlign:'center',
+      paddingVertical:10,
+      fontWeight:'bold',
     }
   
     

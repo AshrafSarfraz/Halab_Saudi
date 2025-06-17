@@ -35,6 +35,18 @@ const languageData = {
     Found_Items:"Items Found",
     No_Items_Found:"No Item Found ",
     Detail_Screen:"Detail Screen",
+   
+    // Merchant Side
+    heading: 'Welcome to Hala B Saudi!',
+    description1: 
+  'Hala B Saudi is a platform that connects Saudi visitors with trusted local businesses.' +
+  'Join us as a partner and expand your reach with exclusive benefits!' + 'Whether you own a restaurant, spa, salon, or retail store — we help promote your business to the right audience.' +
+  'Get featured, receive marketing support, and track your customer engagement in real time.',
+
+    
+    continue: 'Continue',
+
+
     
     privacy_policy_1: "I have read and accept the",
     privacy_policy_2: "privacy policy",
@@ -102,6 +114,12 @@ const languageData = {
     Found_Items:'تم العثور على العناص'   ,
     No_Items_Found:"لم يتم العثور على عناصر"  ,    
     Detail_Screen:"شاشة التفاصيل",
+    // merchant side
+    heading: 'مرحبًا بك في هلا بالسعودي!',
+    description1: 
+    'هلا بالسعودي هو منصة تربط الزوار السعوديين بالأعمال المحلية الموثوقة.' + 'انضم إلينا كشريك ووسّع نطاق عملك مع مزايا حصرية!' + 'سواء كنت تمتلك مطعمًا، سبا، صالونًا، أو متجرًا — نحن نساعدك على الترويج لعملك أمام الجمهور المناسب.' +
+    'احصل على ظهور مميز، دعم تسويقي، وتتبع تفاعل العملاء في الوقت الفعلي.',
+    continue: 'استمرار',
     
     your_phone_number: "رقم هاتفك",
     code_is_sent: "تم إرسال الكود.",

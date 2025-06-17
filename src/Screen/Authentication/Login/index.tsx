@@ -8,6 +8,7 @@ import {
   Linking,
   StatusBar,
   Platform,
+  TouchableOpacity,
 } from 'react-native';
 import { Logo_W } from '../../../Themes/Images';
 import CustomButton from '../../../Component/CustomButton/CustomButton';
@@ -33,7 +34,6 @@ const Login: React.FC<NativeStackScreenProps<any>> = ({ navigation }) => {
 
 
   const language = useSelector((state: RootState) => state.language.language); // Get the current language from Redux
- 
   const styles = getStyles(language);
 
   const handleCountrySelect = (countryCode: string) => {
@@ -81,7 +81,7 @@ const Login: React.FC<NativeStackScreenProps<any>> = ({ navigation }) => {
 
   return (
     <ScrollView contentContainerStyle={styles.MainContainer}>
-       <StatusBar hidden={true} translucent={true} animated={true} />
+      <StatusBar hidden={false} translucent={true} animated={true} backgroundColor='#fff' barStyle='dark-content' />
       <View>
         <Image source={Logo_W} style={styles.H_Logo} resizeMode="contain" />
         <Text style={styles.Welcome_Txt}>{languageData[language].welcome_back}</Text>
@@ -89,13 +89,8 @@ const Login: React.FC<NativeStackScreenProps<any>> = ({ navigation }) => {
       
         <View style={styles.InputContainer}>
           <View style={[styles.Input_Field, name !== '' ? styles.Active_Input_Field : null]}>
-            <TextInput
-              placeholder={languageData[language].full_name}
-              value={name}
-              placeholderTextColor={Colors.Grey9}
-              onChangeText={setName}
-              style={styles.User_Input}
-            />
+            <TextInput  placeholder={languageData[language].full_name} value={name}
+             placeholderTextColor={Colors.Grey9}  onChangeText={setName}style={styles.User_Input}/>
           </View>
 
           <View style={[styles.PhoneInput_Field, phoneNumber !== '' ? styles.Active_Input_Field : null]}>
@@ -125,6 +120,12 @@ const Login: React.FC<NativeStackScreenProps<any>> = ({ navigation }) => {
             title={languageData[language].login}
             onPress={sendVerificationCode}
           />
+
+          <View style={{marginTop:100,alignSelf:"center",}} >
+            <TouchableOpacity style={styles.Partner_Btn} onPress={()=>{navigation.navigate('HalaInfo')}} >
+              <Text style={styles.Partner_Txt} >Become a Partner</Text>
+            </TouchableOpacity>
+          </View>
 
           {isLoading && (
             <ActivityIndicatorModal visible={isLoading} />

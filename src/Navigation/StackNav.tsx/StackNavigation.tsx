@@ -16,6 +16,8 @@ import SelectedVenues from '../../Screen/selected_venues';
 import auth from '@react-native-firebase/auth';
 import AccountScreen from '../../Screen/AccountScreen';
 import PDFViewerScreen from '../../Screen/pdfViewer';
+import HalaInfoScreen from '../../Screen/Merchant_Screen/Hala_Info';
+import PartnerForm from '../../Screen/Merchant_Screen/PartnerForm';
 
 type RootStackParamList = {
   SplashBlank: undefined;
@@ -32,6 +34,8 @@ type RootStackParamList = {
   SelectedVenue: undefined;
   AccountScreen:undefined;
   PDFViewerScreen:undefined
+  HalaInfo:undefined;
+  PartnerForm:undefined;
 };
 type SplashScreenProps = {
   navigation?: any;
@@ -77,6 +81,10 @@ const StackNavigation: React.FC = () => {
         <Stack.Screen name='SelectedVenue' component={SelectedVenues} />
         <Stack.Screen name='AccountScreen' component={AccountScreen} />
         <Stack.Screen name='PDFViewerScreen' component={PDFViewerScreen} />
+
+        {/* Merchant Side */}
+        <Stack.Screen name='HalaInfo' component={HalaInfoScreen} />
+        {/* <Stack.Screen name='PartnerForm' component={PartnerForm} /> */}
         
       </Stack.Navigator>
     </NavigationContainer>
