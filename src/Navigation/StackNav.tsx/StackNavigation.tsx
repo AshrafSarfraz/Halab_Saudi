@@ -18,6 +18,7 @@ import AccountScreen from '../../Screen/AccountScreen';
 import PDFViewerScreen from '../../Screen/pdfViewer';
 import HalaInfoScreen from '../../Screen/Merchant_Screen/Hala_Info';
 import PartnerForm from '../../Screen/Merchant_Screen/PartnerForm';
+import BrandFormScreen from '../../Screen/Merchant_Screen/PartnerForm';
 
 type RootStackParamList = {
   SplashBlank: undefined;
@@ -84,7 +85,7 @@ const StackNavigation: React.FC = () => {
 
         {/* Merchant Side */}
         <Stack.Screen name='HalaInfo' component={HalaInfoScreen} />
-        {/* <Stack.Screen name='PartnerForm' component={PartnerForm} /> */}
+        <Stack.Screen name='PartnerForm' component={BrandFormScreen} />
         
       </Stack.Navigator>
     </NavigationContainer>

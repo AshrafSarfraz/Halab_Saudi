@@ -12,7 +12,8 @@ export const getStyles=(language:string) => StyleSheet.create({
     },
     Body:{
       flex:0.8,
-      paddingTop:40,
+      paddingTop:60,
+      marginBottom:100
     },
     Img:{
        width:'100%',height:200,resizeMode:'contain',
@@ -27,9 +28,11 @@ export const getStyles=(language:string) => StyleSheet.create({
     },
     paragraph: {
       width:'90%',
-      fontSize: 16,
-      lineHeight: 26,
-      textAlign: 'justify',
+      fontSize: 14,
+      fontFamily:Fonts.SF_Medium,
+      color:Colors.Black,
+      lineHeight: 20,
+      textAlign: 'center',
       alignSelf:"center"
   
     },

@@ -1,6 +1,3 @@
-import { useSelector } from 'react-redux';
-import { RootState } from '../../redux_toolkit/store'; // Assuming Redux store
-import { Colors } from '../../Themes/Colors';
 
 export const languageData = {
   en: {

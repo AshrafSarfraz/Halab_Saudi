@@ -9,11 +9,11 @@ import { getStyles } from './style';
 
 
 const images = [
-  { id: '1', text: 'Food and Drink', category: 'Food and Drink', categoryArabic: 'المأكولات والمشروبات', source: require('../../../Assests/Images/Food.png') },
+  { id: '1', text: 'Food and Drink', category: 'Food and Drink', categoryArabic: 'المأكولات والمشروبات', source: require('../../../Assests/Images/food.png') },
   { id: '2', text: 'Chocolate and Gifts', category: 'Chocolate and Gifts', categoryArabic:  'الخدمات والتجزئة' , source: require('../../../Assests/Images/chocolates.png') },
-  { id: '3', text: 'Beauty and Spa', category: 'Beauty and Spa',categoryArabic:  'الجمال والمنتجعات'  ,source: require('../../../Assests/Images/Beauty.png') },
-  { id: '4', text: 'Health and Fitness', category: 'Health and Fitness',categoryArabic:  'الصحة واللياقة' , source: require('../../../Assests/Images/Health.png') },
-  { id: '5', text: 'Fun and Leisure', category: 'Fun and Leisure', categoryArabic:  'الترفيه والتسلية' , source: require('../../../Assests/Images/Fun.png') },
+  { id: '3', text: 'Beauty and Spa', category: 'Beauty and Spa',categoryArabic:  'الجمال والمنتجعات'  ,source: require('../../../Assests/Images/beauty.png') },
+  { id: '4', text: 'Health and Fitness', category: 'Health and Fitness',categoryArabic:  'الصحة واللياقة' , source: require('../../../Assests/Images/health.png') },
+  { id: '5', text: 'Fun and Leisure', category: 'Fun and Leisure', categoryArabic:  'الترفيه والتسلية' , source: require('../../../Assests/Images/fun.png') },
   { id: '6', text: 'Room Nights', category: 'Room Nights', categoryArabic:  'الإقامة الفندقية' , source: require('../../../Assests/Images/Room.png') },
   { id: '7', text: 'Services and Retail', category: 'Services and Retail', categoryArabic:  'الخدمات والتجزئة' , source: require('../../../Assests/Images/Services.png') },
 ];
