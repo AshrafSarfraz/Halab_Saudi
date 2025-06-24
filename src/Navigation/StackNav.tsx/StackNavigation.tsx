@@ -87,6 +87,7 @@ const StackNavigation: React.FC = () => {
         <Stack.Screen name='HalaInfo' component={HalaInfoScreen} />
         <Stack.Screen name='PartnerForm' component={BrandFormScreen} />
         
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
