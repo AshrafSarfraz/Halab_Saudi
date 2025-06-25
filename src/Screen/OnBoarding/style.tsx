@@ -6,7 +6,7 @@ export const getStyles = (language: string) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: Colors.Bg,
+      backgroundColor: Colors.White,
     },
     prevButton: {
       position: 'absolute',
@@ -27,7 +27,7 @@ export const getStyles = (language: string) =>
     slide: {
       flex: 1,
       alignItems: 'center',
-      backgroundColor: Colors.Bg,
+      backgroundColor: Colors.White,
     },
     image: {
       width: '70%',

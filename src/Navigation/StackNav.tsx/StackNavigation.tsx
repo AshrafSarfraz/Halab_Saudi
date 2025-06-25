@@ -17,10 +17,8 @@ import auth from '@react-native-firebase/auth';
 import AccountScreen from '../../Screen/AccountScreen';
 import PDFViewerScreen from '../../Screen/pdfViewer';
 import HalaInfoScreen from '../../Screen/Merchant_Screen/Hala_Info';
-import PartnerForm from '../../Screen/Merchant_Screen/PartnerForm';
 import BrandFormScreen from '../../Screen/Merchant_Screen/PartnerForm';
-import RBSheet from 'react-native-raw-bottom-sheet';
-import FilterScreen from '../../Component/BottomSheet/bottom_sheet';
+
 
 
 type SplashScreenProps = {
@@ -38,7 +36,7 @@ const StackNavigation: React.FC = () => {
       if (user) {
         setInitialRoute('BottomTab'); // User is logged in
       } else {
-        setInitialRoute('BottomTab'); // User not logged in
+        setInitialRoute('SplashBlank'); // User not logged in
       }
     });
 

@@ -4,7 +4,7 @@ import { Fonts } from '../../../Themes/Fonts';
 
 export const getStyles =(language: string)=> StyleSheet.create({
     MainContainer: {
-      backgroundColor: Colors.Bg,
+      backgroundColor: Colors.White,
       padding: 10,
       paddingHorizontal:'5%',
       paddingTop:'22%',

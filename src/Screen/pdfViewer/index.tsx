@@ -13,7 +13,7 @@ const PDFViewerScreen:React.FC = ({ route }: any) => {
   return (
    <SafeAreaView style={{flex:1,backgroundColor:Colors.White}} >
    <View style={styles.container}>
-    <StatusBar hidden={true} translucent={true} animated={true} />
+          <StatusBar hidden={false} translucent={true} animated={true} backgroundColor={Colors.White4} barStyle='dark-content' />
       <Pdf
        trustAllCerts={false}
        source={source}

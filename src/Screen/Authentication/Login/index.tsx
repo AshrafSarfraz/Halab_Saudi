@@ -81,7 +81,7 @@ const Login: React.FC<NativeStackScreenProps<any>> = ({ navigation }) => {
 
   return (
     <ScrollView contentContainerStyle={styles.MainContainer}>
-      <StatusBar hidden={false} translucent={true} animated={true} backgroundColor='#fff' barStyle='dark-content' />
+              <StatusBar hidden={false} translucent={true} animated={true} backgroundColor={Colors.White4} barStyle='dark-content' />
       <View>
         <Image source={Logo_W} style={styles.H_Logo} resizeMode="contain" />
         <Text style={styles.Welcome_Txt}>{languageData[language].welcome_back}</Text>
@@ -120,6 +120,10 @@ const Login: React.FC<NativeStackScreenProps<any>> = ({ navigation }) => {
             title={languageData[language].login}
             onPress={sendVerificationCode}
           />
+           {/* <CustomButton
+            title={languageData[language].login}
+            onPress={()=>navigation.navigate('BottomTab')}
+          /> */}
 
           <View style={{marginTop:100,alignSelf:"center",}} >
             <TouchableOpacity style={styles.Partner_Btn} onPress={()=>{navigation.navigate('HalaInfo')}} >

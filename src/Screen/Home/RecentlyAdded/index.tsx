@@ -24,7 +24,7 @@ const RecentlyAdded = () => {
   useEffect(() => {
     const fetchRecentlyAdded = async () => {
       try {
-        const snapshot = await firestore().collection('Brands').get();
+        const snapshot = await firestore().collection('Brands').where('status', '==', 'Active').get();
         const data = snapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data(),

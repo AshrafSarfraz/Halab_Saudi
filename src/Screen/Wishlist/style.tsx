@@ -110,4 +110,19 @@ export default StyleSheet.create({
     resizeMode: 'contain',
     tintColor: 'red',
   },
+  emptyStateContainer:{
+    marginTop:90,
+    alignItems:"center",
+   justifyContent:"center",
+  },
+  emptyStateImage:{
+   width:200,
+   height:200
+  },
+  emptyStateText:{
+   fontSize:16,
+   marginTop:12,
+   fontWeight:'bold',
+   color:Colors.Black
+  }
 });

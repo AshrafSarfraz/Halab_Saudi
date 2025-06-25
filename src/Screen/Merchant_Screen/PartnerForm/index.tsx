@@ -23,21 +23,22 @@ const WebViewScreen:React.FC= ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
     <View style={styles.Body} >
-    {loading && (
+    {/* {loading && (
         <ActivityIndicator
           size="large"
           color="#005029"  // Your custom color here
           style={styles.loader}
         />
-      )}
+      )} */}
     {showHeader && (
           <CustomHeader title="Register Your Brand" onBackPress={() => navigation.goBack()} />
         )}
       <WebView 
         source={{ uri: 'https://halab-saudi.vercel.app/AddBrand/12652154214641264521465124xxp1' }} 
         style={styles.webview}
-        onLoadStart={() => setLoading(true)}
-        onLoadEnd={() => setLoading(false)}
+        startInLoadingState
+        // onLoadStart={() => setLoading(true)}
+        // onLoadEnd={() => setLoading(false)}
         onMessage={handleWebViewMessage}
         showsVerticalScrollIndicator={false}
       />

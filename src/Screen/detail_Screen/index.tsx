@@ -16,6 +16,7 @@ import { getStyles } from './style';
 import { languageData } from '../../redux_toolkit/language/languageSlice';
 import MenuUnavailableModal from '../../Component/CustomAlert/MenuAlert';
 import IncorrectPin from '../../Component/CustomAlert/IncorrectPin';
+import { Colors } from '../../Themes/Colors';
 
 
 const DetailScreen: React.FC<{route:any}> = ({route}) => {
@@ -76,7 +77,7 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
 
   return (
     <SafeAreaView>
-          <StatusBar hidden={true} translucent={true} animated={true} />
+                <StatusBar hidden={false} translucent={true} animated={true} backgroundColor={Colors.White4} barStyle='dark-content' />
           <ScrollView>
           <View style={styles.container}>
           

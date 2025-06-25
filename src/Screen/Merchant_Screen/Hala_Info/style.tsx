@@ -5,7 +5,7 @@ import { Colors } from "../../../Themes/Colors";
 export const getStyles=(language:string) => StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fefefe',
+      backgroundColor: '#ffffff',
       paddingHorizontal:24,
       paddingTop:Platform.OS==='ios'?0:20
 

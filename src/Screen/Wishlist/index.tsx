@@ -18,6 +18,7 @@ import {Colors} from '../../Themes/Colors'; // Import Colors
 import {RootState} from '../../redux_toolkit/store'; // Adjust the path to your store file
 import {toggleItemInCart} from '../../redux_toolkit/cartSlice';
 import DistanceFromDevice from '../../Component/distanceCalculate/distanceCalculate';
+import { languageData } from '../../redux_toolkit/language/languageSlice';
 
 type WishlistProps = {
   navigation: any;
@@ -29,6 +30,7 @@ const Wishlist: React.FC<WishlistProps> = () => {
 
   // Redux Toolkit: Get cart items from the store
   const cartItems = useSelector((state: RootState) => state.cart.items);
+  const language = useSelector((state: RootState) => state.language.language);
 
   // Check if an item is in the cart
   const isInCart = (itemId: string) =>
@@ -41,13 +43,7 @@ const Wishlist: React.FC<WishlistProps> = () => {
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: Colors.Bg}}>
-      {/* StatusBar fix for iOS */}
-      {/* <StatusBar
-        barStyle={Platform.OS === 'ios' ? 'dark-content' : 'dark-content'}
-        translucent={Platform.OS === 'android'}
-        backgroundColor={Platform.OS === 'android' ? Colors.Bg : 'transparent'}
-      /> */}
-        <StatusBar hidden={true} translucent={true} animated={true} />
+              <StatusBar hidden={false} translucent={true} animated={true} backgroundColor={Colors.White4} barStyle='dark-content' />
 
       <View style={styles.container}>
         <Text style={styles.Header_Txt}>Wishlist</Text>
@@ -59,6 +55,12 @@ const Wishlist: React.FC<WishlistProps> = () => {
           numColumns={2} // This specifies that the list will have 2 columns
           columnWrapperStyle={styles.row} // This will apply styles to each row (i.e., the items in each column)
           showsVerticalScrollIndicator={false}
+          ListEmptyComponent={() => (
+            <View style={styles.emptyStateContainer}>
+              <Image source={require('../../Assests/Images/no_data.png')} style={styles.emptyStateImage} />
+              <Text style={styles.emptyStateText}>{languageData[language].No_Items_Found}</Text>
+           </View>
+          )}
           renderItem={({item}) => (
             <TouchableOpacity
               style={styles.Flatlist_Cont} // Make sure the items have the correct width in the row

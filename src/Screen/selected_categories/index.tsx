@@ -69,7 +69,7 @@ const SelectedCategories: React.FC<{ route: any }> = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <StatusBar hidden={true} translucent={true} animated={true} />
+               <StatusBar hidden={false} translucent={true} animated={true} backgroundColor={Colors.White4} barStyle='dark-content' />
       <SafeAreaView style={{ flex: 1 }}>
         {
           language==='en'? <CustomHeader title={item.text} onBackPress={() => navigation.goBack()} />:

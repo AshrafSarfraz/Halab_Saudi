@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   Platform,
   ActivityIndicator,
+  StatusBar,
 } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
@@ -61,6 +62,7 @@ const AccountScreen: React.FC<AccountProps> = ({ navigation }) => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
+   <StatusBar hidden={false} translucent={true} animated={true} backgroundColor={Colors.White4} barStyle='dark-content' />
       <View style={styles.container}>
         <CustomHeader title={'Profile'} onBackPress={() => navigation.goBack()} />
          <View style={{flex:1,justifyContent:'center'}} >

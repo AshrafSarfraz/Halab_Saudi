@@ -97,8 +97,8 @@ const OnBoarding: React.FC<OnBoardingProps> = ({ navigation }) => {
     const isFirstSlide = index === 0;
 
     return (
-      <SafeAreaView style={[styles.slide, { backgroundColor: item.backgroundColor }]}>
-          <StatusBar hidden={false} translucent={true} animated={true} backgroundColor='#fff' barStyle='dark-content' />
+      <SafeAreaView style={[styles.slide]}>
+          <StatusBar hidden={false} translucent={true} animated={true} backgroundColor={Colors.White} barStyle='dark-content' />
         {!isFirstSlide && (
           <TouchableOpacity style={styles.prevButton} onPress={handlePrevSlide}>
             <Image source={require('../../Assests/Icons/Back.png')} style={styles.backIcon} />

@@ -3,7 +3,7 @@ import { firestore } from './firebaseconfig';
 export const fetchBrandsFromFirebase = async () => {
   try {
     // Fetch data directly from Firestore
-    const snapshot = await firestore().collection('Brands').get();
+    const snapshot = await firestore().collection('Brands').where('status', '==', 'Active').get();
     const data = snapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data(),

@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  Platform,
-  FlatList,
-  StatusBar,
-} from 'react-native';
+import { Text, View,SafeAreaView,FlatList,StatusBar,Image,} from 'react-native';
 import CustomHeader from '../../Component/CustomHeader/CustomHeader';
 import { useNavigation } from '@react-navigation/native';
 import { Colors } from '../../Themes/Colors';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
+import { languageData } from '../../redux_toolkit/language/languageSlice';
+import { RootState } from '../../redux_toolkit/store';
+import { useSelector } from 'react-redux';
+import { styles } from './style';
 
 type RedeemItem = {
   code: string;
@@ -25,6 +21,7 @@ const Reedem_His: React.FC = () => {
   const navigation = useNavigation();
   const [history, setHistory] = useState<RedeemItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const language = useSelector((state: RootState) => state.language.language);
 
   useEffect(() => {
     const fetchHistory = async () => {
@@ -68,7 +65,7 @@ const Reedem_His: React.FC = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-          <StatusBar hidden={true} translucent={true} animated={true} />
+     <StatusBar hidden={false} translucent={true} animated={true} backgroundColor={Colors.White4} barStyle='dark-content' />
         
       <View style={styles.Container}>
         <CustomHeader
@@ -79,7 +76,10 @@ const Reedem_His: React.FC = () => {
         {loading ? (
           <Text style={styles.loadingText}>Loading...</Text>
         ) : history.length === 0 ? (
-          <Text style={styles.noDataText}>No Data Found</Text>
+          <View style={styles.emptyStateContainer}>
+          <Image source={require('../../Assests/Images/no_data.png')} style={styles.emptyStateImage} />
+          <Text style={styles.emptyStateText}>{languageData[language].No_Items_Found}</Text>
+       </View>
         ) : (
           <FlatList
             data={history}
@@ -93,46 +93,6 @@ const Reedem_His: React.FC = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  Container: {
-    flex: 1,
-    backgroundColor: Colors.White4,
-    marginVertical: Platform.OS === 'ios' ? '2%' : '10%',
-    marginHorizontal: '3%',
-  },
-  loadingText: {
-    marginTop: 30,
-    alignSelf: 'center',
-    color: 'gray',
-  },
-  noDataText: {
-    fontSize: 18,
-    color: 'black',
-    alignSelf: 'center',
-    marginTop: 30,
-  },
-  itemContainer: {
-    marginTop:"1%",
-    backgroundColor: 'white',
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 10,
-  },
-  codeText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: Colors.Green,
-  },
-  percentageText: {
-    fontSize: 14,
-    color: 'black',
-    marginTop: 5,
-  },
-  dateText: {
-    fontSize: 12,
-    color: 'gray',
-    marginTop: 5,
-  },
-});
+
 
 export default Reedem_His;

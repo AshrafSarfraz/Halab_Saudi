@@ -122,7 +122,7 @@ const saveUserData = async () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Colors.Bg }}>
-       <StatusBar hidden={true} translucent={true} animated={true} />
+                 <StatusBar hidden={false} translucent={true} animated={true} backgroundColor={Colors.White4} barStyle='dark-content' />
       <ScrollView contentContainerStyle={styles.MainCont}>
         <View>
           <TouchableOpacity
@@ -152,7 +152,6 @@ const saveUserData = async () => {
           ))}
         </View>
         {error && <Text style={styles.Error}>{error}</Text>}
-
 
             <View style={{height:100}} />
         <CustomButton

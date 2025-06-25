@@ -34,8 +34,7 @@ const Profile:React.FC<ProfileProps> = () => {
 
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: Colors.Bg }}>
-      {/* StatusBar fix for iOS */}
-      <StatusBar hidden={true} translucent={true} animated={true} />
+               <StatusBar hidden={false} translucent={true} animated={true} backgroundColor={Colors.White4} barStyle='dark-content' />
 
        <View style={styles.Container} >
             <Text style={styles.Header_Txt} >Profile</Text>
