@@ -1,16 +1,5 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  Image,
-  SafeAreaView,
-  TouchableOpacity,
-  Platform,
-  ScrollView,
-  Linking,
-  Alert,
-  StatusBar,
-} from 'react-native';
+import { View, Text, Image,SafeAreaView, TouchableOpacity,Platform,ScrollView,Linking,StatusBar,} from 'react-native';
 import CustomHeader from '../../Component/CustomHeader/CustomHeader';
 import {useNavigation} from '@react-navigation/native';
 import CustomButton from '../../Component/CustomButton/CustomButton';
@@ -30,7 +19,7 @@ import IncorrectPin from '../../Component/CustomAlert/IncorrectPin';
 
 
 const DetailScreen: React.FC<{route:any}> = ({route}) => {
-  const {item} = route.params; // Home se data le rahe hain
+  const {item} = route.params; 
   const dispatch = useDispatch();
   const latitude = item.latitude ? item.latitude : null;
   const longitude = item.longitude ? item.longitude : null;
@@ -42,32 +31,30 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
   const [alertVisible, setAlertVisible] = useState<boolean>(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [incorrectPinModal, setIncorrectPinModal] = useState(false);
+  const [showTimings, setShowTimings] = useState(false);
   
-   console.log("Fetched Offers:", item);
 
   // Redux Toolkit
-   const language = useSelector((state: RootState) => state.language.language); 
+    const language = useSelector((state: RootState) => state.language.language); 
     const styles = getStyles(language);
-  const cartItems = useSelector((state: RootState) => state.cart.items);
-  const isInCart = cartItems.some(cartItem => cartItem.id === item.id);
-  const handleToggleCart = () => {
-    dispatch(toggleItemInCart(item));
-  };
-  
-// Redux Toolkit
+    const cartItems = useSelector((state: RootState) => state.cart.items);
+    const isInCart = cartItems.some(cartItem => cartItem.id === item.id);
+   
+    const handleToggleCart = () => {
+    dispatch(toggleItemInCart(item));  };
+    // Redux Toolkit
 
-
-  // Alert Modal
-  const showAlert = () => {
-    setAlertVisible(true);
-  };
-  const hideAlert = () => {
+// Alert Modal
+   const showAlert = () => {
+     setAlertVisible(true);
+   };
+   const hideAlert = () => {
     setAlertVisible(false);
   };
-  const showDiscount_Alert = () => {
+   const showDiscount_Alert = () => {
     setdiscountAlert(true);
   };
-  const hideDiscount_Alert = () => {
+   const hideDiscount_Alert = () => {
     setdiscountAlert(false);
   };
 // Modal
@@ -90,52 +77,59 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
   return (
     <SafeAreaView>
           <StatusBar hidden={true} translucent={true} animated={true} />
-      <ScrollView>
-        <View style={styles.container}>
+          <ScrollView>
+          <View style={styles.container}>
+          
           <View style={styles.HeaderCont}>
-            <CustomHeader
-              title={languageData[language].Detail_Screen}
-              onBackPress={() => {
-                navigation.goBack();
-              }}
-            />
-            <TouchableOpacity onPress={() =>{handleToggleCart()}}>
-              {isInCart ? (
-                <Image source={Dark_Heart} style={styles.HeartStyle} />
-              ) : (
-                <Image source={Light_Heart} style={styles.HeartStyle} />
-              )}
-            </TouchableOpacity>
+          <CustomHeader  title={languageData[language].Detail_Screen}  onBackPress={() => {    navigation.goBack();  }}/>
+          <TouchableOpacity onPress={() =>{handleToggleCart()}}>
+            {isInCart ? (  <Image source={Dark_Heart} style={styles.HeartStyle} />) :  (<Image source={Light_Heart} style={styles.HeartStyle} /> )}
+         </TouchableOpacity>
           </View>
+
           <View style={styles.Body_Cont}>
-          <ShimmerPlaceholder
-                visible={!imageLoading}
-                LinearGradient={LinearGradient}
-                style={styles.image}
-              >
-            <Image source={{uri:item.img}} style={styles.image}    onLoad={handleImageLoad} />
-            </ShimmerPlaceholder>
-            <View style={styles.Type_Cont}>
-              <Text style={styles.Type_Text}>{item.selectedCategory}</Text>
-            </View>
-            <View style={styles.Title_Cont}>
-              {language==='ar'?<Text style={styles.title}>{item.nameArabic}</Text>:
-              <Text style={styles.title}>{item.nameEng}</Text>}
+          <ShimmerPlaceholder visible={!imageLoading} LinearGradient={LinearGradient}  style={styles.image} >
+          <Image source={{uri:item.img}} style={styles.image}    onLoad={handleImageLoad} />
+          </ShimmerPlaceholder>
+          <View style={styles.Type_Cont}>
+          <Text style={styles.Type_Text}>{item.selectedCategory}</Text>
+          </View>
+
+          <View style={styles.Title_Cont}>
+           {language==='ar'?<Text style={styles.title}>{item.nameArabic}</Text>:
+          <Text style={styles.title}>{item.nameEng}</Text>}
             
               
-              <TouchableOpacity onPress={Contact} style={styles.call_cont}>
-                <Image
-                  source={require('../../Assests/Icons/phone.png')}
-                  style={styles.Phone_Icon}
-                />
-                <Text style={styles.call_txt}>Call Now</Text>
-              </TouchableOpacity>
-            </View>
+          <TouchableOpacity onPress={Contact} style={styles.call_cont}>
+          <Image source={require('../../Assests/Icons/phone.png')} style={styles.Phone_Icon}/>
+          <Text style={styles.call_txt}>Call Now</Text>
+          </TouchableOpacity>
+          </View>
 
-            <View style={styles.Loc_Cont}>
-              <Image source={Location} style={styles.Loc_Icon}/>
-              <Text style={styles.Loc_Txt} >{Address} </Text>
-            </View>
+          <View style={styles.Loc_Cont}>
+          <Image source={Location} style={styles.Loc_Icon}/>
+          <Text style={styles.Loc_Txt} >{Address} </Text>
+          </View>
+          
+ {/* Working Hours */}
+        <View style={{ marginTop: 5 }}>
+        <TouchableOpacity onPress={() => setShowTimings(!showTimings)} style={styles.timing_dropdown}>
+        <Text style={styles.working_hour_txt}> {languageData[language].workingHours || 'Working Hours'} </Text>
+        <Text style={styles.dropdown_icon}>{showTimings ? '▲' : '▼'}</Text>
+       </TouchableOpacity>
+
+     {showTimings && item.timings && (
+    <View style={{ padding: 10, backgroundColor: '#fff', borderRadius: 8, marginTop: 6 }}>
+      {Object.entries(item.timings).map(([day, time]) => (
+        <View key={day}style={styles.item_cont} >
+          <Text style={{ textTransform: 'capitalize', fontSize: 15, color: '#333' }}>{day}</Text>
+          <Text style={{ fontSize: 15, color: '#000' }}>{time}</Text>
+        </View>
+      ))}
+    </View>
+  )}
+       </View>
+       {/* working Hours */}
             <View style={styles.Dis_Cont}>
               <View style={styles.Dis_txt_cont} >
               <Text style={styles.Total_Discount}> {''+ item.discount +'%'}  </Text>
@@ -151,7 +145,8 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
                 <Text style={styles.menu_txt} >View Menu</Text>
               </TouchableOpacity>
             </View>
-                        
+      
+
               <View style={styles.Desc_Cont} >
               <Text style={styles.Desc}>{languageData[language].description}</Text>
               </View>
@@ -161,7 +156,7 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
               }
           </View>
 
-          <CustomButton
+      <CustomButton
             title="Redeem"
             onPress={() => {
               showAlert();

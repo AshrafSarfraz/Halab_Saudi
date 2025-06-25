@@ -9,13 +9,13 @@ import { getStyles } from './style';
 
 
 const images = [
-  { id: '1', text: 'Food and Drink', category: 'Food and Drink', categoryArabic: 'المأكولات والمشروبات', source: require('../../../Assests/Images/food.png') },
-  { id: '2', text: 'Chocolate and Gifts', category: 'Chocolate and Gifts', categoryArabic:  'الخدمات والتجزئة' , source: require('../../../Assests/Images/chocolates.png') },
-  { id: '3', text: 'Beauty and Spa', category: 'Beauty and Spa',categoryArabic:  'الجمال والمنتجعات'  ,source: require('../../../Assests/Images/beauty.png') },
-  { id: '4', text: 'Health and Fitness', category: 'Health and Fitness',categoryArabic:  'الصحة واللياقة' , source: require('../../../Assests/Images/health.png') },
-  { id: '5', text: 'Fun and Leisure', category: 'Fun and Leisure', categoryArabic:  'الترفيه والتسلية' , source: require('../../../Assests/Images/fun.png') },
-  { id: '6', text: 'Room Nights', category: 'Room Nights', categoryArabic:  'الإقامة الفندقية' , source: require('../../../Assests/Images/Room.png') },
-  { id: '7', text: 'Services and Retail', category: 'Services and Retail', categoryArabic:  'الخدمات والتجزئة' , source: require('../../../Assests/Images/Services.png') },
+  { id: '1', text: 'Food and Drink', category: 'Food and Drink', categoryArabic: 'المأكولات والمشروبات', source: require('../../../Assests/Images/food_&_drinks.jpg') },
+  { id: '2', text: 'Shop and Retail', category: 'Shop and Retail', categoryArabic:  'الخدمات والتجزئة' , source: require('../../../Assests/Images/shop.png') },
+  { id: '3', text: 'Beauty and Spa', category: 'Beauty and Spa',categoryArabic:  'الجمال والمنتجعات'  ,source: require('../../../Assests/Images/beauty_&_spa.jpg') },
+  { id: '4', text: 'Health and Fitness', category: 'Health and Fitness',categoryArabic:  'الصحة واللياقة' , source: require('../../../Assests/Images/health_fitness.png') },
+  { id: '5', text: 'Entertainment', category: 'Entertain ment', categoryArabic:  'الترفيه والتسلية' , source: require('../../../Assests/Images/entertainment.png') },
+  { id: '6', text: 'Hotel', category: 'Hotel', categoryArabic:  'الإقامة الفندقية' , source: require('../../../Assests/Images/hotel.png') },
+  { id: '7', text: 'Services', category: 'Services', categoryArabic:  'الخدمات والتجزئة' , source: require('../../../Assests/Images/services.png') },
 ];
 
 

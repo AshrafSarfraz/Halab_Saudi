@@ -19,30 +19,15 @@ import PDFViewerScreen from '../../Screen/pdfViewer';
 import HalaInfoScreen from '../../Screen/Merchant_Screen/Hala_Info';
 import PartnerForm from '../../Screen/Merchant_Screen/PartnerForm';
 import BrandFormScreen from '../../Screen/Merchant_Screen/PartnerForm';
+import RBSheet from 'react-native-raw-bottom-sheet';
+import FilterScreen from '../../Component/BottomSheet/bottom_sheet';
 
-type RootStackParamList = {
-  SplashBlank: undefined;
-  Splash: undefined;
-  Onboarding: undefined;
-  Login: undefined;
-  Home: undefined;
-  BottomTab: undefined;
-  OTP: undefined;
-  SearchScreen: undefined;
-  DetailScreen: undefined;
-  ReedemHistroy: undefined;
-  CategoriesScreen: undefined;
-  SelectedVenue: undefined;
-  AccountScreen:undefined;
-  PDFViewerScreen:undefined
-  HalaInfo:undefined;
-  PartnerForm:undefined;
-};
+
 type SplashScreenProps = {
   navigation?: any;
 }
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator();
 
 const StackNavigation: React.FC = () => {
   const [initialRoute, setInitialRoute] = useState<string | null>(null);
@@ -53,7 +38,7 @@ const StackNavigation: React.FC = () => {
       if (user) {
         setInitialRoute('BottomTab'); // User is logged in
       } else {
-        setInitialRoute('SplashBlank'); // User not logged in
+        setInitialRoute('BottomTab'); // User not logged in
       }
     });
 
@@ -86,7 +71,8 @@ const StackNavigation: React.FC = () => {
         {/* Merchant Side */}
         <Stack.Screen name='HalaInfo' component={HalaInfoScreen} />
         <Stack.Screen name='PartnerForm' component={BrandFormScreen} />
-        
+        {/* <Stack.Screen name='RBSHEET' component={FilterScreen} />
+         */}
         
       </Stack.Navigator>
     </NavigationContainer>

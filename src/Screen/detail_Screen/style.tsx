@@ -1,7 +1,7 @@
 import {Platform, StyleSheet} from 'react-native';
 import {Colors} from '../../Themes/Colors';
 import {Fonts} from '../../Themes/Fonts';
-
+import {DropdownIcon} from '../../Themes/Images';
 
 export const getStyles = (language: string) =>
   StyleSheet.create({
@@ -9,7 +9,7 @@ export const getStyles = (language: string) =>
       paddingHorizontal: 24,
       marginTop: Platform.OS === 'ios' ? '0%' : '10%',
       marginBottom: Platform.OS === 'ios' ? '1%' : '6%',
-      paddingBottom:Platform.OS === 'ios' ? '0%' : '4%',
+      paddingBottom: Platform.OS === 'ios' ? '0%' : '4%',
     },
     HeaderCont: {
       flexDirection: language === 'en' ? 'row' : 'row-reverse',
@@ -56,6 +56,7 @@ export const getStyles = (language: string) =>
       justifyContent: 'space-between',
     },
     title: {
+      width: '80%',
       fontSize: 20,
       lineHeight: language === 'en' ? 26 : 32,
       color: Colors.Black,
@@ -87,24 +88,22 @@ export const getStyles = (language: string) =>
       paddingVertical: '4%',
       borderRadius: 10,
       flexDirection: language === 'en' ? 'row' : 'row-reverse',
-      justifyContent:'space-between',
-      alignItems:"center"
+      justifyContent: 'space-between',
+      alignItems: 'center',
     },
-    Dis_txt_cont:{
-     flexDirection:'row'
+    Dis_txt_cont: {
+      flexDirection: 'row',
     },
-    Menu_Btn:{
-      backgroundColor:Colors.Green,
-      padding:8,
-      borderRadius:6
+    Menu_Btn: {
+      backgroundColor: Colors.Green,
+      padding: 8,
+      borderRadius: 6,
     },
-    menu_txt:{
-     color:Colors.White,
-     fontSize:12,
-     lineHeight:16,
-     fontFamily:Fonts.SF_Bold,
-     
-    
+    menu_txt: {
+      color: Colors.White,
+      fontSize: 12,
+      lineHeight: 16,
+      fontFamily: Fonts.SF_Bold,
     },
     Discount: {
       fontSize: language === 'en' ? 14 : 14,
@@ -147,18 +146,39 @@ export const getStyles = (language: string) =>
     Loc_Cont: {
       flexDirection: 'row',
       alignItems: 'center',
-      marginTop:'2%'
+      marginTop: '2%',
     },
     Loc_Icon: {
       width: 16,
       height: 16,
       resizeMode: 'contain',
-      marginRight:"1%",
-      
+      marginRight: '1%',
     },
 
     Loc_Txt: {
       fontSize: 10,
     },
-   
+    timing_dropdown: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    working_hour_txt: {
+      fontSize: 14,
+      color: Colors.Green,
+      fontFamily: Fonts.SF_Bold,
+      letterSpacing: 0.6,
+      paddingVertical: 2,
+      lineHeight: 22,
+    },
+    dropdown_icon: {
+      fontSize: 14,
+      color: Colors.Green,
+    },
+    item_cont: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      paddingVertical: 6,
+      borderBottomWidth: 0.5,
+      borderColor: '#eee',
+    },
   });

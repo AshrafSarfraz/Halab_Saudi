@@ -30,19 +30,21 @@ const RecentlyAdded = () => {
           ...doc.data(),
         }));
 
-        // 🕒 Get current time and subtract 1 month
+        // Get current time and subtract 1 month
         const oneMonthAgo = new Date();
-        oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 4);
+        oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
 
+        // Filter only items created in the last month
         const filtered = data.filter(item => {
           const createdAt = item.time?.toDate?.(); // Convert Firestore Timestamp to JS Date
           return createdAt && createdAt > oneMonthAgo;
         });
+
         setRecentItems(filtered);
-        setLoading(false);  // Set loading to false when data is fetched
+        setLoading(false);
       } catch (error) {
         console.error('❌ Error fetching recently added items:', error);
-        setLoading(false);  // Set loading to false if error occurs
+        setLoading(false);
       }
     };
 
