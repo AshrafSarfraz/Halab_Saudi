@@ -11,6 +11,7 @@ import { RootState } from '../../../redux_toolkit/store';
 import { languageData } from '../../../redux_toolkit/language/languageSlice';
 import { getStyles } from './style';
 import DetectCountry from '../../../Component/distanceCalculate/DetectCountry';
+import FastImage from 'react-native-fast-image';
 
 const { width } = Dimensions.get('screen');
 
@@ -59,7 +60,7 @@ const ImageSlider: React.FC<{ navigation: any }> = () => {
       ) : (
         <FlatList
         data={
-          offers.filter(item => {
+          offers.filter((item )=> {
             if (country) {
               return item.selectedCountry?.toLowerCase() === country.toLowerCase();
             }
@@ -71,7 +72,7 @@ const ImageSlider: React.FC<{ navigation: any }> = () => {
           pagingEnabled
           showsHorizontalScrollIndicator={false}
           onScroll={handleScroll}
-          renderItem={({ item }) => (
+          renderItem={({ item, index }) => (
             <TouchableOpacity
               style={styles.imageContainer}
               onPress={() => navigation.navigate('DetailScreen', { item })}
@@ -82,12 +83,8 @@ const ImageSlider: React.FC<{ navigation: any }> = () => {
                 LinearGradient={LinearGradient}
                 style={styles.image}
               >
-                <Image
-                  source={{ uri: item.img }} // Use URI for Firestore images
-                  style={styles.image}
-                  onLoad={handleImageLoad}
-                  onError={handleImageError}
-                />
+                <FastImage source={{ uri: item.img, priority: index <=2 ? FastImage.priority.high : index <= 4 ? FastImage.priority.normal : FastImage.priority.low }}
+                 style={styles.image}  onLoad={handleImageLoad}    onError={handleImageError}  />
               </ShimmerPlaceholder>
 
               {/* <View style={styles.overlay}>

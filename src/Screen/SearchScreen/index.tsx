@@ -22,6 +22,7 @@ import { getStyles } from './style';
 import { languageData } from '../../redux_toolkit/language/languageSlice';
 import LinearGradient from 'react-native-linear-gradient';
 import DetectCountry from '../../Component/distanceCalculate/DetectCountry';
+import FastImage from 'react-native-fast-image';
 
 const SearchScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -118,8 +119,8 @@ const SearchScreen: React.FC = () => {
               keyExtractor={item => item.id}
               contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
               showsVerticalScrollIndicator={false}
-              renderItem={({ item }) => {
-  const isLoaded = imageLoaded[item.id] || false;
+              renderItem={({ item,index }) => {
+               const isLoaded = imageLoaded[item.id] || false;
                 return (
                   <TouchableOpacity
                     style={styles.itemContainer}
@@ -128,13 +129,9 @@ const SearchScreen: React.FC = () => {
                  <ShimmerPlaceholder
                       visible={isLoaded}
                       LinearGradient={LinearGradient}
-                      style={styles.itemImage}
-                    >
-                      <Image
-                        source={{ uri: item.img }}
-                        style={styles.itemImage}
-                        onLoad={() => handleImageLoad(item.id)}
-                      />
+                      style={styles.itemImage} >
+                           <FastImage source={{ uri: item.img, priority: index <=6 ? FastImage.priority.high : index <= 10 ? FastImage.priority.normal : FastImage.priority.low }}
+                          style={styles.itemImage}   onLoad={() => handleImageLoad(item.id)}    />
                       </ShimmerPlaceholder>
 
 

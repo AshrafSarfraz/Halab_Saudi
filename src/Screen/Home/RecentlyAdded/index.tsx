@@ -11,6 +11,7 @@ import { getStyles } from './style';
 import DistanceFromDevice from '../../../Component/distanceCalculate/distanceCalculate';
 import { Location } from '../../../Themes/Images';
 import DetectCountry from '../../../Component/distanceCalculate/DetectCountry';
+import FastImage from 'react-native-fast-image';
 
 const RecentlyAdded = () => {
   const navigation = useNavigation();
@@ -79,7 +80,7 @@ const RecentlyAdded = () => {
           numColumns={2} // Display 2 items in a row
           columnWrapperStyle={styles.row} // Apply styles for spacing between columns
           showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => (
+          renderItem={({ item,index }) => (
             <TouchableOpacity style={styles.Flatlist_Cont} onPress={() => navigation.navigate('DetailScreen', { item })}>
               {/* Shimmer effect for the image */}
               <ShimmerPlaceholder
@@ -87,11 +88,8 @@ const RecentlyAdded = () => {
                 LinearGradient={LinearGradient}
                 style={styles.image}
               >
-                <Image
-                  source={{ uri: item.img }} // Image source
-                  style={styles.image}
-                  onLoad={handleImageLoad} // Trigger shimmer removal once image loads
-                />
+                <FastImage source={{ uri: item.img, priority: index === 0 ? FastImage.priority.high : index <= 2 ? FastImage.priority.normal : FastImage.priority.low }}
+                 style={styles.image}  onLoad={handleImageLoad}     />
               </ShimmerPlaceholder>
               <Text style={styles.cate_txt}>
                 {language === 'en' ?    <Text> {item.nameEng.length > 20 ? item.nameEng.substring(0, 20) + '...' : item.nameEng}</Text> : item.nameArabic}

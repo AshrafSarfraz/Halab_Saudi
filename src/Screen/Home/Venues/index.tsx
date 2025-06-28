@@ -13,6 +13,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import { styles } from './style';
 import { fetchVenuFromFirebase } from '../../../firebase/firebaseutils';
+import FastImage from 'react-native-fast-image';
 
 type VenuesProps = {
   navigation: any;
@@ -54,7 +55,7 @@ const Venues: React.FC<VenuesProps> = () => {
     </View>
   );
 
-  const renderVenueItem = ({ item }: { item: any }) => {
+  const renderVenueItem = ({ item, index }: { item: any ,index:any }) => {
     return (
       <TouchableOpacity
         style={styles.Flatlist_Cont}
@@ -62,12 +63,8 @@ const Venues: React.FC<VenuesProps> = () => {
       >
         {/* Shimmer effect for image */}
         <ShimmerPlaceholder visible={!imageLoading} LinearGradient={LinearGradient} style={styles.image}>
-          <Image
-            source={{ uri: item.img }}
-            style={styles.image}
-            onLoad={handleImageLoad}
-            onError={handleImageError}
-          />
+        <FastImage source={{ uri: item.img, priority: index <=6 ? FastImage.priority.high : index <= 10 ? FastImage.priority.normal : FastImage.priority.low }}
+                 style={styles.image}  onLoad={handleImageLoad}    onError={handleImageError}  />
         </ShimmerPlaceholder>
 
         {/* Shimmer effect for venue name */}

@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import ShimmerPlaceholder from 'react-native-shimmer-placeholder';
 import LinearGradient from 'react-native-linear-gradient';
+import FastImage from 'react-native-fast-image'
 
 import { fetchBrandsFromFirebase } from '../../../firebase/firebaseutils';
 import { RootState } from '../../../redux_toolkit/store';
@@ -47,13 +48,14 @@ const BestSeller: React.FC = () => {
     </View>
   );
 
-  const renderBrandItem = ({ item }: { item: any }) => {
+  const renderBrandItem = ({ item,index }: { item: any,index:number }) => {
     const isLoaded = loadedCards[item.id] ?? false;
     return (
       <TouchableOpacity style={styles.Flatlist_Cont} onPress={() => navigation.navigate('DetailScreen', { item })}>
         <View style={{ flexDirection: language==='en'?'row':"row-reverse", alignItems: 'center' }}>
           <ShimmerPlaceholder visible={isLoaded} LinearGradient={LinearGradient} style={styles.image}>
-            <Image source={{ uri: item.img }} style={styles.image} onLoadEnd={() => handleCardLoad(item.id)} />
+          <FastImage source={{ uri: item.img, priority: index === 0 ? FastImage.priority.high : index <= 2 ? FastImage.priority.normal : FastImage.priority.low }}
+           style={styles.image} onLoadEnd={() => handleCardLoad(item.id)} />
           </ShimmerPlaceholder>
           <View style={styles.bestSeller_Detail}>
             <ShimmerPlaceholder visible={isLoaded} LinearGradient={LinearGradient} style={{ width: '100%', height: 20, marginBottom: 2, borderRadius: 5 }}>

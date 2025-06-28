@@ -17,6 +17,7 @@ import { languageData } from '../../redux_toolkit/language/languageSlice';
 import MenuUnavailableModal from '../../Component/CustomAlert/MenuAlert';
 import IncorrectPin from '../../Component/CustomAlert/IncorrectPin';
 import { Colors } from '../../Themes/Colors';
+import FastImage from 'react-native-fast-image';
 
 
 const DetailScreen: React.FC<{route:any}> = ({route}) => {
@@ -90,7 +91,8 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
 
           <View style={styles.Body_Cont}>
           <ShimmerPlaceholder visible={!imageLoading} LinearGradient={LinearGradient}  style={styles.image} >
-          <Image source={{uri:item.img}} style={styles.image}    onLoad={handleImageLoad} />
+          <FastImage source={{ uri: item.img, priority:FastImage.priority.high}}
+           style={styles.image}   onLoad={handleImageLoad}    />
           </ShimmerPlaceholder>
           <View style={styles.Type_Cont}>
           <Text style={styles.Type_Text}>{item.selectedCategory}</Text>

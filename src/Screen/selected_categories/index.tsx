@@ -22,6 +22,7 @@ import { Colors } from '../../Themes/Colors';
 import ShimmerPlaceholder from 'react-native-shimmer-placeholder';
 import LinearGradient from 'react-native-linear-gradient';
 import DetectCountry from '../../Component/distanceCalculate/DetectCountry';
+import FastImage from 'react-native-fast-image';
 
 const SelectedCategories: React.FC<{ route: any }> = ({ route }) => {
   const navigation = useNavigation<any>();
@@ -96,7 +97,7 @@ const SelectedCategories: React.FC<{ route: any }> = ({ route }) => {
 
           {loading ? (
             <FlatList
-              data={[1, 2, 3, 4, 5, 6]}
+              data={[1, 2, 3, 4, 5, 6,7,8,9,10]}
               keyExtractor={(item, index) => index.toString()}
               renderItem={() => (
                 <View style={styles.itemContainer}>
@@ -124,7 +125,7 @@ const SelectedCategories: React.FC<{ route: any }> = ({ route }) => {
               keyExtractor={item => item.id}
               contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
               showsVerticalScrollIndicator={false}
-              renderItem={({ item }) => {
+              renderItem={({ item,index }) => {
                 const isLoaded = imageLoaded[item.id] || false;
 
                 return (
@@ -138,11 +139,8 @@ const SelectedCategories: React.FC<{ route: any }> = ({ route }) => {
                       LinearGradient={LinearGradient}
                       style={styles.itemImage}
                     >
-                      <Image
-                        source={{ uri: item.img }}
-                        style={styles.itemImage}
-                        onLoad={() => handleImageLoad(item.id)}
-                      />
+                      <FastImage source={{ uri: item.img, priority: index <=6 ? FastImage.priority.high : index <= 10 ? FastImage.priority.normal : FastImage.priority.low }}
+                       style={styles.itemImage}   onLoad={() => handleImageLoad(item.id)}    />
                     </ShimmerPlaceholder>
 
                     {/* TEXT shimmer */}
