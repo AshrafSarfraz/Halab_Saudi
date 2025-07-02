@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, Image, TouchableOpacity, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import ShimmerPlaceholder from 'react-native-shimmer-placeholder';
 import LinearGradient from 'react-native-linear-gradient';
@@ -88,9 +88,13 @@ const RecentlyAdded = () => {
                 LinearGradient={LinearGradient}
                 style={styles.image}
               >
-                <FastImage source={{ uri: item.img, priority: index === 0 ? FastImage.priority.high : index <= 2 ? FastImage.priority.normal : FastImage.priority.low }}
-                 style={styles.image}  onLoad={handleImageLoad}     />
-              </ShimmerPlaceholder>
+                   {Platform.OS==='ios'?
+                   <FastImage source={{ uri: item.img, priority: index === 0 ? FastImage.priority.high : index <= 2 ? FastImage.priority.normal : FastImage.priority.low }}
+                     style={styles.image}   onLoad={handleImageLoad} resizeMode='cover'    />:
+                   <Image source={{ uri: item.img}}
+                    style={styles.image}   onLoad={handleImageLoad} resizeMode='cover'    /> }
+
+               </ShimmerPlaceholder>
               <Text style={styles.cate_txt}>
                 {language === 'en' ?    <Text> {item.nameEng.length > 20 ? item.nameEng.substring(0, 20) + '...' : item.nameEng}</Text> : item.nameArabic}
               </Text>

@@ -91,8 +91,13 @@ const DetailScreen: React.FC<{route:any}> = ({route}) => {
 
           <View style={styles.Body_Cont}>
           <ShimmerPlaceholder visible={!imageLoading} LinearGradient={LinearGradient}  style={styles.image} >
-          <FastImage source={{ uri: item.img, priority:FastImage.priority.high}}
-           style={styles.image}   onLoad={handleImageLoad}    />
+          {Platform.OS==='ios'?
+             <FastImage source={{ uri: item.img, priority:FastImage.priority.high}}
+             style={styles.image}   onLoad={handleImageLoad} resizeMode='cover'    />:
+             <Image source={{ uri: item.img}}
+             style={styles.image}   onLoad={handleImageLoad} resizeMode='cover'    />
+        }
+       
           </ShimmerPlaceholder>
           <View style={styles.Type_Cont}>
           <Text style={styles.Type_Text}>{item.selectedCategory}</Text>

@@ -20,6 +20,7 @@ export const getStyles=(language:string) => StyleSheet.create({
     width: '100%',
     height: 200,
     borderRadius: 20,
+    resizeMode:'contain'
   },
   overlay: {
     position: 'absolute',
