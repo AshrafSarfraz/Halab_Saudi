@@ -1,7 +1,7 @@
 import {Platform, StyleSheet} from 'react-native';
 import {Colors} from '../../Themes/Colors';
 import {Fonts} from '../../Themes/Fonts';
-import {DropdownIcon} from '../../Themes/Images';
+
 
 export const getStyles = (language: string) =>
   StyleSheet.create({
